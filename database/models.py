@@ -1,12 +1,11 @@
-from sqlalchemy import Column,Integer,String
+from sqlalchemy import Column,Integer,String,DateTime
+from sqlalchemy import func
 from database.connection import connection
 
 engine, base, session = connection()
 
-class Lead(base):
-    __tablename__ = 'leadsInfos'
+class Jobs(base):
+    __tablename__ = 'Jobs'
     id = Column(Integer, primary_key = True)
-    email = Column(String(50))
-    name = Column(String(70))
-    job_title = Column(String(20))
-    public_url = Column(String(100))
+    url = Column(String(220), unique=True)
+    scraped_at = Column(DateTime(timezone=True),server_default=func.now())

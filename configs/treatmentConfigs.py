@@ -11,4 +11,14 @@ def treatmentLocation(dictConfigs:dict = getConfigs()):
         location = 'brazil'
     return location
 
-treatmentLocation()
+print(treatmentLocation())
+
+
+def treatmentRole(dictConfigs:dict = getConfigs()):
+    try:
+        role = dictConfigs['role']
+        role = role.replace(' ','%2C%20')
+        return role
+    except:
+        print(f"{colors('red')}Please put the vacancy of interest in the configs file")
+        exit()
