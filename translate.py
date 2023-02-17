@@ -1,7 +1,16 @@
-preference = {'pedro':'18','rafael':'20'}
+text = 'Requisitos' \
+       'aws' \
+       'python' \
+       'django' \
+       'mysql' \
+       'postgresql' \
+       'Beneficios' \
+       'VR' \
+       'VA' \
+       'Auxilio Homeoffice'
 
-#preference.update({'pedro':'20'})
-nomes = list(preference.keys())
-for nome in nomes:
-    value = preference[nome]
-    print(value.find('1'))
+split1 = 'Requisitos'
+split2 = 'Beneficios'
+
+texto = text.split(split1)[1].split(split2)
+print(texto)
