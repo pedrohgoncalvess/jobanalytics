@@ -11,9 +11,6 @@ def treatmentLocation(dictConfigs:dict = getConfigs()):
         location = 'brazil'
     return location
 
-print(treatmentLocation())
-
-
 def treatmentRole(dictConfigs:dict = getConfigs()):
     try:
         role = dictConfigs['role']
