@@ -1,8 +1,17 @@
+import os
+from configs.colors import colors
+
+
 def getPath() -> str:
-    import pathlib
-    currentPath = pathlib.Path(__file__).parent.resolve()
-    currentPath = str(currentPath)+"\config"
-    return currentPath
+    import os
+    path = os.path.abspath('..')
+    archives = os.listdir('..')
+    for arch in archives:
+        if arch == 'config':
+            path = path+'\config'
+            return path
+    print(f"{colors('red')}Not found archive 'configs' in {path} path")
+    exit()
 
 
 def getConfigs(currentPath = getPath()) -> dict:
@@ -11,6 +20,8 @@ def getConfigs(currentPath = getPath()) -> dict:
         configs = configs.split('\n')
         preferences:dict = {}
         for config in configs:
+            if len(config) == 0:
+                continue
             preference = config.split('=')
             for r,prefer in enumerate(preference):
                 preference[r] = prefer.rstrip().lstrip()
@@ -24,7 +35,3 @@ def getConfigs(currentPath = getPath()) -> dict:
                 value = value.split(',')
                 preferences.update({key:value})
     return preferences
-
-getConfigs(getPath())
-
-

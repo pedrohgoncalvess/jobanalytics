@@ -13,11 +13,11 @@ A script does the "capture" and an NLP algorithm that recognizes the job require
 > <b>Experience</b> <p>Experience time at role. <i>in years</i></p>
 ```1```
 
-> <b>Stack</b> <p>Separated by commas</p>
+> <b>Stack</b> <p>Stack of your interest</p>
 ```Python, Scala, Java```
 
 > <b>Location</b> <p>City and country location<p>
-```Brazil, São Paulo```
+```Sao Paulo | Brazil``` or ```Brazil```
 
 > <b>Languages</b> <p>Languages prefer<p>
 ```Portuguese```

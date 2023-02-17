@@ -1,6 +1,7 @@
-from environmentConfiguration import openSite,environmentsVariables
-from setConfig import getConfigs,getPath
-from selenium.webdriver.common.keys import Keys
+from configs.environmentConfiguration import openSite
+from configs.setConfig import getConfigs
+from configs.treatmentConfigs import treatmentLocation
+
 import time
 from selenium.webdriver.common.by import By as by
 from selenium.webdriver.support.ui import WebDriverWait
@@ -9,7 +10,7 @@ from sitesScrap.treatmentLinkedin import treatmentTopics
 
 def searchJob():
     infos = getConfigs()
-    url = f'https://www.linkedin.com/jobs/search?keywords=Desenvolvedor%20Python&location=S%C3%A3o%20Paulo%2C%20S%C3%A3o%20Paulo%2C%20Brasil&geoId=104746682&trk=public_jobs_jobs-search-bar_search-submit&position=1&pageNum=0'
+    url = f'https://www.linkedin.com/jobs/search?keywords=Desenvolvedor%20Python&location={treatmentLocation(getConfigs())}&geoId=104746682&trk=public_jobs_jobs-search-bar_search-submit&position=1&pageNum=0'
     site, driver = openSite(url)
     listJobs = driver.find_element_by_xpath('//*[@id="main-content"]/section[2]')
     jobs = listJobs.find_elements_by_tag_name('li')
