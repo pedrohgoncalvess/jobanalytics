@@ -1,10 +1,7 @@
-def driverWeb(url = 'https://www.google.com.br', openTab:str = 'Y'):
+def driverWeb(url = 'https://www.google.com.br'):
     from selenium import webdriver
     driver = webdriver.Chrome(executable_path=r'../chromedriver_win32/chromedriver.exe')
-    if openTab == 'Y':
-        return driver.get(url), driver
-    else:
-        return driver
+    return driver
 
 def environmentsVariables(variable:str) -> str:
     import os

@@ -8,5 +8,7 @@ class Jobs(base):
     __tablename__ = 'Jobs'
     id = Column(Integer, primary_key = True)
     url = Column(String(270), unique=True)
+    vacancy_title = Column(String(70))
+    vacancy_org = Column(String(70))
     scraped_at = Column(DateTime(timezone=True),server_default=func.now())
     status = Column(String(10), default='waiting')
