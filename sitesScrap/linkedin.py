@@ -32,7 +32,7 @@ def getJobLink() -> list:
     return links
 
 
-def scrapInfosJobs(links:list = getJobLink()):
+def scrapInfosJobs(links:list = getJobLink()) -> dict:
 
     url = 'https://www.linkedin.com/home'
     driver = driverWeb()
@@ -60,6 +60,7 @@ def scrapInfosJobs(links:list = getJobLink()):
                 except:
                     pass
             dictInfosVacancy:dict = {}
+            dictInfosVacancy.update({'urlJob':link})
             for infoKey in infosKeys:
                 try:
                     if infoKey != 'content':
@@ -77,11 +78,11 @@ def scrapInfosJobs(links:list = getJobLink()):
                             dictInfosVacancy.update({'topicsList': topicsList})
                 except:
                     print(f"{colors('red')}Unable to get content {infoKey}")
-            print(dictInfosVacancy)
         except Exception as err:
             print(f'{colors("red")}Could not access the link {link}. \n {err}')
-            time.sleep(5000)
+            time.sleep(5)
     driver.close()
+    return dictInfosVacancy
 
 
 

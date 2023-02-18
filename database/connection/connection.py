@@ -7,4 +7,5 @@ def connection():
     engine = create_engine(url=f"postgresql://{env('user')}:{env('password')}@{env('host_name')}/postgres")
     Base = declarative_base()
     SessionLocal = sessionmaker(bind=engine, expire_on_commit=False)
-    return engine, Base, SessionLocal
+    session = SessionLocal()
+    return engine, Base, session
