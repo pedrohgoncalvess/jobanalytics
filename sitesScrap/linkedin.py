@@ -3,7 +3,9 @@ from configs.setConfig import getConfigs
 from configs.treatmentConfigs import treatmentLocation,treatmentRole
 from sitesScrap.treatmentLinkedin import treatmentTopics
 from configs.colors import colors
-from configs.data import dataPaths
+from configs.dataXpath import dataPaths
+from database.operations.insertOperations import insertJobsScrap
+from database.operations.validationOperation import validationUrlExist
 
 import time
 from selenium.webdriver.common.by import By
@@ -12,9 +14,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 
 
-def getJobLink() -> list:
+def getJobLink(numberPage:int = 0) -> list:
     infos = getConfigs()
-    url = f'https://www.linkedin.com/jobs/search?keywords={treatmentRole()}&location={treatmentLocation(getConfigs())}&geoId=104746682&trk=public_jobs_jobs-search-bar_search-submit&position=1&pageNum=0'
+    url = f'https://www.linkedin.com/jobs/search?keywords={treatmentRole()}&location={treatmentLocation(getConfigs())}&geoId=104746682&trk=public_jobs_jobs-search-bar_search-submit&position=1&pageNum={numberPage}'
     driver = driverWeb()
     driver.get(url)
     driver.maximize_window()
@@ -29,14 +31,37 @@ def getJobLink() -> list:
             except:
                 print(f'{colors("cyan")}Could not access the link {link}')
     driver.close()
-    return links
+    return links, url
 
 
-def scrapInfosJobs(links:list = getJobLink()) -> dict:
+def validationUrls() -> dict:
+    links, urlGetjob = getJobLink()
+    linksValidated:list = []
 
-    url = 'https://www.linkedin.com/home'
+    def validatesLinks(links:dict):
+        for link in links:
+            validation = validationUrlExist(link.split("?")[0])
+            if validation == False:
+                linksValidated.append(link)
+        return linksValidated
+
+    validatesLinks(links)
+
+    while len(linksValidated) <= 5:
+        pageNum = urlGetjob[-1]
+        pageNum += 1
+        print(f'Comming to page number {str(pageNum)}')
+        newLinks = getJobLink(pageNum)
+        validatesLinks(newLinks)
+
+    print(f"Returning {str(len(linksValidated))} urls validated")
+    return linksValidated
+
+
+def scrapInfosJobs(links:list = validationUrls()) -> dict:
+
     driver = driverWeb()
-    driver.get(url)
+    driver.get('https://www.linkedin.com/home')
     driver.maximize_window()
     login = driver.find_element(by=By.XPATH,value='//*[@id="session_key"]')
     login.send_keys(environmentsVariables('loginLinkedin'))
@@ -48,7 +73,7 @@ def scrapInfosJobs(links:list = getJobLink()) -> dict:
     viewMore = dataPaths('viewMoreInfos')
     viewMoreKeys = list(viewMore.keys())
 
-    infosXpath = dataPaths('infosXpath')
+    infosXpath = dataPaths('infosXpathAlternative')
     infosKeys = list(infosXpath.keys())
 
     for link in links:
@@ -60,6 +85,7 @@ def scrapInfosJobs(links:list = getJobLink()) -> dict:
                 except:
                     pass
             dictInfosVacancy:dict = {}
+            dictInfosVacancy.update({'idurlJob': link.split("?")[0]})
             dictInfosVacancy.update({'urlJob':link})
             for infoKey in infosKeys:
                 try:
@@ -76,8 +102,9 @@ def scrapInfosJobs(links:list = getJobLink()) -> dict:
                             for topic in topics:
                                 topicsList.append(topic.text)
                             dictInfosVacancy.update({'topicsList': topicsList})
-                except:
-                    print(f"{colors('red')}Unable to get content {infoKey}")
+                except Exception as err:
+                    print(f"{colors('red')}Unable to get content {infoKey} \n {err}")
+            insertJobsScrap(dictInfosVacancy)
         except Exception as err:
             print(f'{colors("red")}Could not access the link {link}. \n {err}')
             time.sleep(5)

@@ -14,6 +14,15 @@ def dataPaths(data:str) -> dict:
         'vacancyExperience':'//*[@id="main-content"]/section[1]/div/div/section[1]/div/ul/li[1]/span'
     }
 
-    datas:list = {'viewMoreInfos':viewMoreInfos,'infosXpath':infosXpath}
+    infosXpathAlternative = {
+        'content':'//*[@id="job-details"]/span',
+        'datePublish': '/html/body/div[5]/div[3]/div/div[1]/div[1]/div/div[1]/div/div/div[1]/div[1]/span[2]/span[1]',
+        'candidates': '/html/body/div[5]/div[3]/div/div[1]/div[1]/div/div[1]/div/div/div[1]/div[1]/span[2]/span[2]',
+        'vacancyOrg': '//*[@id="ember25"]',
+        'vacancyTitle': '/html/body/div[5]/div[3]/div/div[1]/div[1]/div/div[1]/div/div/div[1]/h1',
+        'vacancyExperience': '/html/body/div[5]/div[3]/div/div[1]/div[1]/div/div[1]/div/div/div[1]/div[2]/ul/li[1]'
+    }
+
+    datas:list = {'viewMoreInfos':viewMoreInfos,'infosXpath':infosXpath,'infosXpathAlternative':infosXpathAlternative}
 
     return datas[data]
