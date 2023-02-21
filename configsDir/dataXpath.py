@@ -2,7 +2,9 @@
 def dataPaths(data:str) -> dict:
     viewMoreInfos:dict = {
         'exibirMais':'//*[@id="main-content"]/section[1]/div/div/section[1]/div/div/section/button[1]/icon',
-        'verMais':'//*[@id="ember32"]'
+        'verMais':'//*[@id="ember32"]',
+        'exibirMais2':'//*[@id="main-content"]/section[1]/div/div/section[1]/div/div/section/button[1]'
+
     }
 
     infosXpath:dict = {

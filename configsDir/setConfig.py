@@ -1,16 +1,18 @@
 import os
-from configs.colors import colors
+from configsDir.colors import colors
 
 
 def getPath() -> str:
     import os
-    path = os.path.abspath('..')
-    archives = os.listdir('..')
-    for arch in archives:
-        if arch == 'config':
-            path = path+'\config'
-            return path
-    print(f"{colors('red')}Not found archive 'configs' in {path} path")
+    paths = ['.','..']
+    for pathArch in paths:
+        path = os.path.abspath(pathArch)
+        archives = os.listdir(pathArch)
+        for arch in archives:
+            if arch == 'settingsJA':
+                path = path+'\settingsJA'
+                return path
+    print(f"{colors('red')}Not found archive 'configs' in {os.path.abspath('..')} path")
     exit()
 
 

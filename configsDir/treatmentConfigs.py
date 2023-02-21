@@ -1,5 +1,5 @@
-from configs.setConfig import getConfigs
-from configs.colors import colors
+from configsDir.setConfig import getConfigs
+from configsDir.colors import colors
 
 def treatmentLocation(dictConfigs:dict = getConfigs()):
     try:

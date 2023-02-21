@@ -1,4 +1,4 @@
-from sqlalchemy import Column,Integer,String,DateTime, MetaData, schema, ForeignKeyConstraint, Table
+from sqlalchemy import Column,Integer,String,DateTime, MetaData, Table, ForeignKey
 from sqlalchemy import func
 from database.connection.connection import connection
 
@@ -6,14 +6,11 @@ engine, base, session = connection()
 
 metadata = MetaData()
 
-if not engine.dialect.has_schema(engine, "info_jobs"):
-    engine.execute(schema.CreateSchema("info_jobs"))
-
 Jobs = Table(
     'jobs',
     metadata,
     Column("id",Integer, primary_key=True, autoincrement=True),
-    Column("id_url",String(300), unique=True, nullable=False),
+    Column("id_url",String(300), ForeignKey('jobs_topics.id_url'),ForeignKey('jobs_description.id_url'), unique=True, nullable=False),
     Column("url_job",String(300), nullable=False),
     Column("vacancy_title",String(70),default='none'),
     Column("vacancy_org",String(70),default='none'),

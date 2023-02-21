@@ -1,2 +1,2 @@
 .env
-configs/tests.py
+test.py
