@@ -43,6 +43,8 @@ def insertTopicsScrap(topics:list, idUrl:str):
 def insertTextScrap(textJob:str,idUrl:str):
     from database.entities.jobs_description import JobsDescriptions
     engine, base, session = connection()
+    if len(textJob) > 15000:
+        textJob = textJob[0:14999]
     insertText = insert(JobsDescriptions).values(
         id_url=idUrl,
         text=textJob

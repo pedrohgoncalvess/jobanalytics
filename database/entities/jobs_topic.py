@@ -10,7 +10,7 @@ JobsTopics = Table(
     metadata,
     Column("id",Integer, primary_key=True, autoincrement=True),
     Column("id_url",String(300),nullable=False),
-    Column("topic",String(100)),
+    Column("topic",String(100), nullable=False),
     schema = 'info_jobs'
 )
 

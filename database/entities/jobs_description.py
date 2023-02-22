@@ -9,7 +9,7 @@ JobsDescriptions = Table(
     'jobs_description',
     metadata,
     Column("id_url",String(300),nullable=False, primary_key=True, unique=True),
-    Column("text",String(15000)),
+    Column("text",String(15000),nullable=False),
     schema = 'info_jobs'
 )
 

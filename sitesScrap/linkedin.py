@@ -41,7 +41,7 @@ def validationUrls() -> dict:
 
     validatesLinks(links)
 
-    while len(linksValidated) <= 5:
+    while len(linksValidated) <= 10:
         pageNum = 0
         pageNum += 1
         print(f'Comming to page number {str(pageNum)}')
@@ -56,7 +56,7 @@ def scrapInfosJobs(links:list = validationUrls()) -> dict:
     from configsDir.environmentConfiguration import driverWeb, environmentsVariables
     from configsDir.colors import colors
     from configsDir.dataXpath import dataPaths
-    from database.operations.insertOperations import insertJobsScrap
+    from database.operations.insertOperations import insertJobsScrap, insertTextScrap,insertTopicsScrap
 
     import time
     from selenium.webdriver.common.by import By
@@ -105,9 +105,10 @@ def scrapInfosJobs(links:list = validationUrls()) -> dict:
                             for topic in topics:
                                 topicsList.append(topic.text)
                             dictInfosVacancy.update({'topicsList': topicsList})
+                            insertTopicsScrap(topicsList,dictInfosVacancy['idurlJob'])
+                            insertTextScrap(vacancyText,dictInfosVacancy['idurlJob'])
                 except Exception as err:
                     print(f"{colors('red')}Unable to get content {infoKey} \n {err}")
-                    #time.sleep()
             insertJobsScrap(dictInfosVacancy)
         except Exception as err:
             print(f'{colors("red")}Could not access the link {link}. \n {err}')
@@ -115,19 +116,5 @@ def scrapInfosJobs(links:list = validationUrls()) -> dict:
     driver.close()
     return dictInfosVacancy
 
-def test():
-    from configsDir.environmentConfiguration import driverWeb
-    from configsDir.setConfig import getConfigs
-    from configsDir.treatmentConfigs import treatmentLocation, treatmentRole
-    import time
-
-    url = f'https://www.linkedin.com/jobs/search?keywords={treatmentRole()}&location={treatmentLocation(getConfigs())}&geoId=104746682&trk=public_jobs_jobs-search-bar_search-submit&position=1&pageNum=0'
-    driver = driverWeb()
-    driver.get(url)
-    driver.maximize_window()
-    time.sleep(500)
-    driver.close()
-
 if __name__ == "__main__":
-    #test()
     scrapInfosJobs()

@@ -1,5 +1,4 @@
-from sitesScrap.linkedin import scrapInfosJobs, test
+from sitesScrap.linkedin import scrapInfosJobs
 
 if __name__ == "__main__":
-    #test()
     scrapInfosJobs()
