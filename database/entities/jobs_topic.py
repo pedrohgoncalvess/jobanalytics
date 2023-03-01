@@ -1,5 +1,6 @@
 from sqlalchemy import Column,Integer,String, MetaData, Table, ForeignKey
 from database.connection.connection import connection
+from database.entities.jobs import Jobs
 
 engine, base, session = connection()
 
@@ -8,8 +9,8 @@ metadata = MetaData()
 JobsTopics = Table(
     'jobs_topics',
     metadata,
-    Column("id",Integer, primary_key=True, autoincrement=True),
-    Column("id_url",String(300),nullable=False),
+    Column("id",Integer, autoincrement=True),
+    Column("id_url",String(300),ForeignKey(Jobs.columns.id_url)),
     Column("topic",String(100), nullable=False),
     schema = 'info_jobs'
 )

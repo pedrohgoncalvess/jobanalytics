@@ -100,21 +100,18 @@ def scrapInfosJobs(links:list = validationUrls()) -> dict:
                         vacancyText = content.text
                         dictInfosVacancy.update({'vacancyText':vacancyText})
                         topics = content.find_elements(by=By.CSS_SELECTOR, value='strong')
-                        topicsList: list = []
-                        if len(topics) > 0:
-                            for topic in topics:
-                                topicsList.append(topic.text)
-                            dictInfosVacancy.update({'topicsList': topicsList})
-                            insertTopicsScrap(topicsList,dictInfosVacancy['idurlJob'])
-                            insertTextScrap(vacancyText,dictInfosVacancy['idurlJob'])
                 except Exception as err:
                     print(f"{colors('red')}Unable to get content {infoKey} \n {err}")
             insertJobsScrap(dictInfosVacancy)
+            insertTextScrap(vacancyText, dictInfosVacancy['idurlJob'])
+            topicsList: list = []
+            if len(topics) > 0:
+                for topic in topics:
+                    topicsList.append(topic.text)
+                dictInfosVacancy.update({'topicsList': topicsList})
+                insertTopicsScrap(topicsList, dictInfosVacancy['idurlJob'])
         except Exception as err:
             print(f'{colors("red")}Could not access the link {link}. \n {err}')
             time.sleep(5)
     driver.close()
     return dictInfosVacancy
-
-if __name__ == "__main__":
-    scrapInfosJobs()

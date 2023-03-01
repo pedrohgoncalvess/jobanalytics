@@ -1,4 +1,4 @@
-urls = ['https://br.linkedin.com/jobs/view/desenvolvedor-front-end-angular-at-moot-consulting-3486569446']
+urls = ['https://br.linkedin.com/jobs/view/desenvolvedor-front-end-jr-at-sumus-3475143795?refId=8f8%2FrE%2Ff4X9cyyxhuO3GTA%3D%3D&trackingId=q3ktBHSyTXL8WkypglKPiQ%3D%3D&position=1&pageNum=0&trk=public_jobs_jserp-result_search-card']
 
 from configsDir.environmentConfiguration import driverWeb, environmentsVariables
 from configsDir.colors import colors

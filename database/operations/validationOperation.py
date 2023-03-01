@@ -1,14 +1,14 @@
-def validationUrlExist() -> bool:
+from sqlalchemy.sql.schema import Table
+from database.entities.jobs import Jobs
+
+def validationUrlExist(table:Table = Jobs) -> bool:
     from database.connection.connection import connection
-    from database.entities.jobs import Jobs
     engine, base, session = connection()
 
-    query = session.query(Jobs).all()
+    query = session.query(table).all()
     links:list = []
     for row in query:
         links.append(row.id_url)
 
     return links
-
-validationUrlExist()
 
