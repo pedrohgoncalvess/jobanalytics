@@ -19,7 +19,7 @@ Jobs = Table(
     Column("date_publish",String(75), default='none'),
     Column("scraped_at",DateTime(timezone=True),server_default=func.now()),
     Column("status",String(10), default='waiting'),
-    schema = 'info_jobs'
+    schema = 'scrap_jobs'
 )
 
 metadata.create_all(engine)

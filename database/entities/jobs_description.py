@@ -11,7 +11,7 @@ JobsDescriptions = Table(
     metadata,
     Column("id_url",String(300),ForeignKey(Jobs.columns.id_url)),
     Column("text",String(15000),nullable=False),
-    schema = 'info_jobs'
+    schema = 'scrap_jobs'
 )
 
 metadata.create_all(engine)
