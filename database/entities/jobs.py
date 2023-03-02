@@ -9,7 +9,7 @@ metadata = MetaData()
 Jobs = Table(
     'jobs',
     metadata,
-    Column("id",Integer, autoincrement=True, nullable=False),
+    Column("id",Integer,autoincrement=True,primary_key=True),
     Column("id_url",String(300),primary_key=True, unique=True),
     Column("url_job",String(300), nullable=False),
     Column("vacancy_title",String(70),default='none'),

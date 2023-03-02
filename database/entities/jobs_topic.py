@@ -9,7 +9,6 @@ metadata = MetaData()
 JobsTopics = Table(
     'jobs_topics',
     metadata,
-    Column("id",Integer, autoincrement=True),
     Column("id_url",String(300),ForeignKey(Jobs.columns.id_url)),
     Column("topic",String(100), nullable=False),
     schema = 'info_jobs'

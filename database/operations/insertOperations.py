@@ -22,8 +22,8 @@ def insertJobsScrap(dictInfos:dict):
         candidates=dictInfos['candidates'],
         date_publish=dictInfos['datePublish']
         )
+        print(insertJob)
         conn.execute(insertJob)
-        conn.close()
     print(f"Insert {insertJob} succesfully.")
 
 def insertTopicsScrap(topics:list, idUrl:str):
@@ -36,7 +36,6 @@ def insertTopicsScrap(topics:list, idUrl:str):
                 topic = topic
         )
             conn.execute(insertTopic)
-    conn.close()
     print(f"Topic insert succesfully.")
 
 

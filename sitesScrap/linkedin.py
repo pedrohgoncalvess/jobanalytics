@@ -70,7 +70,7 @@ def scrapInfosJobs(links:list = validationUrls()) -> dict:
     login.send_keys(environmentsVariables('loginLinkedin'))
     password = driver.find_element(by=By.XPATH,value='//*[@id="session_password"]')
     password.send_keys(environmentsVariables('passwordLinkedin'))
-    enter = driver.find_element(by=By.XPATH,value='//*[@id="main-content"]/section[1]/div/div/form/button')
+    enter = driver.find_element(by=By.XPATH,value='//*[@id="main-content"]/section[1]/div/form[1]/div[2]/button')
     enter.click()
 
     viewMore = dataPaths('viewMoreInfos')
