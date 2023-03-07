@@ -88,8 +88,8 @@ def scrapInfosJobs(links:list = validationUrls()) -> dict:
                 except:
                     print(f"{colors('red')}============Not found button for click============.")
             dictInfosVacancy:dict = {}
+            dictInfosVacancy.update({'vagancyOrg':link.split('at-')[1].split('-')[0]})
             dictInfosVacancy.update({'idurlJob': link.split("?")[0]})
-            dictInfosVacancy.update({'urlJob':link})
             for infoKey in infosKeys:
                 try:
                     if infoKey != 'content':

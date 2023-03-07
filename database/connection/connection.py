@@ -9,8 +9,10 @@ def connection():
     SessionLocal = sessionmaker(bind=engine, expire_on_commit=False)
     session = SessionLocal()
 
-    if not engine.dialect.has_schema(engine, "info_jobs"):
-        engine.execute(schema.CreateSchema("info_jobs"))
+    schemas = ['scrap_job','scrap_scheduler']
+    for schemaName in schemas:
+        if not engine.dialect.has_schema(engine, schemaName):
+            engine.execute(schema.CreateSchema(schemaName))
 
     return engine, Base, session
 
@@ -18,7 +20,14 @@ def checkTables():
     from database.entities.jobs import Jobs
     from database.entities.jobs_description import JobsDescriptions
     from database.entities.jobs_topic import JobsTopics
+    from database.entities.paths_fields.set_path import setPath
+    from database.entities.paths_fields.scheduler import schedulerScrap
+    from database.entities.paths_fields.paths import sitesPaths
+
     if __name__ == '__main__':
         Jobs
         JobsDescriptions
         JobsTopics
+        setPath
+        schedulerScrap
+        sitesPaths

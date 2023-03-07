@@ -11,7 +11,6 @@ Jobs = Table(
     metadata,
     Column("id",Integer,autoincrement=True,primary_key=True),
     Column("id_url",String(300),primary_key=True, unique=True),
-    Column("url_job",String(300), nullable=False),
     Column("vacancy_title",String(70),default='none'),
     Column("vacancy_org",String(70),default='none'),
     Column("experience",String(75),default='none'),
@@ -19,7 +18,7 @@ Jobs = Table(
     Column("date_publish",String(75), default='none'),
     Column("scraped_at",DateTime(timezone=True),server_default=func.now()),
     Column("status",String(10), default='waiting'),
-    schema = 'scrap_jobs'
+    schema = 'scrap_job'
 )
 
 metadata.create_all(engine)

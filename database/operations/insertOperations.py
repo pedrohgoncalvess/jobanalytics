@@ -15,7 +15,6 @@ def insertJobsScrap(dictInfos:dict):
     with engine.connect() as conn:
         insertJob = insert(Jobs).values(
         id_url = dictInfos['idurlJob'],
-        url_job = dictInfos['urlJob'],
         vacancy_title = dictInfos['vacancyTitle'],
         vacancy_org = dictInfos['vacancyOrg'],
         experience= dictInfos['vacancyExperience'],
