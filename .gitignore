@@ -1,0 +1,4 @@
+.env
+analytics
+database/test.py
+logs
