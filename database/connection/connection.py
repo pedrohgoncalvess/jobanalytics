@@ -3,11 +3,17 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from configsDir.environmentConfiguration import environmentsVariables as env
 
-def connection():
+def connection(messages:str='on'):
     engine = create_engine(url=f"postgresql://{env('user')}:{env('password')}@{env('host_name')}/jobscrap",echo=True)
     Base = declarative_base()
     SessionLocal = sessionmaker(bind=engine, expire_on_commit=False)
     session = SessionLocal()
+
+    if messages == 'off':
+        import logging
+
+        logging.basicConfig()
+        logging.disable(logging.WARNING)
 
     schemas = ['scrap_job','scrap_scheduler']
     for schemaName in schemas:
