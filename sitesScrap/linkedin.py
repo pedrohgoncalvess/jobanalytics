@@ -5,7 +5,6 @@ def getJobLink(numberPage:int = 0) -> list:
     from configsDir.treatmentConfigs import treatmentLocation, treatmentRole
     from configsDir.colors import colors
 
-    import time
     from selenium.webdriver.common.by import By
     infos = getConfigs()
     url = f'https://www.linkedin.com/jobs/search?keywords={treatmentRole()}&location={treatmentLocation(getConfigs())}&geoId=104746682&trk=public_jobs_jobs-search-bar_search-submit&position=1&pageNum={str(numberPage)}'
@@ -55,7 +54,7 @@ def validationUrls() -> dict:
 def scrapInfosJobs(links:list = validationUrls()) -> dict:
     from configsDir.environmentConfiguration import driverWeb, environmentsVariables
     from configsDir.colors import colors
-    from configsDir.dataXpath import dataPaths
+    from database.entities.paths_fields.dataXpath import dataPaths
     from database.operations.insertOperations import insertJobsScrap, insertTextScrap,insertTopicsScrap
 
     import time

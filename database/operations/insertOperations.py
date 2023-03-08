@@ -51,3 +51,15 @@ def insertTextScrap(textJob:str,idUrl:str):
         conn.execute(insertText)
     conn.close()
     print(f"Text insert succesfully.")
+
+
+def createSetPath(setPathDict:dict):
+    from database.entities.paths_fields.set_path import setPath
+    engine, base, session = connection()
+    with engine.connect() as conn:
+        insertSet = insert(setPath).values(
+        name_set = setPathDict['nameSet'].lower(),
+        site_scrap = setPathDict['siteScrap'].lower(),
+        )
+        conn.execute(insertSet)
+

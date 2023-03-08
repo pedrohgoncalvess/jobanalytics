@@ -22,10 +22,8 @@ def testLogin():
 def testGetLink():
     from configsDir.environmentConfiguration import driverWeb
     from configsDir.setConfig import getConfigs
-    from configsDir.treatmentConfigs import treatmentLocation, treatmentRole
     from configsDir.colors import colors
 
-    import time
     from selenium.webdriver.common.by import By
     infos = getConfigs()
     url = f'https://www.linkedin.com/jobs/search?keywords=desenvolvedor&location=Brazil&geoId=104746682&trk=public_jobs_jobs-search-bar_search-submit&position=1&pageNum=1'
@@ -48,7 +46,7 @@ def testGetLink():
 
 def testScrapJob(link:str):
     from configsDir.environmentConfiguration import driverWeb
-    from configsDir.dataXpath import dataPaths, viewMoreInfos
+    from database.entities.paths_fields.dataXpath import dataPaths, viewMoreInfos
     from selenium.webdriver.common.by import By
     from selenium.webdriver.support.ui import WebDriverWait
     from selenium.webdriver.support import expected_conditions as ec
