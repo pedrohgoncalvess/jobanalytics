@@ -15,19 +15,18 @@ def testInsertSchedulerSchemaPathSiteTable():
     testInfoexpected = 'testInfo'
 
     setPathDict = {
-        'nameSet':'linke_1115',
+        'stageScrap':'linke_1115',
         'siteScrap':'linkedin'
     }
 
     sitePathDict = {
-        'typeComponent':'testeComponent',
         'typeInfo':testInfoexpected,
         'path':'05158gwgbwobgw050518'
     }
 
 
     insertSet = insert(setPath).values(
-        name_set=setPathDict['nameSet'].lower(),
+        stage_scrap=setPathDict['stageScrap'].lower(),
         site_scrap=setPathDict['siteScrap'].lower(),
     )
     session.execute(insertSet)
@@ -38,7 +37,6 @@ def testInsertSchedulerSchemaPathSiteTable():
 
     insertPath = insert(sitesPaths).values(
         id_set=a,
-        type_component=sitePathDict.get('typeComponent'),
         type_info=sitePathDict.get('typeInfo'),
         path=sitePathDict.get('path')
     )
@@ -61,18 +59,18 @@ def testInsertSchedulerSchemaSetPath():
     testNameSet = 'linkPath1'
 
     setPathDict = {
-        'nameSet':testNameSet,
+        'stageScrap':testNameSet,
         'siteScrap':'linkedin'
     }
 
     insertSet = insert(setPath).values(
-    name_set = setPathDict['nameSet'].lower(),
+    stage_scrap = setPathDict['stageScrap'].lower(),
     site_scrap = setPathDict['siteScrap'].lower(),
     )
     session.execute(insertSet)
     results = session.query(setPath).all()
     for result in results:
-        expected = result.name_set
+        expected = result.stage_scrap
     session.rollback()
 
     try:

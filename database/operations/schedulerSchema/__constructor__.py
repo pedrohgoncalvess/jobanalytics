@@ -1,8 +1,7 @@
 from database.connection.connection import connection
 from sqlalchemy import insert
-from sqlalchemy.sql import exists
 from types import FunctionType
-from configsDir.dataXpath import dataPaths,viewMoreInfos,loginPaths
+from database.operations.schedulerSchema.dataXPath import dataPaths,viewMoreInfos,loginPaths
 
 
 def verifySetPath(func:FunctionType):

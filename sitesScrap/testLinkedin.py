@@ -1,22 +1,59 @@
-def testLogin():
-    try:
-        from configsDir.environmentConfiguration import driverWeb, environmentsVariables
-        import time
-        from selenium.webdriver.common.by import By
-        from configsDir.colors import colors
+def pathsForTestScrap(type_info:str, site:str='linkedin') -> dict:
+    from database.connection.connection import connection
+    from sqlalchemy.sql import text
 
-        driver = driverWeb()
-        driver.get('https://www.linkedin.com/home')
-        driver.maximize_window()
-        login = driver.find_element(by=By.XPATH,value='//*[@id="session_key"]')
-        login.send_keys(environmentsVariables('loginLinkedin'))
-        password = driver.find_element(by=By.XPATH,value='//*[@id="session_password"]')
-        password.send_keys(environmentsVariables('passwordLinkedin'))
-        enter = driver.find_element(by=By.XPATH,value='//*[@id="main-content"]/section[1]/div/form[1]/div[2]/button') #'//*[@id="main-content"]/section[1]/div/div/form/button' LAST BUTTON XPATH
-        enter.click()
-        print(f"{colors('green')}Login passed.")
-    except:
-        exit('Login has no passed.')
+    engine, base, session = connection()
+    with engine.connect() as conn:
+        query = text(f"""select paths.id,
+       paths."path"
+from scrap_scheduler.set_path as "set",
+ scrap_scheduler.path_site as paths
+ where 1=1
+ and set.site_scrap = '{site}'
+ and paths.type_info = '{type_info}'""")
+        lines = conn.execute(query)
+    results:dict = {}
+    for line in lines:
+        results.update({line.id:line.path})
+    print(results)
+    return results
+
+
+
+def testLogin():
+    from configsDir.environmentConfiguration import driverWeb, environmentsVariables
+    from selenium.webdriver.common.by import By
+    from configsDir.colors import colors
+
+    usernamePath = pathsForTestScrap('username_login')
+    passwordPath = pathsForTestScrap('password_login')
+    buttonLogin = pathsForTestScrap('button_login')
+
+    driver = driverWeb()
+    driver.get('https://www.linkedin.com/home')
+    driver.maximize_window()
+    for login in usernamePath.values():
+        try:
+            print(login)
+            login = driver.find_element(by=By.XPATH,value=login)
+            login.send_keys(environmentsVariables('loginLinkedin'))
+            print("INSERT SIMULATION")
+        except:
+            print('dont works')
+    for password in passwordPath.values():
+        try:
+            password = driver.find_element(by=By.XPATH,value=password)
+            password.send_keys(environmentsVariables('passwordLinkedin'))
+            print("INSERT SIMULATION")
+        except:
+            print('dont works')
+    for button in buttonLogin.values():
+        try:
+            enter = driver.find_element(by=By.XPATH,value=button)
+            enter.click()
+        except:
+            print('dont works')
+    print(f"{colors('green')}Login passed.")
 
 
 def testGetLink():
@@ -46,7 +83,7 @@ def testGetLink():
 
 def testScrapJob(link:str):
     from configsDir.environmentConfiguration import driverWeb
-    from configsDir.dataXpath import dataPaths, viewMoreInfos
+    from database.operations.schedulerSchema.dataXPath import dataPaths, viewMoreInfos
     from selenium.webdriver.common.by import By
     from selenium.webdriver.support.ui import WebDriverWait
     from selenium.webdriver.support import expected_conditions as ec
@@ -94,6 +131,7 @@ def testScrapJob(link:str):
 
 
 if __name__ == '__main__':
-    #testLogin()
-    testScrapJob(testGetLink())
+    testLogin()
+    #testScrapJob(testGetLink())
+    #pathsForTestScrap('view_more')
 

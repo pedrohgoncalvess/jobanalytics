@@ -11,7 +11,7 @@ schedulerScrap = Table(
     'schedulerSchema',
     metadata,
     Column("id",Integer,primary_key=True,autoincrement=True),
-    Column("id_set",Integer,ForeignKey(setPath.columns.id)),
+    Column("id_path",Integer,ForeignKey(setPath.columns.id)),
     Column("tested_at",Date,server_default=func.now()),
     schema='scrap_scheduler'
 )

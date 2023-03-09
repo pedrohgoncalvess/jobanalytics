@@ -54,7 +54,7 @@ def validationUrls() -> dict:
 def scrapInfosJobs(links:list = validationUrls()) -> dict:
     from configsDir.environmentConfiguration import driverWeb, environmentsVariables
     from configsDir.colors import colors
-    from configsDir.dataXpath import dataPaths
+    from database.operations.schedulerSchema.dataXPath import dataPaths
     from database.operations.scrapJobSchema.insertOperations import insertJobsScrap, insertTextScrap,insertTopicsScrap
 
     import time
