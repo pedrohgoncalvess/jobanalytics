@@ -26,7 +26,7 @@ def getJobLink(numberPage:int = 0) -> list:
 
 
 def validationUrls() -> dict:
-    from database.operations.validationOperation import validationUrlExist
+    from database.operations.scrapJobSchema.validationOperation import validationUrlExist
     links, urlGetjob = getJobLink()
     linksValidated:list = []
 
@@ -55,7 +55,7 @@ def scrapInfosJobs(links:list = validationUrls()) -> dict:
     from configsDir.environmentConfiguration import driverWeb, environmentsVariables
     from configsDir.colors import colors
     from configsDir.dataXpath import dataPaths
-    from database.operations.insertOperations import insertJobsScrap, insertTextScrap,insertTopicsScrap
+    from database.operations.scrapJobSchema.insertOperations import insertJobsScrap, insertTextScrap,insertTopicsScrap
 
     import time
     from selenium.webdriver.common.by import By

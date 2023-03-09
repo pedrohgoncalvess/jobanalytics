@@ -1,4 +1,4 @@
-from database.tests.testsScheduler import *
+from database.tests.testsSchedulerSchema import *
 
 
 

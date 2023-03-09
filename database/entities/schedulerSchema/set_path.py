@@ -9,7 +9,7 @@ setPath = Table(
     'set_path',
     metadata,
     Column("id",Integer,primary_key=True,autoincrement=True),
-    Column("name_set",String(20),nullable=False, unique=True),
+    Column("stage_scrap",String(20),nullable=False, unique=True),
     Column("site_scrap",String(25), nullable=False),
     schema = 'scrap_scheduler'
 )

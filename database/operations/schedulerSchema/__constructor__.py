@@ -2,6 +2,7 @@ from database.connection.connection import connection
 from sqlalchemy import insert
 from sqlalchemy.sql import exists
 from types import FunctionType
+from configsDir.dataXpath import dataPaths,viewMoreInfos,loginPaths
 
 
 def verifySetPath(func:FunctionType):
@@ -9,44 +10,38 @@ def verifySetPath(func:FunctionType):
 
     engine, base, session = connection(messages='off')
 
-    name_sets = ['linkedin_path_1','linkedin_path_2']
+    name_sets = ['scrap','login','view_more_infos']
     for set in name_sets:
-        query = session.query(session.query(setPath).filter(setPath.columns.name_set==set).exists()).scalar()
+        query = session.query(session.query(setPath).filter(setPath.columns.stage_scrap==set).exists()).scalar()
         if query == False:
             insertSet = insert(setPath).values(
-                name_set = set,
+                stage_scrap = set,
                 site_scrap = 'linkedin'
             )
             session.execute(insertSet)
     session.commit()
-    def executeFunction():
-        func()
+    def executeFunction(dataPathsInsert,stage):
+        func(dataPathsInsert,stage)
     return executeFunction
 
 @verifySetPath
-def verifyPaths():
-    from configsDir.dataXpath import dataPaths,viewMoreInfos
+def verifyPaths(dataPathsInsert:list,stage:str):
     from database.entities.schedulerSchema.paths import sitesPaths
     from database.entities.schedulerSchema.set_path import setPath
 
     engine, base, session = connection(messages='off')
-    name_sets = ['linkedin_path_1', 'linkedin_path_2']
 
     dictSets:dict = {}
-    for setName in name_sets:
-        query = session.query(setPath).filter(setPath.columns.name_set==setName).values(setPath.columns.id)
-        session.close()
-        for result in query:
-            idSet = result.id
-            dictSets.update({setName:idSet})
-    dataPathsInsert = dataPaths()
-    for num,name_set in enumerate(name_sets):
-        dataPath = dataPathsInsert[num]
+    query = session.query(setPath).filter(setPath.columns.stage_scrap==stage).values(setPath.columns.id)
+    session.close()
+    for result in query:
+        idSet = result.id
+        dictSets.update({stage:idSet})
+    for dataPath in dataPathsInsert:
         typesComponentsList = list(dataPath.keys())
         for type in typesComponentsList:
             queryInsert = insert(sitesPaths).values(
-                id_set = dictSets.get(name_set),
-                type_component = "scrap",
+                id_set = dictSets.get(stage),
                 type_info = type,
                 path = dataPath.get(type)
             )
@@ -57,6 +52,7 @@ def verifyPaths():
                 session.close()
 
 
-
 if __name__ == '__main__':
-    verifyPaths()
+    verifyPaths(dataPaths(),stage = 'scrap')
+    verifyPaths(loginPaths(),stage = 'login')
+    verifyPaths(viewMoreInfos(),stage='view_more_infos')
