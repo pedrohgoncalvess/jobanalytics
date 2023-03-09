@@ -40,21 +40,21 @@ def verifyPaths():
             idSet = result.id
             dictSets.update({setName:idSet})
     dataPathsInsert = dataPaths()
-    for name_set in name_sets:
-        for dataPath in dataPathsInsert:
-            typesComponentsList = list(dataPath.keys())
-            for type in typesComponentsList:
-                queryInsert = insert(sitesPaths).values(
-                    id_set = dictSets.get(name_set),
-                    type_component = "scrap",
-                    type_info = type,
-                    path = dataPath.get(type)
-                )
-                try:
-                    session.execute(queryInsert)
-                    session.commit()
-                except:
-                    session.close()
+    for num,name_set in enumerate(name_sets):
+        dataPath = dataPathsInsert[num]
+        typesComponentsList = list(dataPath.keys())
+        for type in typesComponentsList:
+            queryInsert = insert(sitesPaths).values(
+                id_set = dictSets.get(name_set),
+                type_component = "scrap",
+                type_info = type,
+                path = dataPath.get(type)
+            )
+            try:
+                session.execute(queryInsert)
+                session.commit()
+            except:
+                session.close()
 
 
 

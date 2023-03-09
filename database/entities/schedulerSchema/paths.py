@@ -7,7 +7,7 @@ engine, base, session = connection()
 metadata = MetaData()
 
 sitesPaths = Table(
-    'paths_sites',
+    'path_site',
     metadata,
     Column("id",Integer,primary_key=True,autoincrement=True),
     Column("id_set",Integer,ForeignKey(setPath.columns.id)),
