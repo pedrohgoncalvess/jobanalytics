@@ -46,7 +46,7 @@ def testGetLink():
 
 def testScrapJob(link:str):
     from configsDir.environmentConfiguration import driverWeb
-    from database.entities.paths_fields.dataXpath import dataPaths, viewMoreInfos
+    from configsDir.dataXpath import dataPaths, viewMoreInfos
     from selenium.webdriver.common.by import By
     from selenium.webdriver.support.ui import WebDriverWait
     from selenium.webdriver.support import expected_conditions as ec

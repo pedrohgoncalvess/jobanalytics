@@ -1,5 +1,5 @@
 from sqlalchemy.sql.schema import Table
-from database.entities.jobs import Jobs
+from database.entities.scrapJobSchema.jobs import Jobs
 
 def validationUrlExist(table:Table = Jobs) -> bool:
     from database.connection.connection import connection

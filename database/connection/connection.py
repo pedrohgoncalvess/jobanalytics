@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, schema, MetaData
+from sqlalchemy import create_engine, schema
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from configsDir.environmentConfiguration import environmentsVariables as env
@@ -23,12 +23,12 @@ def connection(messages:str='on'):
     return engine, Base, session
 
 def checkTables():
-    from database.entities.jobs import Jobs
-    from database.entities.jobs_description import JobsDescriptions
-    from database.entities.jobs_topic import JobsTopics
-    from database.entities.paths_fields.set_path import setPath
-    from database.entities.paths_fields.scheduler import schedulerScrap
-    from database.entities.paths_fields.paths import sitesPaths
+    from database.entities.scrapJobSchema.jobs import Jobs
+    from database.entities.scrapJobSchema.jobs_description import JobsDescriptions
+    from database.entities.scrapJobSchema.jobs_topic import JobsTopics
+    from database.entities.schedulerSchema.set_path import setPath
+    from database.entities.schedulerSchema.scheduler import schedulerScrap
+    from database.entities.schedulerSchema.paths import sitesPaths
 
     if __name__ == '__main__':
         Jobs

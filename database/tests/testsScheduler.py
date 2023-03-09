@@ -7,8 +7,8 @@ engine, base, session = connection(messages='off')
 
 def testInsertSchedulerSchemaPathSiteTable():
 
-    from database.entities.paths_fields.paths import sitesPaths
-    from database.entities.paths_fields.set_path import setPath
+    from database.entities.schedulerSchema.paths import sitesPaths
+    from database.entities.schedulerSchema.set_path import setPath
 
 
 
@@ -56,7 +56,7 @@ def testInsertSchedulerSchemaPathSiteTable():
 
 
 def testInsertSchedulerSchemaSetPath():
-    from database.entities.paths_fields.set_path import setPath
+    from database.entities.schedulerSchema.set_path import setPath
 
     testNameSet = 'linkPath1'
 

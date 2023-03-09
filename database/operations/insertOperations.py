@@ -10,7 +10,7 @@ def treatmentInsertJobs(dictInfos:dict) -> dict:
 
 
 def insertJobsScrap(dictInfos:dict):
-    from database.entities.jobs import Jobs
+    from database.entities.scrapJobSchema.jobs import Jobs
     engine, base, session = connection()
     with engine.connect() as conn:
         insertJob = insert(Jobs).values(
@@ -26,7 +26,7 @@ def insertJobsScrap(dictInfos:dict):
     print(f"Insert {insertJob} succesfully.")
 
 def insertTopicsScrap(topics:list, idUrl:str):
-    from database.entities.jobs_topic import JobsTopics
+    from database.entities.scrapJobSchema.jobs_topic import JobsTopics
     engine, base, session = connection()
     with engine.connect() as conn:
         for topic in topics:
@@ -35,11 +35,11 @@ def insertTopicsScrap(topics:list, idUrl:str):
                 topic = topic
         )
             conn.execute(insertTopic)
-    print(f"Topic insert succesfully.")
+    print("Topic insert succesfully.")
 
 
 def insertTextScrap(textJob:str,idUrl:str):
-    from database.entities.jobs_description import JobsDescriptions
+    from database.entities.scrapJobSchema.jobs_description import JobsDescriptions
     engine, base, session = connection()
     if len(textJob) > 15000:
         textJob = textJob[0:14999]
@@ -50,11 +50,11 @@ def insertTextScrap(textJob:str,idUrl:str):
     with engine.connect() as conn:
         conn.execute(insertText)
     conn.close()
-    print(f"Text insert succesfully.")
+    print("Text insert succesfully.")
 
 
 def createSetPath(setPathDict:dict):
-    from database.entities.paths_fields.set_path import setPath
+    from database.entities.schedulerSchema.set_path import setPath
     engine, base, session = connection()
     with engine.connect() as conn:
         insertSet = insert(setPath).values(

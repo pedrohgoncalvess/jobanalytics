@@ -1,6 +1,6 @@
-from sqlalchemy import Column,Integer,String, MetaData, Table, ForeignKey
+from sqlalchemy import Column, String, MetaData, Table, ForeignKey
 from database.connection.connection import connection
-from database.entities.jobs import Jobs
+from database.entities.scrapJobSchema.jobs import Jobs
 
 engine, base, session = connection()
 
