@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, MetaData, Table, ForeignKey
+from sqlalchemy import Column, String, MetaData, Table, ForeignKey,Integer
 from database.connection.connection import connection
 from database.entities.scrapJobSchema.jobs import Jobs
 
@@ -9,7 +9,8 @@ metadata = MetaData()
 JobsDescriptions = Table(
     'jobs_description',
     metadata,
-    Column("id_url",String(300),ForeignKey(Jobs.columns.id_url)),
+    Column("id",Integer,autoincrement=True,primary_key=True),
+    Column("id_job",Integer,ForeignKey(Jobs.columns.id)),
     Column("text",String(15000),nullable=False),
     schema = 'scrap_job'
 )
