@@ -2,7 +2,7 @@ def pathsForTestScrap(type_info:str, site:str='linkedin') -> dict:
     from database.connection.connection import connection
     from sqlalchemy.sql import text
 
-    engine, base, session = connection()
+    engine, base, session = connection(messages='off')
     with engine.connect() as conn:
         query = text(f"""select paths.id,
        paths."path"
@@ -15,7 +15,6 @@ from scrap_scheduler.set_path as "set",
     results:dict = {}
     for line in lines:
         results.update({line.id:line.path})
-    print(results)
     return results
 
 
@@ -24,35 +23,40 @@ def testLogin():
     from configsDir.environmentConfiguration import driverWeb, environmentsVariables
     from selenium.webdriver.common.by import By
     from configsDir.colors import colors
+    from database.operations.schedulerSchema.scheduler import createSchedulerExec
 
-    usernamePath = pathsForTestScrap('username_login')
-    passwordPath = pathsForTestScrap('password_login')
-    buttonLogin = pathsForTestScrap('button_login')
+    usernamePath = pathsForTestScrap('username')
+    passwordPath = pathsForTestScrap('password')
+    buttonLogin = pathsForTestScrap('button')
 
     driver = driverWeb()
     driver.get('https://www.linkedin.com/home')
     driver.maximize_window()
     for login in usernamePath.values():
         try:
-            print(login)
-            login = driver.find_element(by=By.XPATH,value=login)
-            login.send_keys(environmentsVariables('loginLinkedin'))
-            print("INSERT SIMULATION")
+            loginBox = driver.find_element(by=By.XPATH,value=login)
+            loginBox.send_keys(environmentsVariables('loginLinkedin'))
+            dicio = {'idPath':login}
+            createSchedulerExec(dicio)
         except:
-            print('dont works')
+            pass
     for password in passwordPath.values():
         try:
-            password = driver.find_element(by=By.XPATH,value=password)
-            password.send_keys(environmentsVariables('passwordLinkedin'))
-            print("INSERT SIMULATION")
+            passwordBox = driver.find_element(by=By.XPATH,value=password)
+            passwordBox.send_keys(environmentsVariables('passwordLinkedin'))
+            dicio = {'idPath':password}
+            createSchedulerExec(dicio)
         except:
-            print('dont works')
+            pass
     for button in buttonLogin.values():
         try:
             enter = driver.find_element(by=By.XPATH,value=button)
             enter.click()
+            dicio = {'idPath': button}
+            createSchedulerExec(dicio)
+            driver.close()
         except:
-            print('dont works')
+            pass
     print(f"{colors('green')}Login passed.")
 
 
@@ -92,14 +96,14 @@ def testScrapJob(link:str):
     driver = driverWeb()
     driver.get(link)
 
-    viewMore = viewMoreInfos()
-    viewMoreKeys = list(viewMore.keys())
+
+    viewMoreKeys = pathsForTestScrap('view_more')
 
     infosXpathList = dataPaths()
 
-    for vwkey in viewMoreKeys:
+    for vwkey in viewMoreKeys.values():
         try:
-            WebDriverWait(driver, 3).until(ec.element_to_be_clickable((By.XPATH,viewMore[vwkey]))).click()
+            WebDriverWait(driver, 3).until(ec.element_to_be_clickable((By.XPATH,vwkey))).click()
         except:
             pass
     dictInfosVacancy:dict = {}
@@ -132,6 +136,6 @@ def testScrapJob(link:str):
 
 if __name__ == '__main__':
     testLogin()
-    #testScrapJob(testGetLink())
+    testScrapJob(testGetLink())
     #pathsForTestScrap('view_more')
 

@@ -41,15 +41,15 @@ def viewMoreInfos() -> list:
 
 def loginPaths() -> list:
     loginPath:dict = {
-        'username_login':'//*[@id="session_key"]',
-        'password_login':'//*[@id="session_password"]',
-        'button_login':'//*[@id="main-content"]/section[1]/div/form[1]/div[2]/button'
+        'username':'//*[@id="session_key"]',
+        'password':'//*[@id="session_password"]',
+        'button':'//*[@id="main-content"]/section[1]/div/form[1]/div[2]/button'
     }
 
     loginPathAlternative: dict = {
-        'username_login': '//*[@id="session_key"]',
-        'password_login': '//*[@id="session_password"]',
-        'button_login': '//*[@id="main-content"]/section[1]/div/div/form/button'
+        'username': '//*[@id="session_key"]',
+        'password': '//*[@id="session_password"]',
+        'button': '//*[@id="main-content"]/section[1]/div/div/form/button'
     }
 
     listPaths = [loginPath,loginPathAlternative]

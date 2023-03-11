@@ -31,7 +31,7 @@ def insertTopicsScrap(topics:list, idUrl:str):
     with engine.connect() as conn:
         for topic in topics:
             insertTopic = insert(JobsTopics).values(
-                id_url = idUrl,
+                id_job = getIdJob(idUrl),
                 topic = topic
         )
             conn.execute(insertTopic)
@@ -44,7 +44,7 @@ def insertTextScrap(textJob:str,idUrl:str):
     if len(textJob) > 15000:
         textJob = textJob[0:14999]
     insertText = insert(JobsDescriptions).values(
-        id_url=idUrl,
+        id_job=getIdJob(idUrl),
         text=textJob
     )
     with engine.connect() as conn:
@@ -63,3 +63,15 @@ def createSetPath(setPathDict:dict):
         )
         conn.execute(insertSet)
 
+def getIdJob(urlJob:str):
+    from database.entities.scrapJobSchema.jobs import Jobs
+    engine, base, session = connection()
+
+    query = session.query(Jobs).filter(Jobs.columns.id_job==urlJob).values(Jobs.columns.id)
+    try:
+        for result in query:
+            idJob = result
+
+        return idJob
+    except:
+        return False
