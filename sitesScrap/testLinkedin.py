@@ -1,3 +1,8 @@
+import time
+
+
+
+
 def pathsForTestScrap(type_info:str, site:str='linkedin') -> dict:
     from database.connection.connection import connection
     from sqlalchemy.sql import text
@@ -89,6 +94,7 @@ def testGetLink():
     from configsDir.environmentConfiguration import driverWeb
     from configsDir.setConfig import getConfigs
     from configsDir.colors import colors
+    from database.operations.schedulerSchema.url_test import insertUrlTest
 
     from selenium.webdriver.common.by import By
     infos = getConfigs()
@@ -107,60 +113,57 @@ def testGetLink():
             except:
                 print(f'{colors("cyan")}Could not access the link {link}')
     driver.close()
+    insertUrlTest(links[0].split("?")[0])
     print(f"{colors('green')}Get links passed.")
-    return links[0]
 
-def testScrapJob(link:str):
+
+def testScrapJob():
     from configsDir.environmentConfiguration import driverWeb
-    from database.operations.schedulerSchema.dataXPath import dataPaths, viewMoreInfos
     from selenium.webdriver.common.by import By
     from selenium.webdriver.support.ui import WebDriverWait
     from selenium.webdriver.support import expected_conditions as ec
     from configsDir.colors import colors
+    from database.operations.schedulerSchema.url_test import getLinkUrlTest
+    from database.operations.schedulerSchema.scheduler import createSchedulerExec
 
+    contentsList = ['content','date_publish','candidates','vacancy_title']
+
+    link = getLinkUrlTest()
     driver = driverWeb()
     driver.get(link)
 
-
     viewMoreKeys = pathsForTestScrap('view_more')
-
-    infosXpathList = dataPaths()
 
     for vwkey in viewMoreKeys.values():
         try:
             WebDriverWait(driver, 3).until(ec.element_to_be_clickable((By.XPATH,vwkey))).click()
+            createSchedulerExec({'idPath':vwkey})
         except:
             pass
-    dictInfosVacancy:dict = {}
-    for infosXpath in infosXpathList:
-        errors = 0
-        sucess = 0
-        print(infosXpath)
-        infosKeys = list(infosXpath.keys())
-        for infoKey in infosKeys:
+
+    listAppend = []
+
+    for infoKey in contentsList:
+        pathsLinkedin = pathsForTestScrap(infoKey)
+        for pathLink in pathsLinkedin.values():
             try:
                 if infoKey != 'content':
-                    contentInfo = driver.find_element(by=By.XPATH,value=infosXpath[infoKey]).text
-                    dictInfosVacancy.update({infoKey:contentInfo})
+                    text = driver.find_element(by=By.XPATH,value=pathLink).text
+                    listAppend.append(text)
+                    createSchedulerExec({'idPath':pathLink})
                 else:
-                    content = driver.find_element(by=By.XPATH,value=infosXpath[infoKey])
+                    content = driver.find_element(by=By.XPATH,value=pathLink)
                     vacancyText = content.text
-                    dictInfosVacancy.update({'vacancyText':vacancyText})
                     topics = content.find_elements(by=By.CSS_SELECTOR, value='strong')
-                sucess += 1
-                print(sucess)
-                if sucess >= 4:
+                    listAppend.append(vacancyText)
+                    listAppend.append(topics)
+                    createSchedulerExec({'idPath':pathLink})
                     print(f"{colors('green')}Scrap jobs passed")
-                    return infosXpath
             except Exception as err:
                 print(f"{colors('red')}Unable to get content {infoKey}")
-                errors += 1
-                if errors >= 3:
-                    print(f"{str(errors)} errors are detected")
 
 
 if __name__ == '__main__':
     testLogin()
-    testScrapJob(testGetLink())
-    #pathsForTestScrap('view_more')
-
+    testGetLink()
+    testScrapJob()

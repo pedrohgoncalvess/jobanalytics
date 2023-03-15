@@ -8,9 +8,11 @@ def createSchedulerExec(schedulerDict:dict):
     engine, base, session = connection()
 
     path = schedulerDict.get('idPath')
+    print(path)
     query = session.query(sitesPaths).filter(sitesPaths.columns.path==path).values(sitesPaths.columns.id)
     for result in query:
         idPath = result.id
+    print(idPath)
 
     insertPathTested = insert(schedulerScrap).values(
         id_path=idPath
