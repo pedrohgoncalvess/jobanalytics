@@ -8,11 +8,9 @@ def createSchedulerExec(schedulerDict:dict):
     engine, base, session = connection()
 
     path = schedulerDict.get('idPath')
-    print(path)
     query = session.query(sitesPaths).filter(sitesPaths.columns.path==path).values(sitesPaths.columns.id)
     for result in query:
         idPath = result.id
-    print(idPath)
 
     insertPathTested = insert(schedulerScrap).values(
         id_path=idPath
@@ -20,4 +18,32 @@ def createSchedulerExec(schedulerDict:dict):
     session.execute(insertPathTested)
     session.commit()
     session.close()
+
+def validateScheduler(stage:str,site:str='linkedin'):
+    from database.connection.connection import connection
+    from sqlalchemy.sql import text
+    from datetime import datetime
+
+    today = datetime.now().strftime("%Y-%m-%d")
+
+
+    engine, base, session = connection(messages='off')
+    with engine.connect() as conn:
+        query = text(f"select 1 from scrap_scheduler.scheduler where exists ( select 1  from scrap_scheduler.scheduler sch "
+                     f"inner join scrap_scheduler.path_site ps on ps.id = sch.id_path "
+                     f"inner join scrap_scheduler.set_path sp on sp.id = ps.id_set "
+                     f"where 1=1"
+                     f"and sch.tested_at = '{today}'"
+                     f"and sp.site_scrap = '{site}'"
+                     f"and sp.stage_scrap = '{stage}')"
+                     f"group by 1")
+        result = conn.execute(query)
+        print(query)
+        for line in result:
+            a = line
+            if a == None:
+                return False
+            else:
+                return True
+
 

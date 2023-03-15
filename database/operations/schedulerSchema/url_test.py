@@ -16,7 +16,6 @@ def insertUrlTest(url:str):
 def getLinkUrlTest():
     from database.entities.schedulerSchema.urls_test import urlTest
     from database.connection.connection import connection
-    from sqlalchemy import insert
     from datetime import datetime
 
     engine, base, session = connection()

@@ -1,8 +1,3 @@
-import time
-
-
-
-
 def pathsForTestScrap(type_info:str, site:str='linkedin') -> dict:
     from database.connection.connection import connection
     from sqlalchemy.sql import text
@@ -21,32 +16,6 @@ from scrap_scheduler.set_path as "set",
     for line in lines:
         results.update({line.id:line.path})
     return results
-
-def validateScheduler(site:str, stage:str):
-    from database.connection.connection import connection
-    from sqlalchemy.sql import text
-    from datetime import datetime
-
-    today = datetime.now().strftime("%Y-%m-%d")
-
-
-    engine, base, session = connection(messages='off')
-    with engine.connect() as conn:
-        query = text(f"select 1 from scrap_scheduler.scheduler where exists ( select 1  from scrap_scheduler.scheduler sch "
-                     f"inner join scrap_scheduler.path_site ps on ps.id = sch.id_path "
-                     f"inner join scrap_scheduler.set_path sp on sp.id = ps.id_set "
-                     f"where 1=1"
-                     f"and sch.tested_at = '{today}'"
-                     f"and sp.site_scrap = '{site}'"
-                     f"and sp.stage_scrap = '{stage}')"
-                     f"group by 1")
-        result = conn.execute(query)
-        for line in result:
-            if line:
-                return True
-            else:
-                return False
-
 
 
 def testLogin():
@@ -97,7 +66,6 @@ def testGetLink():
     from database.operations.schedulerSchema.url_test import insertUrlTest
 
     from selenium.webdriver.common.by import By
-    infos = getConfigs()
     url = f'https://www.linkedin.com/jobs/search?keywords=desenvolvedor&location=Brazil&geoId=104746682&trk=public_jobs_jobs-search-bar_search-submit&position=1&pageNum=1'
     driver = driverWeb()
     driver.get(url)
@@ -158,12 +126,17 @@ def testScrapJob():
                     listAppend.append(vacancyText)
                     listAppend.append(topics)
                     createSchedulerExec({'idPath':pathLink})
-                    print(f"{colors('green')}Scrap jobs passed")
-            except Exception as err:
-                print(f"{colors('red')}Unable to get content {infoKey}")
+            except:
+                pass
+    print(f"{colors('cyan')}Finished job content scheduler")
 
 
 if __name__ == '__main__':
-    testLogin()
-    testGetLink()
-    testScrapJob()
+    from database.operations.schedulerSchema.scheduler import validateScheduler
+    from configsDir.colors import colors
+    if validateScheduler(stage='login') == None:
+        testLogin()
+        testGetLink()
+        testScrapJob()
+    else:
+        print(f"{colors('green')}Scheduler has already been run")
