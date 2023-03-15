@@ -29,6 +29,7 @@ def checkTables():
     from database.entities.schedulerSchema.set_path import setPath
     from database.entities.schedulerSchema.scheduler import schedulerScrap
     from database.entities.schedulerSchema.paths import sitesPaths
+    from database.entities.schedulerSchema.urls_test import urlTest
 
     if __name__ == '__main__':
         Jobs
@@ -37,3 +38,4 @@ def checkTables():
         setPath
         schedulerScrap
         sitesPaths
+        urlTest
