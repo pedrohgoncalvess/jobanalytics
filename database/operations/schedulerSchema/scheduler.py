@@ -46,4 +46,32 @@ def validateScheduler(stage:str,site:str='linkedin'):
             else:
                 return True
 
+def getCorrectPath(type_info:str):
+    from database.connection.connection import connection
+    from sqlalchemy.sql import text
+    from datetime import datetime
+
+    today = datetime.now().strftime("%Y-%m-%d")
+
+    engine, base, session = connection(messages='off')
+
+    query = text(f"""with scheduler as (
+    select ps.path 
+    from scrap_scheduler.scheduler sch 
+    inner join scrap_scheduler.path_site ps on ps.id = sch.id_path 
+    inner join scrap_scheduler.set_path sp on sp.id = ps.id_set 
+    where 1=1 
+    and sp.site_scrap = 'linkedin' 
+    and ps.type_info = '{type_info}' 
+    and sch.tested_at = '{today}'
+) select * from scheduler""")
+
+    with engine.connect() as conn:
+        result = conn.execute(query)
+        path = result.fetchone()
+        path = path[0]
+    return path
+
+
+
 

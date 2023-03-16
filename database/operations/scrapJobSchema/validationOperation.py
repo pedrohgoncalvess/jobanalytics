@@ -8,7 +8,7 @@ def validationUrlExist(table:Table = Jobs) -> bool:
     query = session.query(table).all()
     links:list = []
     for row in query:
-        links.append(row.id_url)
+        links.append(row.id_job)
 
     return links
 

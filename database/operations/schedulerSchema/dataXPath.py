@@ -17,7 +17,11 @@ def dataPaths() -> dict:
         'vacancy_experience': '/html/body/div[5]/div[3]/div/div[1]/div[1]/div/div[1]/div/div/div[1]/div[2]/ul/li[1]'
     }
 
-    datas:list = [infosXpath,infosXpathAlternative]
+    infosXPathAlternativeSecond:dict = {
+        'candidates':'//*[@id="main-content"]/section[1]/div/section[2]/div/div[1]/div/h4/div[2]/span[2]'
+    }
+
+    datas:list = [infosXpath,infosXpathAlternative,infosXPathAlternativeSecond]
 
     return datas
 

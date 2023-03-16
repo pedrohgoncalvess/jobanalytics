@@ -1,3 +1,6 @@
+import time
+
+
 def pathsForTestScrap(type_info:str, site:str='linkedin') -> dict:
     from database.connection.connection import connection
     from sqlalchemy.sql import text
@@ -60,6 +63,7 @@ def testLogin():
 
 
 def testGetLink():
+
     from configsDir.environmentConfiguration import driverWeb
     from configsDir.setConfig import getConfigs
     from configsDir.colors import colors
@@ -86,7 +90,46 @@ def testGetLink():
 
 
 def testScrapJob():
-    from configsDir.environmentConfiguration import driverWeb
+    from configsDir.environmentConfiguration import driverWeb, environmentsVariables
+    from selenium.webdriver.common.by import By
+    from configsDir.colors import colors
+    from database.operations.schedulerSchema.scheduler import createSchedulerExec
+
+    usernamePath = pathsForTestScrap('username')
+    passwordPath = pathsForTestScrap('password')
+    buttonLogin = pathsForTestScrap('button')
+
+    driver = driverWeb()
+    driver.get('https://www.linkedin.com/home')
+    driver.maximize_window()
+    for login in usernamePath.values():
+        try:
+            loginBox = driver.find_element(by=By.XPATH, value=login)
+            loginBox.send_keys(environmentsVariables('loginLinkedin'))
+            dicio = {'idPath': login}
+            createSchedulerExec(dicio)
+        except:
+            pass
+    for password in passwordPath.values():
+        try:
+            passwordBox = driver.find_element(by=By.XPATH, value=password)
+            passwordBox.send_keys(environmentsVariables('passwordLinkedin'))
+            dicio = {'idPath': password}
+            createSchedulerExec(dicio)
+        except:
+            pass
+    for button in buttonLogin.values():
+        try:
+            enter = driver.find_element(by=By.XPATH, value=button)
+            enter.click()
+            dicio = {'idPath': button}
+            createSchedulerExec(dicio)
+        except:
+            pass
+    print(f"{colors('green')}Login passed.")
+
+    print(driver.current_url)
+    #from configsDir.environmentConfiguration import driverWeb
     from selenium.webdriver.common.by import By
     from selenium.webdriver.support.ui import WebDriverWait
     from selenium.webdriver.support import expected_conditions as ec
@@ -94,7 +137,7 @@ def testScrapJob():
     from database.operations.schedulerSchema.url_test import getLinkUrlTest
     from database.operations.schedulerSchema.scheduler import createSchedulerExec
 
-    contentsList = ['content','date_publish','candidates','vacancy_title']
+    contentsList = ['content','date_publish','candidates','vacancy_title','vacancy_experience']
 
     link = getLinkUrlTest()
     driver = driverWeb()
@@ -131,7 +174,7 @@ def testScrapJob():
     print(f"{colors('cyan')}Finished job content scheduler")
 
 
-if __name__ == '__main__':
+def _mainFunction():
     from database.operations.schedulerSchema.scheduler import validateScheduler
     from configsDir.colors import colors
     if validateScheduler(stage='login') == None:

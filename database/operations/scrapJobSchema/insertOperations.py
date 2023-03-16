@@ -12,16 +12,16 @@ def treatmentInsertJobs(dictInfos:dict) -> dict:
 def insertJobsScrap(dictInfos:dict):
     from database.entities.scrapJobSchema.jobs import Jobs
     engine, base, session = connection()
+    print(dictInfos['idurlJob'])
     with engine.connect() as conn:
         insertJob = insert(Jobs).values(
-        id_url = dictInfos['idurlJob'],
-        vacancy_title = dictInfos['vacancyTitle'],
-        vacancy_org = dictInfos['vacancyOrg'],
-        experience= dictInfos['vacancyExperience'],
-        candidates=dictInfos['candidates'],
-        date_publish=dictInfos['datePublish']
+        id_job = dictInfos['idurlJob'],
+        vacancy_title = dictInfos['vacancy_title'],
+        vacancy_org = dictInfos['vacancy_org'],
+        experience = dictInfos['vacancy_experience'],
+        candidates = dictInfos.get('candidates',0),
+        date_publish = dictInfos['date_publish']
         )
-        print(insertJob)
         conn.execute(insertJob)
     print(f"Insert {insertJob} succesfully.")
 
@@ -30,6 +30,8 @@ def insertTopicsScrap(topics:list, idUrl:str):
     engine, base, session = connection()
     with engine.connect() as conn:
         for topic in topics:
+            if len(topic) > 99:
+                topic = topic[0:99]
             insertTopic = insert(JobsTopics).values(
                 id_job = getIdJob(idUrl),
                 topic = topic
@@ -70,8 +72,9 @@ def getIdJob(urlJob:str):
     query = session.query(Jobs).filter(Jobs.columns.id_job==urlJob).values(Jobs.columns.id)
     try:
         for result in query:
-            idJob = result
+            idJob = result.id
 
         return idJob
     except:
         return False
+
