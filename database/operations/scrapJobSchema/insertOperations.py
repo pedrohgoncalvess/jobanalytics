@@ -12,12 +12,11 @@ def treatmentInsertJobs(dictInfos:dict) -> dict:
 def insertJobsScrap(dictInfos:dict):
     from database.entities.scrapJobSchema.jobs import Jobs
     engine, base, session = connection()
-    print(dictInfos['idurlJob'])
     with engine.connect() as conn:
         insertJob = insert(Jobs).values(
-        id_job = dictInfos.get("vacancy_org",dictInfos['idurlJob'].split('at-')[1].split('-')[0].capitalize()),
+        id_job = dictInfos['idurlJob'],
         vacancy_title = dictInfos['vacancy_title'],
-        vacancy_org = dictInfos['vacancy_org'],
+        vacancy_org = dictInfos.get("vacancy_org",dictInfos['idurlJob'].split('at-')[1].split('-')[0].capitalize()),
         experience = dictInfos['vacancy_experience'],
         candidates = dictInfos.get('candidates',0),
         date_publish = dictInfos['date_publish']

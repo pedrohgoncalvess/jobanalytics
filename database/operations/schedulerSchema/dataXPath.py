@@ -54,8 +54,12 @@ def loginPaths() -> list:
     loginPathAlternative: dict = {
         'username': '//*[@id="session_key"]',
         'password': '//*[@id="session_password"]',
-        'button': '//*[@id="main-content"]/section[1]/div/div/form/button'
+        'button': '//*[@id="main-content"]/section[1]/div/div/form/button',
     }
 
-    listPaths = [loginPath,loginPathAlternative]
+    loginPathAlternativeSecond: dict = {
+        'button': '//*[@id="main-content"]/section[1]/div/div/form[1]/div[2]/button'
+    }
+
+    listPaths = [loginPath,loginPathAlternative,loginPathAlternativeSecond]
     return listPaths
