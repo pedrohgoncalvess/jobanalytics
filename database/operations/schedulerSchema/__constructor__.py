@@ -51,7 +51,7 @@ def verifyPaths(dataPathsInsert:list,stage:str):
                 session.close()
 
 
-if __name__ == '__main__':
+def _mainInit():
     verifyPaths(dataPaths(),stage = 'scrap')
     verifyPaths(loginPaths(),stage = 'login')
     verifyPaths(viewMoreInfos(),stage='view_more_infos')

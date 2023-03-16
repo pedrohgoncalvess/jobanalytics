@@ -73,15 +73,15 @@ def scrapInfosJobs(links:list = validationUrls()) -> dict:
     enter.click()
 
     viewMore = getCorrectPath('view_more')
-    infosKeys = ['content','date_publish','candidates','vacancy_title','vacancy_experience']
+    infosKeys = ['content','date_publish','candidates','vacancy_title','vacancy_experience','vacancy_org']
     dictInfosVacancy: dict = {}
 
     for link in linksList:
-        print(driver.current_url)
         driver.get(link)
         WebDriverWait(driver, 10).until(ec.element_to_be_clickable((By.XPATH,viewMore))).click()
         dictInfosVacancy.update({'vacancy_org':link.split('at-')[1].split('-')[0].capitalize()})
         dictInfosVacancy.update({'idurlJob': link.split("?")[0]})
+        print(dictInfosVacancy['idurlJob'])
         for infoKey in infosKeys:
             try:
                 if infoKey != 'content':

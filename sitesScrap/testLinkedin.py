@@ -137,7 +137,7 @@ def testScrapJob():
     from database.operations.schedulerSchema.url_test import getLinkUrlTest
     from database.operations.schedulerSchema.scheduler import createSchedulerExec
 
-    contentsList = ['content','date_publish','candidates','vacancy_title','vacancy_experience']
+    contentsList = ['content','date_publish','candidates','vacancy_title','vacancy_experience','vacancy_org']
 
     link = getLinkUrlTest()
     driver = driverWeb()
