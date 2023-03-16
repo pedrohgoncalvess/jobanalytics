@@ -140,7 +140,7 @@ def testScrapJob():
     contentsList = ['content','date_publish','candidates','vacancy_title','vacancy_experience','vacancy_org']
 
     link = getLinkUrlTest()
-    driver = driverWeb()
+    #driver = driverWeb()
     driver.get(link)
 
     viewMoreKeys = pathsForTestScrap('view_more')

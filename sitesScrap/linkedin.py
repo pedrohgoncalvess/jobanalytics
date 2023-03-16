@@ -25,7 +25,7 @@ def getJobLink(numberPage:int = 0) -> list:
 
 
 def validationUrls() -> dict:
-    from database.operations.scrapJobSchema.validationOperation import validationUrlExist
+    from database.operations.scrapJobSchema.midlevelOperations import validationUrlExist
     links, urlGetjob = getJobLink()
     linksValidated:list = []
 
@@ -40,10 +40,10 @@ def validationUrls() -> dict:
     validatesLinks(links)
 
     pageNum = 0
-    while len(linksValidated) <= 10:
+    while len(linksValidated) <= 20:
         pageNum += 1
         print(f'Comming to page number {str(pageNum)}')
-        newLinks, __ = getJobLink(pageNum)
+        newLinks, urlJobLink = getJobLink(pageNum)
         validatesLinks(newLinks)
 
     print(f"Returning {str(len(linksValidated))} urls validated")
@@ -53,7 +53,9 @@ def validationUrls() -> dict:
 def scrapInfosJobs(links:list = validationUrls()) -> dict:
     from configsDir.environmentConfiguration import driverWeb, environmentsVariables
     from configsDir.colors import colors
-    from database.operations.scrapJobSchema.insertOperations import insertJobsScrap, insertTextScrap,insertTopicsScrap
+    from database.operations.scrapJobSchema.jobs_operations import insertJobsScrap
+    from database.operations.scrapJobSchema.jobs_text_operations import insertTextScrap
+    from database.operations.scrapJobSchema.jobs_topics_operations import insertTopicsScrap
     from database.operations.schedulerSchema.scheduler import getCorrectPath
 
     import time

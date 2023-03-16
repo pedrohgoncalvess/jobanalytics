@@ -22,5 +22,3 @@ def validateScheduler():
     driver.get('https://www.linkedin.com/jobs/view/3524160164/?eBP=CwEAAAGG6GghpIgoavYxfQ_ZeU_Q9JAFK4CW7Mk_pfq0DuugxfOxr3RT3TJJxBwiOLYbwg9fDYCjk4C8snrlQGuhKk5nYfqerJuRv-98zn6aoHbSGXKhCI7kNyfoMRW8eP1KNBIQdPiGrPkXrYwREMAitIXts7X_vAT_NZmlWRz1YATk44m4Gpr_KaTdPEP6EJfjXhCBYZNurKW9riRDz_hSpQM4OuCnNgHViYOioCnfjcSAOQd27wLR3avg8WYVurCOjUAQXs4rhBU0KqslERklmbbEE4wlE9E_grYm-ORZ5MmxF0bVjPNRWDLKAfhDApCqtZRvBok0kvbuek5vGQGdn6iW_TK1EnVEWPyIAlsrM7eUk_uzLe_rVotxLFFn6cJ-8u_hhf0&refId=nE0fMBgm35xiJim7v8P%2Fyw%3D%3D&trackingId=rkl%2BU1lASiFzjm3ZJT8ziQ%3D%3D&trk=flagship3_search_srp_jobs')
 
     time.sleep(15000)
-
-validateScheduler()
