@@ -7,7 +7,7 @@ engine, base, session = connection()
 metadata = MetaData()
 
 JobsDescriptions = Table(
-    'jobs_description',
+    'job_description',
     metadata,
     Column("id",Integer,autoincrement=True,primary_key=True),
     Column("id_job",Integer,ForeignKey(Jobs.columns.id)),

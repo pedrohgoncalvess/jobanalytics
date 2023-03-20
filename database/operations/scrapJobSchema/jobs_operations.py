@@ -12,7 +12,8 @@ def insertJobsScrap(dictInfos:dict):
         vacancy_org = dictInfos.get("vacancy_org",dictInfos['idurlJob'].split('at-')[1].split('-')[0].capitalize()),
         experience = dictInfos['vacancy_experience'],
         candidates = dictInfos.get('candidates',0),
-        date_publish = dictInfos['date_publish']
+        date_publish = dictInfos['date_publish'],
+        researched_topic = dictInfos.get('researched_topic')
         )
         try:
             conn.execute(insertJob)

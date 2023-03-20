@@ -13,5 +13,8 @@ def insertTopicsScrap(topics:list, idUrl:str):
                 id_job = getIdJob(idUrl),
                 topic = topic
         )
-            conn.execute(insertTopic)
-    print("Topic insert succesfully.")
+            try:
+                conn.execute(insertTopic)
+                print("Topic insert succesfully.")
+            except Exception as err:
+                print(f"Cannot insert topic because: {err}")

@@ -63,3 +63,9 @@ def loginPaths() -> list:
 
     listPaths = [loginPath,loginPathAlternative,loginPathAlternativeSecond]
     return listPaths
+
+def topics_search():
+    listTopics = ['engenheiro de dados','desenvolvedor python','desenvolvedor java','desenvolvedor backend',
+                  'cientista de dados','desenvolvedor front end','analista de dados','desenvolvedor javascript','python',
+                  'scala','desenvolvedor golang','desenvolvedor scala','golang','vue','desenvolvedor node']
+    return listTopics

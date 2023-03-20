@@ -7,7 +7,7 @@ engine, base, session = connection()
 metadata = MetaData()
 
 Jobs = Table(
-    'jobs',
+    'job',
     metadata,
     Column("id",Integer,autoincrement=True,primary_key=True,unique=True),
     Column("id_job",String(300), unique=True),
@@ -17,7 +17,7 @@ Jobs = Table(
     Column("candidates",String(50), default=0),
     Column("date_publish",String(75), default='none'),
     Column("scraped_at",DateTime(timezone=True),server_default=func.now()),
-    Column("status",String(10), default='waiting'),
+    Column("researched_topic",String(50), nullable=False),
     schema = 'scrap_job'
 )
 

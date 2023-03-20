@@ -1,13 +1,13 @@
 from database.connection.connection import connection
 from sqlalchemy import insert
 from types import FunctionType
-from database.operations.schedulerSchema.dataXPath import dataPaths,viewMoreInfos,loginPaths
+from database.operations.schedulerSchema.dataSchedulers import dataPaths,viewMoreInfos,loginPaths
 
+engine, base, session = connection(messages='off')
 
 def verifySetPath(func:FunctionType):
     from database.entities.schedulerSchema.set_path import setPath
 
-    engine, base, session = connection(messages='off')
 
     name_sets = ['scrap','login','view_more_infos']
     for set in name_sets:
@@ -27,8 +27,6 @@ def verifySetPath(func:FunctionType):
 def verifyPaths(dataPathsInsert:list,stage:str):
     from database.entities.schedulerSchema.paths import sitesPaths
     from database.entities.schedulerSchema.set_path import setPath
-
-    engine, base, session = connection(messages='off')
 
     dictSets:dict = {}
     query = session.query(setPath).filter(setPath.columns.stage_scrap==stage).values(setPath.columns.id)
@@ -50,8 +48,27 @@ def verifyPaths(dataPathsInsert:list,stage:str):
             except:
                 session.close()
 
+def inputVacancyTable():
+    from database.operations.schedulerSchema.dataSchedulers import topics_search
+    from database.entities.schedulerSchema.topic_search import topicSearch
+
+    listTopics = topics_search()
+
+    for topic in listTopics:
+        query = insert(topicSearch).values(
+            topic_search = topic
+        )
+        session.execute(query)
+        try:
+            session.commit()
+            session.close()
+        except:
+            session.close()
+
+
 
 def _mainInit():
     verifyPaths(dataPaths(),stage = 'scrap')
     verifyPaths(loginPaths(),stage = 'login')
     verifyPaths(viewMoreInfos(),stage='view_more_infos')
+    inputVacancyTable()
