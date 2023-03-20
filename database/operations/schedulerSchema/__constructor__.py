@@ -49,21 +49,23 @@ def verifyPaths(dataPathsInsert:list,stage:str):
                 session.close()
 
 def inputVacancyTable():
-    from database.operations.schedulerSchema.dataSchedulers import topics_search
+    from database.operations.schedulerSchema.dataSchedulers import topic_search
     from database.entities.schedulerSchema.topic_search import topicSearch
 
-    listTopics = topics_search()
-
-    for topic in listTopics:
-        query = insert(topicSearch).values(
-            topic_search = topic
-        )
-        session.execute(query)
-        try:
-            session.commit()
-            session.close()
-        except:
-            session.close()
+    listTopics = topic_search()
+    for listTopic in listTopics:
+        listaKeys = list(listTopic.keys())
+        for key in listaKeys:
+            query = insert(topicSearch).values(
+                topic_search = key,
+                topic_classification = listTopic.get(key)
+            )
+            try:
+                session.execute(query)
+                session.commit()
+                session.close()
+            except:
+                session.close()
 
 
 

@@ -25,7 +25,7 @@ def testLogin():
     from configsDir.environmentConfiguration import driverWeb, environmentsVariables
     from selenium.webdriver.common.by import By
     from configsDir.colors import colors
-    from database.operations.schedulerSchema.scheduler import createSchedulerExec
+    from database.operations.schedulerSchema.scheduler_operations import createSchedulerExec
 
     usernamePath = pathsForTestScrap('username')
     passwordPath = pathsForTestScrap('password')
@@ -67,7 +67,7 @@ def testGetLink():
     from configsDir.environmentConfiguration import driverWeb
     from configsDir.setConfig import getConfigs
     from configsDir.colors import colors
-    from database.operations.schedulerSchema.url_test import insertUrlTest
+    from database.operations.schedulerSchema.url_test_operations import insertUrlTest
 
     from selenium.webdriver.common.by import By
     url = f'https://www.linkedin.com/jobs/search?keywords=desenvolvedor&location=Brazil&geoId=104746682&trk=public_jobs_jobs-search-bar_search-submit&position=1&pageNum=1'
@@ -93,7 +93,7 @@ def testScrapJob():
     from configsDir.environmentConfiguration import driverWeb, environmentsVariables
     from selenium.webdriver.common.by import By
     from configsDir.colors import colors
-    from database.operations.schedulerSchema.scheduler import createSchedulerExec
+    from database.operations.schedulerSchema.scheduler_operations import createSchedulerExec
 
     usernamePath = pathsForTestScrap('username')
     passwordPath = pathsForTestScrap('password')
@@ -134,8 +134,8 @@ def testScrapJob():
     from selenium.webdriver.support.ui import WebDriverWait
     from selenium.webdriver.support import expected_conditions as ec
     from configsDir.colors import colors
-    from database.operations.schedulerSchema.url_test import getLinkUrlTest
-    from database.operations.schedulerSchema.scheduler import createSchedulerExec
+    from database.operations.schedulerSchema.url_test_operations import getLinkUrlTest
+    from database.operations.schedulerSchema.scheduler_operations import createSchedulerExec
 
     contentsList = ['content','date_publish','candidates','vacancy_title','vacancy_experience','vacancy_org']
 
@@ -175,7 +175,7 @@ def testScrapJob():
 
 
 def _mainFunction():
-    from database.operations.schedulerSchema.scheduler import validateScheduler
+    from database.operations.schedulerSchema.scheduler_operations import validateScheduler
     from configsDir.colors import colors
     if validateScheduler(stage='login') == None:
         testLogin()

@@ -64,8 +64,28 @@ def loginPaths() -> list:
     listPaths = [loginPath,loginPathAlternative,loginPathAlternativeSecond]
     return listPaths
 
-def topics_search():
-    listTopics = ['engenheiro de dados','desenvolvedor python','desenvolvedor java','desenvolvedor backend',
-                  'cientista de dados','desenvolvedor front end','analista de dados','desenvolvedor javascript','python',
-                  'scala','desenvolvedor golang','desenvolvedor scala','golang','vue','desenvolvedor node']
-    return listTopics
+def topic_search() -> list:
+    p = 'position'
+    dictTopics = {'engenheiro de dados':p,
+                  'desenvolvedor back-end':p,
+                  'desenvolvedor front-end':p,
+                  'cientista de dados':p,
+                  'analista de dados':p
+                  }
+    s = 'stack'
+    dictStack:dict = {'ruby':s,
+                      'python':s,
+                      'java':s,
+                      'django':s,
+                      'springboot':s,
+                      'javascript':s,
+                      'vue':s,
+                      'angular':s,
+                      'flask':s,
+                      'scala':s,
+                      'golang':s
+    }
+
+    listaTopics = [dictTopics,dictStack]
+    return listaTopics
+

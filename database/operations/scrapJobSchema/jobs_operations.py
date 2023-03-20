@@ -35,3 +35,16 @@ def getIdJob(urlJob:str):
         return idJob
     except:
         return False
+
+def listJobsInDB():
+    from database.entities.scrapJobSchema.jobs import Jobs
+    engine, base, session = connection()
+
+    query = session.query(Jobs).all()
+
+    listJobs:list = []
+    for line in query:
+        listJobs.append(line)
+    return listJobs
+
+

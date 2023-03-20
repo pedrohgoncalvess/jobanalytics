@@ -4,8 +4,8 @@ def listTopicsForSearch():
 
     engine, base, session = connection()
 
-    listTopics:list = []
+    listTopics:dict = {}
     query = session.query(topicSearch).all()
     for line in query:
-        listTopics.append(line.topic_search)
+        listTopics.update({line.topic_search:line.topic_classification})
     return listTopics

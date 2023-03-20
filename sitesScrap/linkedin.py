@@ -1,123 +1,18 @@
-
-def getLinksTopics():
-    from configsDir.environmentConfiguration import driverWeb, environmentsVariables
-    from configsDir.colors import colors
-    from database.operations.schedulerSchema.scheduler import getCorrectPath
-
-    import time
-    from selenium.webdriver.common.by import By
-    from selenium.webdriver.support.ui import WebDriverWait
-    from selenium.webdriver.support import expected_conditions as ec
-    from database.operations.schedulerSchema.topic_search import listTopicsForSearch
-
-    driver = driverWeb()
-    driver.get('https://www.linkedin.com/home')
-    driver.maximize_window()
-    login = driver.find_element(by=By.XPATH,value=getCorrectPath('username'))
-    login.send_keys(environmentsVariables('loginLinkedin'))
-    password = driver.find_element(by=By.XPATH,value=getCorrectPath('password'))
-    password.send_keys(environmentsVariables('passwordLinkedin'))
-    enter = driver.find_element(by=By.XPATH,value=getCorrectPath('button'))
-    enter.click()
-
-    try:
-     WebDriverWait(driver, 15).until(ec.element_to_be_clickable((By.XPATH, '//*[@id="ember32"]')))
-    except:
-        time.sleep(10)
-    print(driver.current_url)
-    dictTopics:dict = {}
-
-    for topic in listTopicsForSearch():
-        print(driver.current_url)
-        url = f'https://www.linkedin.com/jobs/search?keywords={topic.replace(" ","%2C%20")}&search-bar_search-submit&position=1&pageNum=0'
-        driver = driverWeb()
-        driver.get(url)
-        driver.maximize_window()
-        listJobs = driver.find_element(by=By.XPATH,value='//*[@id="main-content"]/section[2]/ul')
-        jobs = listJobs.find_elements(by=By.TAG_NAME, value='li')
-        for num,job in enumerate(jobs):
-            if num+1 < len(jobs):
-                try:
-                    link = job.find_element(by=By.XPATH, value=f'//*[@id="main-content"]/section[2]/ul/li[{num+1}]/div/a').get_attribute('href')
-                    dictTopics.update({link:topic})
-                except:
-                    print(f'{colors("cyan")}Could not access the link {link}')
-        driver.close()
-    return dictTopics
-
-
-
-
-
-
-
-def getJobLink(numberPage:int = 0) -> [list, str, str]:
-    from configsDir.environmentConfiguration import driverWeb
-    from configsDir.setConfig import getConfigs
-    from configsDir.treatmentConfigs import treatmentLocation, treatmentRole
-    from configsDir.colors import colors
-    from selenium.webdriver.common.by import By
-
-    topicSearched = treatmentRole()
-
-    url = f'https://www.linkedin.com/jobs/search?keywords={treatmentRole()}&location={treatmentLocation(getConfigs())}&geoId=104746682&trk=public_jobs_jobs-search-bar_search-submit&position=1&pageNum={str(numberPage)}'
-    driver = driverWeb()
-    driver.get(url)
-    driver.maximize_window()
-    listJobs = driver.find_element(by=By.XPATH,value='//*[@id="main-content"]/section[2]/ul')
-    jobs = listJobs.find_elements(by=By.TAG_NAME, value='li')
-    links:list = []
-    for num,job in enumerate(jobs):
-        if num+1 < len(jobs):
-            try:
-                link = job.find_element(by=By.XPATH, value=f'//*[@id="main-content"]/section[2]/ul/li[{num+1}]/div/a').get_attribute('href')
-                links.append(link)
-            except:
-                print(f'{colors("cyan")}Could not access the link {link}')
-    driver.close()
-    return links, url, topicSearched
-
-
-def validationUrls() -> [dict, str]:
-    from database.operations.scrapJobSchema.midlevelOperations import validationUrlExist
-    links, urlGetjob, topicSearched = getJobLink()
-    linksValidated:list = []
-
-    def validatesLinks(links:dict):
-        validation = validationUrlExist()
-        for link in links:
-            linkValide = link.split("?")[0]
-            if linkValide not in validation:
-                linksValidated.append(link)
-        return linksValidated
-
-    validatesLinks(links)
-
-    pageNum = 0
-    while len(linksValidated) <= 20:
-        pageNum += 1
-        print(f'Comming to page number {str(pageNum)}')
-        newLinks, urlJobLink, _ = getJobLink(pageNum)
-        validatesLinks(newLinks)
-
-    print(f"Returning {str(len(linksValidated))} urls validated")
-    return linksValidated,topicSearched
-
-
-def scrapInfosJobs() -> dict:
+def scrapInfosJobs():
     from configsDir.environmentConfiguration import driverWeb, environmentsVariables
     from configsDir.colors import colors
     from database.operations.scrapJobSchema.jobs_operations import insertJobsScrap
     from database.operations.scrapJobSchema.jobs_text_operations import insertTextScrap
     from database.operations.scrapJobSchema.jobs_topics_operations import insertTopicsScrap
-    from database.operations.schedulerSchema.scheduler import getCorrectPath
+    from database.operations.schedulerSchema.scheduler_operations import getCorrectPath
 
     import time
     from selenium.webdriver.common.by import By
     from selenium.webdriver.support.ui import WebDriverWait
     from selenium.webdriver.support import expected_conditions as ec
 
-    linksList, topicSearched = validationUrls()
+    linksDict = getLinksTopics()
+    linksList = list(linksDict.keys())
     driver = driverWeb()
     driver.get('https://www.linkedin.com/home')
     driver.maximize_window()
@@ -144,7 +39,7 @@ def scrapInfosJobs() -> dict:
             WebDriverWait(driver, 10).until(ec.element_to_be_clickable((By.XPATH,'//*[@id="ember32"]'))).click()
         except:
             continue
-        dictInfosVacancy.update({'researched_topic': topicSearched})
+        dictInfosVacancy.update({'researched_topic': linksDict[link]})
         dictInfosVacancy.update({'vacancy_org':link.split('at-')[1].split('-')[0].capitalize()})
         dictInfosVacancy.update({'idurlJob': link.split("?")[0]})
         for infoKey in infosKeys:
