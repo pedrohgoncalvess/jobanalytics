@@ -19,3 +19,7 @@ def treatmentRole(dictConfigs:dict = getConfigs()):
     except:
         print(f"{colors('red')}Please put the vacancy of interest in the configs file")
         exit()
+
+def treatmentTopic(topic:str):
+    role = topic.replace(' ','%2C%20')
+    return role

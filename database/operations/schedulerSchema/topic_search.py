@@ -9,5 +9,3 @@ def listTopicsForSearch():
     for line in query:
         listTopics.append(line.topic_search)
     return listTopics
-
-print(listTopicsForSearch())
