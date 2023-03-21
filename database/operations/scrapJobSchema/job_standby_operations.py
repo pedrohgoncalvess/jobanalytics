@@ -25,5 +25,6 @@ def listUrlStandBy() -> dict:
     dictUrl:dict = {}
     for line in query:
         dictUrl.update({line.id_job:line.used_term})
+    session.close()
 
     return dictUrl

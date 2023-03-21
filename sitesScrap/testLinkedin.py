@@ -15,6 +15,7 @@ from scrap_scheduler.set_path as "set",
  and set.site_scrap = '{site}'
  and paths.type_info = '{type_info}'""")
         lines = conn.execute(query)
+        conn.close()
     results:dict = {}
     for line in lines:
         results.update({line.id:line.path})
@@ -130,7 +131,6 @@ def testScrapJob():
     time.sleep(15)
 
     print(driver.current_url)
-    #from configsDir.environmentConfiguration import driverWeb
     from selenium.webdriver.common.by import By
     from selenium.webdriver.support.ui import WebDriverWait
     from selenium.webdriver.support import expected_conditions as ec
@@ -141,7 +141,6 @@ def testScrapJob():
     contentsList = ['content','date_publish','candidates','vacancy_title','vacancy_experience','vacancy_org']
 
     link = getLinkUrlTest()
-    #driver = driverWeb()
     driver.get(link)
 
     viewMoreKeys = pathsForTestScrap('view_more')

@@ -5,23 +5,23 @@ from database.operations.scrapJobSchema.midlevelOperations import formatSizeFiel
 def insertJobsScrap(dictInfos:dict):
     from database.entities.scrapJobSchema.job import Jobs
     engine, base, session = connection()
-    with engine.connect() as conn:
-        insertJob = insert(Jobs).values(
-        id_job = dictInfos['idurlJob'],
-        vacancy_title = formatSizeFields(70,dictInfos['vacancy_title']),
-        vacancy_org = dictInfos.get("vacancy_org",dictInfos['idurlJob'].split('at-')[1].split('-')[0].capitalize()),
-        experience = dictInfos.get('vacancy_experience','None'),
-        candidates = dictInfos.get('candidates',0),
-        date_publish = dictInfos['date_publish'],
-        researched_topic = dictInfos.get('researched_topic')
-        )
-        try:
-            conn.execute(insertJob)
-            conn.close()
-            print(f"Insert {insertJob} succesfully.")
-        except Exception as err:
-            print(f"Cannot insert {formatSizeFields(70,dictInfos['vacancy_title'])} job. Error {err}")
-            conn.close()
+    insertJob = insert(Jobs).values(
+    id_job = dictInfos['idurlJob'],
+    vacancy_title = formatSizeFields(70,dictInfos['vacancy_title']),
+    vacancy_org = dictInfos.get("vacancy_org",dictInfos['idurlJob'].split('at-')[1].split('-')[0].capitalize()),
+    experience = dictInfos.get('vacancy_experience','None'),
+    candidates = dictInfos.get('candidates',0),
+    date_publish = dictInfos['date_publish'],
+    researched_topic = dictInfos.get('researched_topic')
+    )
+    try:
+        session.execute(insertJob)
+        session.commit()
+        session.close()
+        print(f"Insert {insertJob} succesfully.")
+    except Exception as err:
+        print(f"Cannot insert {formatSizeFields(70,dictInfos['vacancy_title'])} job. Error {err}")
+        session.close()
 
 
 def getIdJob(urlJob:str):

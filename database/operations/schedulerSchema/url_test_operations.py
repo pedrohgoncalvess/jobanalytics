@@ -25,3 +25,4 @@ def getLinkUrlTest():
     query = session.query(urlTest).filter(urlTest.columns.scraped_at==today)
     for row in query:
         return row.url_job
+    session.close()

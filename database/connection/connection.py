@@ -6,7 +6,7 @@ from configsDir.environmentConfiguration import environmentsVariables as env
 def connection(messages:str='on'):
     engine = create_engine(url=f"postgresql://{env('user')}:{env('password')}@{env('host_name')}/jobscrap",echo=True)
     Base = declarative_base()
-    SessionLocal = sessionmaker(bind=engine, expire_on_commit=False)
+    SessionLocal = sessionmaker(bind=engine)
     session = SessionLocal()
 
     if messages == 'off':

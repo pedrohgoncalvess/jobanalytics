@@ -11,6 +11,5 @@ def insertTextScrap(textJob:str,idUrl:str):
         id_job=getIdJob(idUrl),
         text=textJob
     )
-    with engine.connect() as conn:
-        conn.execute(insertText)
-    conn.close()
+    session.execute(insertText)
+    session.commit()

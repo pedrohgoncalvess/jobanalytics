@@ -8,4 +8,5 @@ def listTopicsForSearch():
     query = session.query(topicSearch).all()
     for line in query:
         listTopics.update({line.topic_search:line.topic_classification})
+    session.close()
     return listTopics

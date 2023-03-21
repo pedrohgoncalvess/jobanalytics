@@ -25,3 +25,4 @@ def createSetPath(setPathDict:dict):
         site_scrap = setPathDict['siteScrap'].lower(),
         )
         conn.execute(insertSet)
+        conn.close()

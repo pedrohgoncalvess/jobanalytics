@@ -70,7 +70,8 @@ def topic_search() -> list:
                   'desenvolvedor back-end':p,
                   'desenvolvedor front-end':p,
                   'cientista de dados':p,
-                  'analista de dados':p
+                  'analista de dados':p,
+                  'engenheiro de software':p
                   }
     s = 'stack'
     dictStack:dict = {'ruby':s,
@@ -83,7 +84,14 @@ def topic_search() -> list:
                       'angular':s,
                       'flask':s,
                       'scala':s,
-                      'golang':s
+                      'golang':s,
+                      'react':s,
+                      'playframework':s,
+                      'spark':s,
+                      'rails':s,
+                      'postgresql':s,
+                      'aws':s,
+                      'azure':s
     }
 
     listaTopics = [dictTopics,dictStack]

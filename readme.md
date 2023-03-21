@@ -1,23 +1,15 @@
 <h1 align="center">Job scrap and analytics </h1>
-<h2>How its works</h2>
-<p>First, it is a "capture" of vacancies from the main job vacancy sites (in Brazil). 
-A script does the "capture" and an NLP algorithm that recognizes the job requirements, benefits and activities.</p>
-<p>To work it needs some parameters in the <strong>config</strong> file, the necessary parameters are below</p>
+<h2>What it serve?</h2>
+<p>Initially I started this project to be a job search helper, it can still
+be that but it's not my focus anymore, I'm using it to do some research.
+Some questions I have are:
 
-<h3>Parameters</h3>
-<i><b> * for required</b></i>
+- More consolidated stack?
 
-> <b>Role</b> * <p>Job you are looking for</p>
-```Data Engineer```
+- Most requested stack?
 
-> <b>Experience</b> <p>Experience time at role. <i>in years</i></p>
-```1```
+- Most requested stack groups?
 
-> <b>Stack</b> <p>Stack of your interest</p>
-```Python, Scala, Java```
+- Vacancies per seniority?
 
-> <b>Location</b> <p>City and country location<p>
-```Sao Paulo | Brazil``` or ```Brazil```
-
-> <b>Languages</b> <p>Languages prefer<p>
-```Portuguese```
+- Vacancies per stack?

@@ -8,7 +8,6 @@ engine, base, session = connection(messages='off')
 def verifySetPath(func:FunctionType):
     from database.entities.schedulerSchema.set_path import setPath
 
-
     name_sets = ['scrap','login','view_more_infos']
     for set in name_sets:
         query = session.query(session.query(setPath).filter(setPath.columns.stage_scrap==set).exists()).scalar()
@@ -18,9 +17,10 @@ def verifySetPath(func:FunctionType):
                 site_scrap = 'linkedin'
             )
             session.execute(insertSet)
-    session.commit()
+            session.commit()
     def executeFunction(dataPathsInsert,stage):
         func(dataPathsInsert,stage)
+    session.close()
     return executeFunction
 
 @verifySetPath
@@ -64,9 +64,9 @@ def inputVacancyTable():
             try:
                 session.execute(query)
                 session.commit()
-                session.close()
             except:
-                session.close()
+                pass
+    session.close()
 
 
 
