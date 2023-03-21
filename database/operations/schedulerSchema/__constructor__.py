@@ -70,7 +70,7 @@ def inputVacancyTable():
 
 
 
-def _mainInit():
+def _mainInitConstructor():
     verifyPaths(dataPaths(),stage = 'scrap')
     verifyPaths(loginPaths(),stage = 'login')
     verifyPaths(viewMoreInfos(),stage='view_more_infos')

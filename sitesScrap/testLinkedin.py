@@ -127,6 +127,7 @@ def testScrapJob():
         except:
             pass
     print(f"{colors('green')}Login passed.")
+    time.sleep(15)
 
     print(driver.current_url)
     #from configsDir.environmentConfiguration import driverWeb
@@ -174,7 +175,7 @@ def testScrapJob():
     print(f"{colors('cyan')}Finished job content scheduler")
 
 
-def _mainFunction():
+def _mainFunctionScheduler():
     from database.operations.schedulerSchema.scheduler_operations import validateScheduler
     from configsDir.colors import colors
     if validateScheduler(stage='login') == None:

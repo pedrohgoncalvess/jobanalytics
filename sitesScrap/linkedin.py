@@ -43,11 +43,11 @@ def getLinksTopics():
                 link = job.find_element(by=By.XPATH,value=xpath).get_attribute('href')
                 linkCompare = link.split("?")[0]
                 if linkCompare not in listJobsDB:
-                    dictTopics.update({link:topic})
+                    print(linkCompare)
+                    dictTopics.update({linkCompare:topic})
             except:
                 pass
     driver.close()
-
     insertUrlForStandBy(dictTopics)
 
 def scrapInfosJobs():
@@ -107,7 +107,7 @@ def scrapInfosJobs():
                     content = driver.find_element(by=By.XPATH,value=dictContentPaths[infoKey])
                     vacancyText = content.text
                     topics = content.find_elements(by=By.CSS_SELECTOR, value='strong')
-            except Exception as err:
+            except:
                 print(f"{colors('red')}Error in {infoKey}.")
         insertJobsScrap(dictInfosVacancy)
         insertTextScrap(vacancyText, dictInfosVacancy['idurlJob'])

@@ -3,7 +3,7 @@ from sqlalchemy import insert
 
 def insertUrlForStandBy(dictInfos:dict):
     from database.entities.scrapJobSchema.job_standby import JobsStandBy
-    engine, base, session = connection()
+    engine, base, session = connection(messages='off')
     with engine.connect() as conn:
         for idurl in list(dictInfos.keys()):
             query = insert(JobsStandBy).values(
@@ -20,7 +20,7 @@ def listUrlStandBy() -> dict:
     from database.entities.scrapJobSchema.job_standby import JobsStandBy
     engine, base, session = connection()
 
-    query = session.query(JobsStandBy).all()
+    query = session.query(JobsStandBy).filter(JobsStandBy.columns.status=='waiting').all()
 
     dictUrl:dict = {}
     for line in query:
