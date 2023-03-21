@@ -20,6 +20,7 @@ def validationUrlExist(table:Table = Jobs) -> bool:
     for row in query:
         links.append(row.id_job)
 
+    session.close()
     return links
 
 def formatSizeFields(size:int,field:str):

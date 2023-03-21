@@ -15,6 +15,7 @@ def insertTopicsScrap(topics:list, idUrl:str):
         )
             try:
                 conn.execute(insertTopic)
-                print("Topic insert succesfully.")
             except Exception as err:
                 print(f"Cannot insert topic because: {err}")
+    conn.close()
+

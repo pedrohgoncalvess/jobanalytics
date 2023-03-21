@@ -46,7 +46,8 @@ def verifyPaths(dataPathsInsert:list,stage:str):
                 session.execute(queryInsert)
                 session.commit()
             except:
-                session.close()
+                pass
+    session.close()
 
 def inputVacancyTable():
     from database.operations.schedulerSchema.dataSchedulers import topic_search

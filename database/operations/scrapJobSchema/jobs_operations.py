@@ -10,17 +10,18 @@ def insertJobsScrap(dictInfos:dict):
         id_job = dictInfos['idurlJob'],
         vacancy_title = formatSizeFields(70,dictInfos['vacancy_title']),
         vacancy_org = dictInfos.get("vacancy_org",dictInfos['idurlJob'].split('at-')[1].split('-')[0].capitalize()),
-        experience = dictInfos['vacancy_experience'],
+        experience = dictInfos.get('vacancy_experience','None'),
         candidates = dictInfos.get('candidates',0),
         date_publish = dictInfos['date_publish'],
         researched_topic = dictInfos.get('researched_topic')
         )
         try:
             conn.execute(insertJob)
+            conn.close()
             print(f"Insert {insertJob} succesfully.")
         except Exception as err:
             print(f"Cannot insert {formatSizeFields(70,dictInfos['vacancy_title'])} job. Error {err}")
-            pass
+            conn.close()
 
 
 def getIdJob(urlJob:str):
@@ -28,6 +29,7 @@ def getIdJob(urlJob:str):
     engine, base, session = connection()
 
     query = session.query(Jobs).filter(Jobs.columns.id_job==urlJob).values(Jobs.columns.id)
+    session.close()
     try:
         for result in query:
             idJob = result.id
@@ -41,10 +43,9 @@ def listJobsInDB():
     engine, base, session = connection()
 
     query = session.query(Jobs).all()
+    session.close()
 
     listJobs:list = []
     for line in query:
-        listJobs.append(line)
+        listJobs.append(line.id_job)
     return listJobs
-
-

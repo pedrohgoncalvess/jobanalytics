@@ -1,3 +1,54 @@
+def getLinksTopics():
+    from configsDir.environmentConfiguration import driverWeb
+    from database.operations.scrapJobSchema.jobs_operations import listJobsInDB
+
+    import time
+    from selenium.webdriver.common.by import By
+    from database.operations.schedulerSchema.topic_search_operations import listTopicsForSearch
+
+    listJobsDB = listJobsInDB()
+
+    driver = driverWeb()
+    driver.get('https://www.google.com')
+    driver.maximize_window()
+    dictTopics:dict = {}
+
+    seniority = ['junior','pleno','senior']
+    topicsKeys = list(listTopicsForSearch().keys())
+    topicsForSearch:list = []
+
+    for topic in topicsKeys:
+        if listTopicsForSearch()[topic] == 'position':
+            for stage in seniority:
+                newTopic = topic + " " + stage
+                topicsForSearch.append(newTopic)
+        else:
+            newTopicStack = 'desenvolvedor ' + topic
+            topicsForSearch.append(newTopicStack)
+
+
+    for topic in topicsForSearch:
+        current_url = driver.current_url
+        url = f'https://www.linkedin.com/jobs/search?keywords={topic.replace(" ","%2C%20")}&location=Brazil&search-bar_search-submit&position=1&pageNum=0'
+        driver.get(url)
+        time.sleep(1)
+        try:
+            listJobs = driver.find_element(by=By.XPATH,value='/html/body/div[1]/div/main/section[2]/ul')
+            jobs = listJobs.find_elements(by=By.TAG_NAME, value='li')
+        except:
+            pass
+        for num,job in enumerate(jobs):
+            try:
+                xpath = f'/html/body/div[1]/div/main/section[2]/ul/li[{num+1}]/div/a'
+                link = job.find_element(by=By.XPATH,value=xpath).get_attribute('href')
+                linkCompare = link.split("?")[0]
+                if linkCompare not in listJobsDB:
+                    dictTopics.update({link:topic})
+            except:
+                pass
+    driver.close()
+    return dictTopics
+
 def scrapInfosJobs():
     from configsDir.environmentConfiguration import driverWeb, environmentsVariables
     from configsDir.colors import colors
@@ -13,26 +64,29 @@ def scrapInfosJobs():
 
     linksDict = getLinksTopics()
     linksList = list(linksDict.keys())
+    dictContentPaths = getCorrectPath()
+
+
     driver = driverWeb()
     driver.get('https://www.linkedin.com/home')
     driver.maximize_window()
-    login = driver.find_element(by=By.XPATH,value=getCorrectPath('username'))
+    login = driver.find_element(by=By.XPATH,value=dictContentPaths['username'])
     login.send_keys(environmentsVariables('loginLinkedin'))
-    password = driver.find_element(by=By.XPATH,value=getCorrectPath('password'))
+    password = driver.find_element(by=By.XPATH,value=dictContentPaths['password'])
     password.send_keys(environmentsVariables('passwordLinkedin'))
-    enter = driver.find_element(by=By.XPATH,value=getCorrectPath('button'))
+    enter = driver.find_element(by=By.XPATH,value=dictContentPaths['button'])
     enter.click()
 
-    viewMore = getCorrectPath('view_more')
+    viewMore = dictContentPaths['view_more']
     infosKeys = ['content','date_publish','candidates','vacancy_title','vacancy_experience','vacancy_org']
     dictInfosVacancy: dict = {}
+
     try:
      WebDriverWait(driver, 15).until(ec.element_to_be_clickable((By.XPATH, viewMore)))
     except:
         time.sleep(10)
 
     for link in linksList:
-        print(link)
         print(driver.current_url)
         driver.get(link)
         try:
@@ -45,14 +99,14 @@ def scrapInfosJobs():
         for infoKey in infosKeys:
             try:
                 if infoKey != 'content':
-                    contentInfo = driver.find_element(by=By.XPATH,value=getCorrectPath(infoKey)).text
+                    contentInfo = driver.find_element(by=By.XPATH,value=dictContentPaths[infoKey]).text
                     dictInfosVacancy.update({infoKey:contentInfo})
                 else:
-                    content = driver.find_element(by=By.XPATH,value=getCorrectPath(infoKey))
+                    content = driver.find_element(by=By.XPATH,value=dictContentPaths[infoKey])
                     vacancyText = content.text
                     topics = content.find_elements(by=By.CSS_SELECTOR, value='strong')
             except Exception as err:
-                print(f"{colors('red')}Error in {infoKey}. {err}")
+                print(f"{colors('red')}Error in {infoKey}.")
         insertJobsScrap(dictInfosVacancy)
         insertTextScrap(vacancyText, dictInfosVacancy['idurlJob'])
         topicsList: list = []

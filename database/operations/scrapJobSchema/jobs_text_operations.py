@@ -14,4 +14,3 @@ def insertTextScrap(textJob:str,idUrl:str):
     with engine.connect() as conn:
         conn.execute(insertText)
     conn.close()
-    print("Text insert succesfully.")
