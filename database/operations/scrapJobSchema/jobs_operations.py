@@ -3,7 +3,7 @@ from sqlalchemy import insert
 from database.operations.scrapJobSchema.midlevelOperations import formatSizeFields
 
 def insertJobsScrap(dictInfos:dict):
-    from database.entities.scrapJobSchema.jobs import Jobs
+    from database.entities.scrapJobSchema.job import Jobs
     engine, base, session = connection()
     with engine.connect() as conn:
         insertJob = insert(Jobs).values(
@@ -25,7 +25,7 @@ def insertJobsScrap(dictInfos:dict):
 
 
 def getIdJob(urlJob:str):
-    from database.entities.scrapJobSchema.jobs import Jobs
+    from database.entities.scrapJobSchema.job import Jobs
     engine, base, session = connection()
 
     query = session.query(Jobs).filter(Jobs.columns.id_job==urlJob).values(Jobs.columns.id)
@@ -39,7 +39,7 @@ def getIdJob(urlJob:str):
         return False
 
 def listJobsInDB():
-    from database.entities.scrapJobSchema.jobs import Jobs
+    from database.entities.scrapJobSchema.job import Jobs
     engine, base, session = connection()
 
     query = session.query(Jobs).all()

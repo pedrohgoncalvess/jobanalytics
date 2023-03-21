@@ -1,12 +1,12 @@
 def getLinksTopics():
     from configsDir.environmentConfiguration import driverWeb
-    from database.operations.scrapJobSchema.jobs_operations import listJobsInDB
+    from database.operations.scrapJobSchema.job_standby_operations import listUrlStandBy,insertUrlForStandBy
 
     import time
     from selenium.webdriver.common.by import By
     from database.operations.schedulerSchema.topic_search_operations import listTopicsForSearch
 
-    listJobsDB = listJobsInDB()
+    listJobsDB = list(listUrlStandBy().keys())
 
     driver = driverWeb()
     driver.get('https://www.google.com')
@@ -47,7 +47,8 @@ def getLinksTopics():
             except:
                 pass
     driver.close()
-    return dictTopics
+
+    insertUrlForStandBy(dictTopics)
 
 def scrapInfosJobs():
     from configsDir.environmentConfiguration import driverWeb, environmentsVariables
@@ -56,13 +57,14 @@ def scrapInfosJobs():
     from database.operations.scrapJobSchema.jobs_text_operations import insertTextScrap
     from database.operations.scrapJobSchema.jobs_topics_operations import insertTopicsScrap
     from database.operations.schedulerSchema.scheduler_operations import getCorrectPath
+    from database.operations.scrapJobSchema.job_standby_operations import listUrlStandBy
 
     import time
     from selenium.webdriver.common.by import By
     from selenium.webdriver.support.ui import WebDriverWait
     from selenium.webdriver.support import expected_conditions as ec
 
-    linksDict = getLinksTopics()
+    linksDict = listUrlStandBy()
     linksList = list(linksDict.keys())
     dictContentPaths = getCorrectPath()
 

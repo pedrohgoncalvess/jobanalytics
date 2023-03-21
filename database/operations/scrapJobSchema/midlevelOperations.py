@@ -1,7 +1,7 @@
 from database.connection.connection import connection
 from sqlalchemy import insert
 from sqlalchemy.sql.schema import Table
-from database.entities.scrapJobSchema.jobs import Jobs
+from database.entities.scrapJobSchema.job import Jobs
 
 def treatmentInsertJobs(dictInfos:dict) -> dict:
     try:

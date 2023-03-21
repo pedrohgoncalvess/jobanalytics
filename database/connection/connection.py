@@ -23,14 +23,15 @@ def connection(messages:str='on'):
     return engine, Base, session
 
 def checkTables():
-    from database.entities.scrapJobSchema.jobs import Jobs
-    from database.entities.scrapJobSchema.jobs_description import JobsDescriptions
-    from database.entities.scrapJobSchema.jobs_topic import JobsTopics
+    from database.entities.scrapJobSchema.job import Jobs
+    from database.entities.scrapJobSchema.job_description import JobsDescriptions
+    from database.entities.scrapJobSchema.job_topic import JobsTopics
     from database.entities.schedulerSchema.set_path import setPath
     from database.entities.schedulerSchema.scheduler import schedulerScrap
     from database.entities.schedulerSchema.paths import sitesPaths
     from database.entities.schedulerSchema.urls_test import urlTest
     from database.entities.schedulerSchema.topic_search import topicSearch
+    from database.entities.scrapJobSchema.job_standby import JobsStandBy
 
     if __name__ == '__main__':
         Jobs
@@ -41,3 +42,4 @@ def checkTables():
         sitesPaths
         urlTest
         topicSearch
+        JobsStandBy
