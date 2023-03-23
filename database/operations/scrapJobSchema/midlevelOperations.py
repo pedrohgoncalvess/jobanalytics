@@ -10,7 +10,7 @@ def treatmentInsertJobs(dictInfos:dict) -> dict:
         dictInfos.update({'candidates':'0'})
     return dictInfos
 
-def validationUrlExist(table:Table = Jobs) -> bool:
+def validationUrlExist(table:Table = Jobs) -> list:
 
     from database.connection.connection import connection
     engine, base, session = connection()

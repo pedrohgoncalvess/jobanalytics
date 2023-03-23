@@ -14,6 +14,7 @@ def insertTopicsScrap(topics:list, idUrl:str):
     )
         try:
             session.execute(insertTopic)
+            session.commit()
         except Exception as err:
             print(f"Cannot insert topic because: {err}")
     session.close()

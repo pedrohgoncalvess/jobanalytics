@@ -9,4 +9,10 @@ def listTopicsForSearch():
     for line in query:
         listTopics.update({line.topic_search:line.topic_classification})
     session.close()
-    return listTopics
+
+    listTopicsKeys:list = sorted(list(listTopics.keys()))
+    newDictTopics:dict = {}
+    for key in listTopicsKeys:
+        newDictTopics.update({key:listTopics[key]})
+
+    return newDictTopics

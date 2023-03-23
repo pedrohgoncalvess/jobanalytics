@@ -13,3 +13,4 @@ def insertTextScrap(textJob:str,idUrl:str):
     )
     session.execute(insertText)
     session.commit()
+    session.close()

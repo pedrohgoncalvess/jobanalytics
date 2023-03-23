@@ -4,17 +4,18 @@ from sqlalchemy import insert
 def insertUrlForStandBy(dictInfos:dict):
     from database.entities.scrapJobSchema.job_standby import JobsStandBy
     engine, base, session = connection(messages='off')
-    with engine.connect() as conn:
-        for idurl in list(dictInfos.keys()):
-            query = insert(JobsStandBy).values(
-                id_job = idurl,
-                used_term = dictInfos[idurl]
-            )
-            try:
-                conn.execute(query)
-            except:
-                pass
-    conn.close()
+    for idurl in list(dictInfos.keys()):
+        query = insert(JobsStandBy).values(
+            id_job = idurl,
+            used_term = dictInfos[idurl]
+        )
+        try:
+            session.execute(query)
+            session.commit()
+            session.close()
+        except:
+            pass
+    session.close()
 
 def listUrlStandBy() -> dict:
     from database.entities.scrapJobSchema.job_standby import JobsStandBy

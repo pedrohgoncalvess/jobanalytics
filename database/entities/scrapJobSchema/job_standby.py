@@ -1,5 +1,6 @@
-from sqlalchemy import Column, String, MetaData, Table,Integer
+from sqlalchemy import Column, String, MetaData, Table,Integer,DateTime
 from database.connection.connection import connection
+from sqlalchemy import func
 
 engine, base, session = connection()
 
@@ -12,6 +13,7 @@ JobsStandBy = Table(
     Column("id_job",String(500),nullable=False,unique=True),
     Column("used_term",String(20),nullable=False),
     Column("status",String(10),default='waiting'),
+    Column("scraped_at",DateTime(timezone=True),server_default=func.now()),
     schema = 'scrap_job'
 )
 

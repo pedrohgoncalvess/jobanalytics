@@ -19,10 +19,10 @@ def createSetPath(sitePathDict:dict):
 def createSetPath(setPathDict:dict):
     from database.entities.schedulerSchema.set_path import setPath
     engine, base, session = connection()
-    with engine.connect() as conn:
-        insertSet = insert(setPath).values(
-        name_set = setPathDict['nameSet'].lower(),
-        site_scrap = setPathDict['siteScrap'].lower(),
-        )
-        conn.execute(insertSet)
-        conn.close()
+    insertSet = insert(setPath).values(
+    name_set = setPathDict['nameSet'].lower(),
+    site_scrap = setPathDict['siteScrap'].lower(),
+    )
+    session.execute(insertSet)
+    session.commit()
+    session.close()

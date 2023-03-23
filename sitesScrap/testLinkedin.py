@@ -6,16 +6,15 @@ def pathsForTestScrap(type_info:str, site:str='linkedin') -> dict:
     from sqlalchemy.sql import text
 
     engine, base, session = connection(messages='off')
-    with engine.connect() as conn:
-        query = text(f"""select paths.id,
-       paths."path"
+    query = text(f"""select paths.id,
+   paths."path"
 from scrap_scheduler.set_path as "set",
- scrap_scheduler.path_site as paths
- where 1=1
- and set.site_scrap = '{site}'
- and paths.type_info = '{type_info}'""")
-        lines = conn.execute(query)
-        conn.close()
+scrap_scheduler.path_site as paths
+where 1=1
+and set.site_scrap = '{site}'
+and paths.type_info = '{type_info}'""")
+    lines = session.execute(query)
+    session.close()
     results:dict = {}
     for line in lines:
         results.update({line.id:line.path})
@@ -66,7 +65,6 @@ def testLogin():
 def testGetLink():
 
     from configsDir.environmentConfiguration import driverWeb
-    from configsDir.setConfig import getConfigs
     from configsDir.colors import colors
     from database.operations.schedulerSchema.url_test_operations import insertUrlTest
 

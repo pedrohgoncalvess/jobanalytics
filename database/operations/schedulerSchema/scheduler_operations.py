@@ -28,25 +28,23 @@ def validateScheduler(stage:str,site:str='linkedin'):
 
 
     engine, base, session = connection(messages='off')
-    with engine.connect() as conn:
-        query = text(f"select 1 from scrap_scheduler.scheduler where exists ( select 1  from scrap_scheduler.scheduler sch "
-                     f"inner join scrap_scheduler.path_site ps on ps.id = sch.id_path "
-                     f"inner join scrap_scheduler.set_path sp on sp.id = ps.id_set "
-                     f"where 1=1"
-                     f"and sch.tested_at = '{today}'"
-                     f"and sp.site_scrap = '{site}'"
-                     f"and sp.stage_scrap = '{stage}')"
-                     f"group by 1")
-        result = conn.execute(query)
-        print(query)
-        for line in result:
-            a = line
-            if a == None:
-                return False
-                conn.close()
-            else:
-                conn.close()
-                return True
+    query = text(f"select 1 from scrap_scheduler.scheduler where exists ( select 1  from scrap_scheduler.scheduler sch "
+                 f"inner join scrap_scheduler.path_site ps on ps.id = sch.id_path "
+                 f"inner join scrap_scheduler.set_path sp on sp.id = ps.id_set "
+                 f"where 1=1"
+                 f"and sch.tested_at = '{today}'"
+                 f"and sp.site_scrap = '{site}'"
+                 f"and sp.stage_scrap = '{stage}')"
+                 f"group by 1")
+    result = session.execute(query)
+    for line in result:
+        a = line
+        if a == None:
+            session.close()
+            return False
+        else:
+            session.close()
+            return True
 
 def getCorrectPath():
     from database.connection.connection import connection
@@ -68,10 +66,9 @@ def getCorrectPath():
     and sch.tested_at = '{today}'
 ) select * from scheduler""")
 
-    with engine.connect() as conn:
-        result = conn.execute(query)
-        path = pd.DataFrame(result.fetchall())
-    conn.close()
+    result = session.execute(query)
+    path = pd.DataFrame(result.fetchall())
+    session.close()
 
     listPath = list(path.path)
     listContent = list(path.type_info)
