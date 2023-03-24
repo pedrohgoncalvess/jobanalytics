@@ -4,22 +4,22 @@ confluence;project planning and managemen
 ms project;project planning and managemen
 scrumdesk;project planning and managemen
 agile;software development methodologies
- scrum;software development methodologies
- kamban;software development methodologies
- scrumban;software development methodologies
- rup;software development methodologies
- dsdm;software development methodologies
+scrum;software development methodologies
+kamban;software development methodologies
+scrumban;software development methodologies
+rup;software development methodologies
+dsdm;software development methodologies
 mysql workbench;database modeling tools
- dbvisualizer;database modeling tools
- oracle sqldeveloper;database modeling tools
- toa;database modeling tools
+dbvisualizer;database modeling tools
+oracle sqldeveloper;database modeling tools
+toa;database modeling tools
 rest api;web services
- apache cxf;web services
- axis;web services
- soap;web services
- wsdl;web services
- jaxb;web services
- jax-ws;web services
+apache cxf;web services
+axis;web services
+soap;web services
+wsdl;web services
+jaxb;web services
+jax-ws;web services
 apache kafka;messaging middleware
  activemq;messaging middleware
  ibm mq series;messaging middleware
@@ -29,54 +29,54 @@ rational rose;uml tools and techniques
  open office draw;uml tools and techniques
  star uml;uml tools and techniques
  together;uml tools and techniques
- requirements� matrix;uml tools and techniques
+ requirements matrix;uml tools and techniques
 brainstorming;software analysis, arhitecture and design
 mind-map;software analysis, arhitecture and design
 design patterns;software analysis, arhitecture and design
 git;versioning control
- svn;versioning control
- rational clearcase;versioning control
- rational synergy;versioning control
- ms visual source safe;versioning control
-oracle�;database
-mysql�;database
-microsoft sql server�;database
-postgresql�;database
-mongodb�;database
-redis�;database
+svn;versioning control
+rational clearcase;versioning control
+rational synergy;versioning control
+ms visual source safe;versioning control
+oracle;database
+mysql;database
+microsoft sql server;database
+postgresql;database
+mongodb;database
+redis;database
 ibm db2;database
 elasticsearch;database
-sqlite�;database
+sqlite;database
 microsoft access;database
-cassandra�;database
-snowflake�;database
-mariadb�;database
+cassandra;database
+snowflake;database
+mariadb;database
 splunk;database
-amazon dynamodb�;database
+amazon dynamodb;database
 microsoft azure sql database;database
 hive;database
 teradata;database
 databricks;database
-neo4j�;database
+neo4j;database
 filemaker;database
-google bigquery�;database
-sap hana�;database
+google bigquery;database
+sap hana;database
 solr;database
 sap adaptive server;database
 hbase;database
-microsoft azure cosmos db�;database
+microsoft azure cosmos db;database
 postgis;database
-influxdb�;database
-couchbase�;database
+influxdb;database
+couchbase;database
 memcached;database
 firebird;database
-amazon redshift�;database
+amazon redshift;database
 microsoft azure synapse analytics;database
 informix;database
 spark sql;database
 impala;database
 firebase realtime database;database
-vertica�;database
+vertica;database
 netezza;database
 dbase;database
 couchdb;database
@@ -84,7 +84,7 @@ presto;database
 clickhouse;database
 google cloud firestore;database
 greenplum;database
-opensearch�;database
+opensearch;database
 amazon aurora;database
 hazelcast;database
 oracle essbase;database
@@ -92,21 +92,21 @@ marklogic;database
 etcd;database
 h2;database
 realm;database
-datastax enterprise�;database
-kdb�;database
-cockroachdb�;database
+datastax enterprise;database
+kdb;database
+cockroachdb;database
 microsoft azure search;database
 prometheus;database
 algolia;database
 google cloud datastore;database
-singlestore��;database
+singlestore;database
 graphite;database
 sphinx;database
-aerospike�;database
-microsoft azure data explorer�;database
+aerospike;database
+microsoft azure data explorer;database
 interbase;database
 derby;database
-virtuoso�;database
+virtuoso;database
 ehcache;database
 jackrabbit;database
 ingres;database
@@ -116,23 +116,23 @@ accumulo;database
 sap sql anywhere;database
 scylladb;database
 ignite;database
-arangodb�;database
+arangodb;database
 riak kv;database
 adabas;database
 apache jena - tdb;database
 hypersql;database
-trino�;database
+trino;database
 orientdb;database
 unidata,universe;database
 gemfire;database
 timescaledb;database
 sap iq;database
 openedge;database
-rocksdb�;database
+rocksdb;database
 google cloud spanner;database
-yugabytedb�;database
+yugabytedb;database
 ibm cloudant;database
-ravendb�;database
+ravendb;database
 rethinkdb;database
 infinispan;database
 oracle nosql;database
@@ -145,8 +145,8 @@ percona server for mysql;database
 citus;database
 cloudkit;database
 edb postgres;database
-tidb�;database
-intersystems cach�;database
+tidb;database
+intersystems cach;database
 rrdtool;database
 sap advantage database server;database
 apache phoenix;database
@@ -164,10 +164,10 @@ heavy.ai;database
 geode;database
 apache druid;database
 amazon cloudsearch;database
-graphdb�;database
+graphdb;database
 opentsdb;database
 gridgain;database
-tdengine�;database
+tdengine;database
 monetdb;database
 coveo;database
 datomic;database
@@ -182,25 +182,25 @@ ibm db2 warehouse;database
 objectstore;database
 duckdb;database
 basex;database
-oceanbase�;database
-griddb�;database
-questdb�;database
+oceanbase;database
+griddb;database
+questdb;database
 amazon documentdb;database
 fauna;database
 sqlbase;database
 tarantool;database
 mnesia;database
 dgraph;database
-nebulagraph�;database
+nebulagraph;database
 litedb;database
 datameer;database
 gbase;database
-memgraph�;database
+memgraph;database
 actian nosql database;database
 empress;database
 dataease;database
 firebolt;database
-stardog�;database
+stardog;database
 apache kylin;database
 sql.js;database
 nonstop sql;database
@@ -219,12 +219,12 @@ gt.m;database
 apache hawq;database
 hfsql;database
 model 204;database
-typedb�;database
-ncache�;database
+typedb;database
+ncache;database
 actian vector;database
 1010data;database
 nuodb;database
-allegrograph�;database
+allegrograph;database
 opengauss;database
 perst;database
 hpe ezmeral data fabric;database
@@ -244,41 +244,41 @@ dolt;database
 meilisearch;database
 websphere extreme scale;database
 kognitio;database
-m3db�;database
+m3db;database
 graph engine;database
 d3;database
 kairosdb;database
 frontbase;database
 splice machine;database
 northgate reality;database
-tdsql for mysql�;database
+tdsql for mysql;database
 dbisam;database
 scidb;database
 vitess;database
 openbase;database
-victoriametrics�;database
+victoriametrics;database
 mapdb;database
-apache iotdb�;database
+apache iotdb;database
 nexusdb;database
 rockset;database
 bigchaindb;database
 geomesa;database
 planetscale;database
-cratedb�;database
+cratedb;database
 amazon keyspaces;database
 scalearc;database
 objectdb;database
-sqream db�;database
+sqream db;database
 vistadb;database
 boltdb;database
 r:base;database
 yellowbrick;database
 openinsight;database
 scalaris;database
-extremedb�;database
+extremedb;database
 datacom/db;database
-milvus�;database
-kingbase�;database
+milvus;database
+kingbase;database
 4store;database
 objectivity/db;database
 keydb;database
@@ -306,11 +306,11 @@ percona server for mongodb;database
 ittia;database
 harperdb;database
 actian fastobjects;database
-kinetica�;database
+kinetica;database
 comdb2;database
 ydb;database
 lovefield;database
-raima database manager�;database
+raima database manager;database
 transbase;database
 cloudflare workers kv;database
 brytlyt;database
@@ -320,7 +320,7 @@ alibaba cloud maxcompute;database
 ejdb;database
 mulgara;database
 flockdb;database
-alibaba cloud analyticdb for mysql�;database
+alibaba cloud analyticdb for mysql;database
 translattice;database
 kyligence enterprise;database
 elevatedb;database
@@ -332,7 +332,7 @@ pipelinedb;database
 featurebase;database
 typesense;database
 arcadedb;database
-weaviate�;database
+weaviate;database
 riak ts;database
 hypergraphdb;database
 axibase;database
@@ -349,25 +349,25 @@ graphbase;database
 redstore;database
 machbase;database
 geospock;database
-leanxcale�;database
-speedb�;database
+leanxcale;database
+speedb;database
 sparksee;database
 terminusdb;database
 bangdb;database
 stsdb;database
-alibaba cloud apsaradb for polardb�;database
+alibaba cloud apsaradb for polardb;database
 neventstore;database
 upscaledb;database
 rdfox;database
-alibaba cloud log service�;database
+alibaba cloud log service;database
 immudb;database
 exorbyte;database
 transwarp kundb;database
 actian psql;database
 manticore search;database
 elliptics;database
-tigris�;database
-greptimedb�;database
+tigris;database
+greptimedb;database
 brightstardb;database
 sitewhere;database
 tibco computedb;database
@@ -404,10 +404,10 @@ esgyndb;database
 alibaba cloud tsdb;database
 ibm db2 event store;database
 linter;database
-faircom db�;database
+faircom db;database
 antdb;database
 hgraphdb;database
-fujitsu enterprise postgres�;database
+fujitsu enterprise postgres;database
 badger;database
 senseidb;database
 datafs;database
@@ -465,7 +465,7 @@ symfony;framework
 codeigniter;framework
 jsf;framework
 ember.js;framework
-.net core�;framework
+.net core;framework
 google web toolkit;framework
 cakephp;framework
 polymer;framework
