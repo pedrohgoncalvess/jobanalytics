@@ -1,9 +1,9 @@
 from database.connection.connection import connection
 from sqlalchemy import insert
+import sqlalchemy
 
-def insertUrlForStandBy(dictInfos:dict):
+def insertUrlForStandBy(dictInfos:dict, session:sqlalchemy.orm.session.Session):
     from database.entities.scrapJobSchema.job_standby import JobsStandBy
-    engine, base, session = connection(messages='off')
     for idurl in list(dictInfos.keys()):
         query = insert(JobsStandBy).values(
             id_job = idurl,

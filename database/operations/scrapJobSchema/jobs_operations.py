@@ -1,10 +1,11 @@
 from database.connection.connection import connection
 from sqlalchemy import insert
 from database.operations.scrapJobSchema.midlevelOperations import formatSizeFields
+import sqlalchemy
 
-def insertJobsScrap(dictInfos:dict):
+
+def insertJobsScrap(dictInfos:dict,session:sqlalchemy.orm.session.Session):
     from database.entities.scrapJobSchema.job import Jobs
-    engine, base, session = connection()
     insertJob = insert(Jobs).values(
     id_job = dictInfos['idurlJob'],
     vacancy_title = formatSizeFields(70,dictInfos['vacancy_title']),
@@ -33,7 +34,6 @@ def getIdJob(urlJob:str):
     try:
         for result in query:
             idJob = result.id
-
         return idJob
     except:
         return False

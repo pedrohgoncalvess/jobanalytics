@@ -2,10 +2,13 @@ def getLinksTopics():
     from configsDir.environmentConfiguration import driverWeb
     from database.operations.scrapJobSchema.job_standby_operations import listUrlStandBy,insertUrlForStandBy
     from database.operations.scrapJobSchema.midlevelOperations import validationUrlExist
+    from database.connection.connection import connection
 
     import time
     from selenium.webdriver.common.by import By
     from database.operations.schedulerSchema.topic_search_operations import listTopicsForSearch
+
+    _, _, session = connection()
 
     listJobsDBStandby = list(listUrlStandBy().keys())
     listJobsDBScraped = validationUrlExist()
@@ -51,7 +54,7 @@ def getLinksTopics():
             except:
                 pass
     driver.close()
-    insertUrlForStandBy(dictTopics)
+    insertUrlForStandBy(dictTopics,session)
 
 def scrapInfosJobs():
     from configsDir.environmentConfiguration import driverWeb, environmentsVariables
@@ -66,6 +69,10 @@ def scrapInfosJobs():
     from selenium.webdriver.common.by import By
     from selenium.webdriver.support.ui import WebDriverWait
     from selenium.webdriver.support import expected_conditions as ec
+
+    from database.connection.connection import connection
+
+    _, _, session = connection()
 
     linksDict = listUrlStandBy()
     linksList = list(linksDict.keys())
@@ -112,8 +119,8 @@ def scrapInfosJobs():
                     topics = content.find_elements(by=By.CSS_SELECTOR, value='strong')
             except:
                 print(f"{colors('red')}Error in {infoKey}.")
-        insertJobsScrap(dictInfosVacancy)
-        insertTextScrap(vacancyText, dictInfosVacancy['idurlJob'])
+        insertJobsScrap(dictInfosVacancy,session)
+        insertTextScrap(vacancyText, dictInfosVacancy['idurlJob'],session)
         topicsList: list = []
         if len(topics) > 0:
             for topic in topics:
@@ -122,5 +129,5 @@ def scrapInfosJobs():
                 except:
                     pass
             dictInfosVacancy.update({'topicsList': topicsList})
-            insertTopicsScrap(topicsList, dictInfosVacancy['idurlJob'])
+            insertTopicsScrap(topicsList, dictInfosVacancy['idurlJob'],session)
     driver.close()
