@@ -22,14 +22,14 @@ jaxb;web services
 jax-ws;web services
 apache kafka;messaging middleware
  activemq;messaging middleware
- ibm mq series;messaging middleware
+ibm mq series;messaging middleware
 rational rose;uml tools and techniques
- ms visio;uml tools and techniques
- netbeans;uml tools and techniques
- open office draw;uml tools and techniques
- star uml;uml tools and techniques
- together;uml tools and techniques
- requirements matrix;uml tools and techniques
+ms visio;uml tools and techniques
+netbeans;uml tools and techniques
+open office draw;uml tools and techniques
+star uml;uml tools and techniques
+together;uml tools and techniques
+requirements matrix;uml tools and techniques
 brainstorming;software analysis, arhitecture and design
 mind-map;software analysis, arhitecture and design
 design patterns;software analysis, arhitecture and design
