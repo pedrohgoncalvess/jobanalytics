@@ -1,0 +1,692 @@
+Tecnology;Area
+Jira;Project planning and management
+Confluence;Project planning and management
+MS Project;Project planning and management
+ScrumDesk;Project planning and management
+Agile;Software development methodologies
+Scrum;Software development methodologies
+Kamban;Software development methodologies
+Scrumban;Software development methodologies
+RUP;Software development methodologies
+DSDM;Software development methodologies
+MySQL Workbench;Database modeling tools
+DbVisualizer;Database modeling tools
+Oracle SQLDeveloper;Database modeling tools
+Toa;Database modeling tools
+REST API;Web Services
+Apache CXF;Web Services
+Axis;Web Services
+SOAP;Web Services
+WSDL;Web Services
+JAXB;Web Services
+JAX-WS;Web Services
+Apache Kafka;Messaging Middleware
+ActiveMQ;Messaging Middleware
+IBM MQ Series;Messaging Middleware
+Rational Rose;UML tools and techniques
+MS Visio;UML tools and techniques
+NetBeans;UML tools and techniques
+Open Office Draw;UML tools and techniques
+Star UML;UML tools and techniques
+Together;UML tools and techniques
+matrix;UML tools and techniques
+Brainstorming;Software analysis, arhitecture and design
+Mind-Map;Software analysis, arhitecture and design
+Design patterns;Software analysis, arhitecture and design
+Git;Versioning Control
+SVN;Versioning Control
+Rational ClearCase;Versioning Control
+Rational Synergy;Versioning Control
+MS Visual Source Safe;Versioning Control
+Oracle�;Database
+MySQL�;Database
+Microsoft SQL Server�;Database
+PostgreSQL�;Database
+MongoDB�;Database
+Redis�;Database
+IBM Db2;Database
+Elasticsearch;Database
+SQLite�;Database
+Microsoft Access;Database
+Cassandra�;Database
+Snowflake�;Database
+MariaDB�;Database
+Splunk;Database
+Amazon DynamoDB�;Database
+Microsoft Azure SQL Database;Database
+Hive;Database
+Teradata;Database
+Databricks;Database
+Neo4j�;Database
+FileMaker;Database
+Google BigQuery�;Database
+SAP HANA�;Database
+Solr;Database
+SAP Adaptive Server;Database
+HBase;Database
+Microsoft Azure Cosmos DB�;Database
+PostGIS;Database
+InfluxDB�;Database
+Couchbase�;Database
+Memcached;Database
+Firebird;Database
+Amazon Redshift�;Database
+Microsoft Azure Synapse Analytics;Database
+Informix;Database
+Spark SQL;Database
+Impala;Database
+Firebase Realtime Database;Database
+Vertica�;Database
+Netezza;Database
+dBASE;Database
+CouchDB;Database
+Presto;Database
+ClickHouse;Database
+Google Cloud Firestore;Database
+Greenplum;Database
+OpenSearch�;Database
+Amazon Aurora;Database
+Hazelcast;Database
+Oracle Essbase;Database
+MarkLogic;Database
+etcd;Database
+H2;Database
+Realm;Database
+Datastax Enterprise�;Database
+Kdb�;Database
+CockroachDB�;Database
+Microsoft Azure Search;Database
+Prometheus;Database
+Algolia;Database
+Google Cloud Datastore;Database
+SingleStore��;Database
+Graphite;Database
+Sphinx;Database
+Aerospike�;Database
+Microsoft Azure Data Explorer�;Database
+Interbase;Database
+Derby;Database
+Virtuoso�;Database
+Ehcache;Database
+Jackrabbit;Database
+Ingres;Database
+Microsoft Azure Table Storage;Database
+Google Cloud Bigtable;Database
+Accumulo;Database
+SAP SQL Anywhere;Database
+ScyllaDB;Database
+Ignite;Database
+ArangoDB�;Database
+Riak KV;Database
+Adabas;Database
+Apache Jena - TDB;Database
+HyperSQL;Database
+Trino�;Database
+OrientDB;Database
+UniData,UniVerse;Database
+GemFire;Database
+TimescaleDB;Database
+SAP IQ;Database
+OpenEdge;Database
+RocksDB�;Database
+Google Cloud Spanner;Database
+YugabyteDB�;Database
+IBM Cloudant;Database
+RavenDB�;Database
+RethinkDB;Database
+Infinispan;Database
+Oracle NoSQL;Database
+LevelDB;Database
+PouchDB;Database
+MaxDB;Database
+Oracle Berkeley DB;Database
+Apache Drill;Database
+Percona Server for MySQL;Database
+Citus;Database
+CloudKit;Database
+EDB Postgres;Database
+TiDB�;Database
+InterSystems Cach�;Database
+RRDtool;Database
+SAP Advantage Database Server;Database
+Apache Phoenix;Database
+LMDB;Database
+DolphinDB;Database
+Oracle Coherence;Database
+InterSystems IRIS;Database
+JanusGraph;Database
+Amazon SimpleDB;Database
+4D;Database
+IMS;Database
+Amazon Neptune;Database
+EXASOL;Database
+HEAVY.AI;Database
+Geode;Database
+Apache Druid;Database
+Amazon CloudSearch;Database
+GraphDB�;Database
+OpenTSDB;Database
+GridGain;Database
+TDengine�;Database
+MonetDB;Database
+Coveo;Database
+Datomic;Database
+VoltDB;Database
+SpatiaLite;Database
+Tibero;Database
+TigerGraph;Database
+TimesTen;Database
+Db4o;Database
+jBASE;Database
+IBM Db2 warehouse;Database
+ObjectStore;Database
+DuckDB;Database
+BaseX;Database
+OceanBase�;Database
+GridDB�;Database
+QuestDB�;Database
+Amazon DocumentDB;Database
+Fauna;Database
+SQLBase;Database
+Tarantool;Database
+Mnesia;Database
+Dgraph;Database
+NebulaGraph�;Database
+LiteDB;Database
+Datameer;Database
+GBase;Database
+Memgraph�;Database
+Actian NoSQL Database;Database
+Empress;Database
+DataEase;Database
+Firebolt;Database
+Stardog�;Database
+Apache Kylin;Database
+SQL.JS;Database
+NonStop SQL;Database
+FoundationDB;Database
+Cubrid;Database
+Giraph;Database
+ObjectBox;Database
+Oracle Rdb;Database
+Altibase;Database
+mSQL;Database
+Infobright;Database
+MatrixOne;Database
+ZODB;Database
+GigaSpaces;Database
+GT.M;Database
+Apache HAWQ;Database
+HFSQL;Database
+Model 204;Database
+TypeDB�;Database
+NCache�;Database
+Actian Vector;Database
+1010data;Database
+NuoDB;Database
+AllegroGraph�;Database
+openGauss;Database
+Perst;Database
+HPE Ezmeral Data Fabric;Database
+Pinecone;Database
+Matisse;Database
+EventStoreDB;Database
+RDF4J;Database
+solidDB;Database
+Hibari;Database
+Xapian;Database
+Blazegraph;Database
+Amazon Timestream;Database
+IDMS;Database
+Sedna;Database
+eXist-db;Database
+Dolt;Database
+Meilisearch;Database
+WebSphere eXtreme Scale;Database
+Kognitio;Database
+M3DB�;Database
+Graph Engine;Database
+D3;Database
+KairosDB;Database
+FrontBase;Database
+Splice Machine;Database
+Northgate Reality;Database
+TDSQL for MySQL�;Database
+DBISAM;Database
+SciDB;Database
+Vitess;Database
+OpenBase;Database
+VictoriaMetrics�;Database
+MapDB;Database
+Apache IoTDB�;Database
+NexusDB;Database
+Rockset;Database
+BigchainDB;Database
+GeoMesa;Database
+PlanetScale;Database
+CrateDB�;Database
+Amazon Keyspaces;Database
+ScaleArc;Database
+ObjectDB;Database
+SQream DB�;Database
+VistaDB;Database
+BoltDB;Database
+R:BASE;Database
+Yellowbrick;Database
+OpenInsight;Database
+Scalaris;Database
+eXtremeDB�;Database
+Datacom/DB;Database
+Milvus�;Database
+Kingbase�;Database
+4store;Database
+Objectivity/DB;Database
+KeyDB;Database
+Apache Doris;Database
+ModeShape;Database
+SearchBlox;Database
+Tajo;Database
+AlaSQL;Database
+Rasdaman;Database
+Postgres-XL;Database
+LokiJS;Database
+Strabon;Database
+Apache Pinot;Database
+Starcounter;Database
+Trafodion;Database
+Elassandra;Database
+atoti;Database
+InfiniteGraph;Database
+Sequoiadb;Database
+OpenQM;Database
+GemStone/S;Database
+Tokyo Tyrant;Database
+Project Voldemort;Database
+Percona Server for MongoDB;Database
+ITTIA;Database
+HarperDB;Database
+Actian FastObjects;Database
+Kinetica�;Database
+Comdb2;Database
+YDB;Database
+Lovefield;Database
+Raima Database Manager�;Database
+Transbase;Database
+Cloudflare Workers KV;Database
+Brytlyt;Database
+Redland;Database
+SurrealDB;Database
+Alibaba Cloud MaxCompute;Database
+EJDB;Database
+Mulgara;Database
+FlockDB;Database
+Alibaba Cloud AnalyticDB for MySQL�;Database
+TransLattice;Database
+Kyligence Enterprise;Database
+ElevateDB;Database
+HugeGraph;Database
+Marqo;Database
+Mimer SQL;Database
+Jade;Database
+PipelineDB;Database
+FeatureBase;Database
+Typesense;Database
+ArcadeDB;Database
+Weaviate�;Database
+Riak TS;Database
+HyperGraphDB;Database
+Axibase;Database
+Valentina Server;Database
+Skytable;Database
+Fluree;Database
+Ultipa;Database
+TinkerGraph;Database
+CubicWeb;Database
+Alibaba Cloud AnalyticDB for PostgreSQL;Database
+Heroic;Database
+XtremeData;Database
+GraphBase;Database
+RedStore;Database
+Machbase;Database
+GeoSpock;Database
+LeanXcale�;Database
+Speedb�;Database
+Sparksee;Database
+TerminusDB;Database
+Bangdb;Database
+STSdb;Database
+Alibaba Cloud ApsaraDB for PolarDB�;Database
+NEventStore;Database
+Upscaledb;Database
+RDFox;Database
+Alibaba Cloud Log Service�;Database
+Immudb;Database
+Exorbyte;Database
+Transwarp KunDB;Database
+Actian PSQL;Database
+Manticore Search;Database
+Elliptics;Database
+Tigris�;Database
+GreptimeDB�;Database
+BrightstarDB;Database
+SiteWhere;Database
+Tibco ComputeDB;Database
+ToroDB;Database
+Acebase;Database
+Dydra;Database
+Edge Intelligence;Database
+HyperLevelDB;Database
+iBoxDB;Database
+IRONdb;Database
+OrigoDB;Database
+TerarkDB;Database
+RaptorDB;Database
+AnzoGraph DB;Database
+Eloquera;Database
+Alibaba Cloud Table Store;Database
+ActorDB;Database
+NosDB;Database
+JethroData;Database
+Blueflood;Database
+H2GIS;Database
+Quasardb;Database
+Hawkular Metrics;Database
+Siaqodb;Database
+LedisDB;Database
+BigObject;Database
+SiriDB;Database
+TomP2P;Database
+VelocityDB;Database
+WhiteDB;Database
+XTDB;Database
+Qdrant;Database
+EsgynDB;Database
+Alibaba Cloud TSDB;Database
+IBM Db2 Event Store;Database
+Linter;Database
+Faircom DB�;Database
+AntDB;Database
+HGraphDB;Database
+Fujitsu Enterprise Postgres�;Database
+Badger;Database
+SenseiDB;Database
+DataFS;Database
+OushuDB;Database
+AgensGraph;Database
+Kyoto Tycoon;Database
+InfinityDB;Database
+Warp 10;Database
+SmallSQL;Database
+ScaleOut StateServer;Database
+SparkleDB;Database
+Resin Cache;Database
+SWC-DB;Database
+Sadas Engine;Database
+Rizhiyi;Database
+WakandaDB;Database
+Faircom EDGE;Database
+SwayDB;Database
+BergDB;Database
+Cachelot.io;Database
+CortexDB;Database
+CovenantSQL;Database
+DaggerDB;Database
+EdgelessDB;Database
+Galaxybase;Database
+Helium;Database
+Indica;Database
+JaguarDB;Database
+JasDB;Database
+K-DB;Database
+Newts;Database
+NSDb;Database
+PieCloudDB;Database
+searchxml;Database
+SpaceTime;Database
+Tkrzw;Database
+Transwarp ArgoDB;Database
+Transwarp StellarDB;Database
+Yaacomo;Database
+Yanza;Database
+React;Framework
+ASP.NET MVC;Framework
+Angular;Framework
+Ruby on Rails;Framework
+AngularJS;Framework
+Vue.js;Framework
+Django;Framework
+Laravel;Framework
+ASP.NET;Framework
+Spring;Framework
+Express;Framework
+Flask;Framework
+Meteor;Framework
+Symfony;Framework
+CodeIgniter;Framework
+JSF;Framework
+Ember.js;Framework
+.NET Core�;Framework
+Google Web Toolkit;Framework
+CakePHP;Framework
+Polymer;Framework
+Play;Framework
+Flex;Framework
+Sails.js;Framework
+Zend;Framework
+JHipster;Framework
+Tornado;Framework
+Yii;Framework
+Svelte;Framework
+Phoenix;Framework
+Sinatra;Framework
+Grails;Framework
+Aurelia;Framework
+Blade;Framework
+Koa;Framework
+Vert.x;Framework
+Slim;Framework
+FastAPI;Framework
+Phalcon;Framework
+Vapor;Framework
+LoopBack;Framework
+hapi;Framework
+Dropwizard;Framework
+AIOHTTP;Framework
+Feathers;Framework
+OpenUI5;Framework
+Oat++;Framework
+Elm;Framework
+Bottle;Framework
+Wicket;Framework
+Dojo;Framework
+Pyramid;Framework
+Nancy;Framework
+Vaadin;Framework
+web.py;Framework
+Adonis;Framework
+Fastify;Framework
+Riot.js;Framework
+Struts;Framework
+Mithril;Framework
+web2py;Framework
+Lucky;Framework
+Revel;Framework
+Ktor;Framework
+Kohana;Framework
+Sanic;Framework
+Yesod;Framework
+Durandal;Framework
+Perfect;Framework
+Compojure;Framework
+CherryPy;Framework
+Mojolicious;Framework
+Ring;Framework
+Falcon;Framework
+Rocket;Framework
+Actix web;Framework
+SilverStripe Sapphire;Framework
+PHP Fat-Free Framework;Framework
+Tapestry;Framework
+Martini;Framework
+Iris;Framework
+Marko;Framework
+FuelPHP;Framework
+Ninja;Framework
+Kitura;Framework
+Scalatra;Framework
+Restlet;Framework
+Sailor;Framework
+SproutCore;Framework
+Hanami;Framework
+(fab);Framework
+Inferno;Framework
+Lift;Framework
+Lithium;Framework
+Buffalo;Framework
+Cappuccino;Framework
+ZK;Framework
+Flight;Framework
+servant;Framework
+Wt;Framework
+Grok;Framework
+Dancer2;Framework
+Ratpack;Framework
+Zope;Framework
+CompoundJS;Framework
+Catalyst;Framework
+Kemal;Framework
+TurboGears;Framework
+Gin;Framework
+Flatiron;Framework
+Noir;Framework
+Nitrogen;Framework
+Quart;Framework
+Amber;Framework
+Mojarra;Framework
+seaside;Framework
+Vanilla;Framework
+Stripes;Framework
+Masonite;Framework
+Camping;Framework
+Cuba;Framework
+kotlinx.html;Framework
+Happstack;Framework
+Zotonic;Framework
+Hyperstack;Framework
+Merb;Framework
+Cairngorm;Framework
+Rapidoid;Framework
+PureMVC;Framework
+Horde;Framework
+Ramaze;Framework
+Cocoon;Framework
+Spider-Gazelle;Framework
+Mate;Framework
+Orbit;Framework
+Tipfy;Framework
+Mason;Framework
+beego;Framework
+Swiz;Framework
+Prado;Framework
+Aura;Framework
+Picard;Framework
+Erlang Web;Framework
+JavaScriptMVC;Framework
+Solar;Framework
+Rum;Framework
+UKI;Framework
+Qcodo;Framework
+Cutelyst;Framework
+QCubed;Framework
+Apache Click;Framework
+Xitrum;Framework
+Swiftlet;Framework
+Hexagon;Framework
+PHP For Applications;Framework
+Snap;Framework
+RestfulX;Framework
+Conjure;Framework
+Eliom;Framework
+Moustache;Framework
+KumbiaPHP;Framework
+MFlow;Framework
+echo;Framework
+Circumflex;Framework
+node-router;Framework
+Sin;Framework
+Portofino;Framework
+ErlyWeb;Framework
+Grain;Framework
+Nerve;Framework
+Lemmachine;Framework
+Wee;Framework
+Hemlock;Framework
+Konstrukt;Framework
+nodemachine;Framework
+simplex;Framework
+Nitro;Framework
+Halcyon;Framework
+Spincast;Framework
+Vroom;Framework
+Atomik;Framework
+Akelos;Framework
+mangoo I/O;Framework
+Jifty;Framework
+Squatting;Framework
+Mack;Framework
+Webjure;Framework
+Waves;Framework
+Salvia;Framework
+LiquidLava;Framework
+CGI::Prototype;Framework
+HydraMVC;Framework
+Roma;Framework
+Python;Programming Language
+C;Programming Language
+C++;Programming Language
+Java;Programming Language
+C#;Programming Language
+Visual Basic;Programming Language
+JavaScript;Programming Language
+SQL;Programming Language
+Assembly language;Programming Language
+PHP;Programming Language
+Go;Programming Language
+R;Programming Language
+MATLAB;Programming Language
+Delphi/Object Pascal;Programming Language
+Swift;Programming Language
+Ruby;Programming Language
+Perl;Programming Language
+Scratch;Programming Language
+Classic Visual Basic;Programming Language
+Rust;Programming Language
+(Visual) FoxPro;Programming Language
+Ada;Programming Language
+Fortran;Programming Language
+Lisp;Programming Language
+Lua;Programming Language
+Transact-SQL;Programming Language
+Objective-C;Programming Language
+F#;Programming Language
+COBOL;Programming Language
+Groovy;Programming Language
+PL/SQL;Programming Language
+Kotlin;Programming Language
+Julia;Programming Language
+Scala;Programming Language
+Logo;Programming Language
+Dart;Programming Language
+RPG;Programming Language
+Haskell;Programming Language
+Bash;Programming Language
+CFML;Programming Language
+Prolog;Programming Language
+TypeScript;Programming Language
+Scheme;Programming Language
+PowerShell;Programming Language
+Awk;Programming Language
+ABAP;Programming Language
+Emacs Lisp;Programming Language
+ML;Programming Language
+D;Programming Language

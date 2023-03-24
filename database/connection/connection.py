@@ -32,6 +32,7 @@ def checkTables():
     from database.entities.schedulerSchema.urls_test import urlTest
     from database.entities.schedulerSchema.topic_search import topicSearch
     from database.entities.scrapJobSchema.job_standby import JobsStandBy
+    from database.entities.tecnologies import Tecnologies
 
     if __name__ == '__main__':
         Jobs
@@ -43,3 +44,4 @@ def checkTables():
         urlTest
         topicSearch
         JobsStandBy
+        Tecnologies
