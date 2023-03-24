@@ -51,6 +51,8 @@ def getLinksTopics():
                 if linkCompare not in listJobsDB:
                     print(linkCompare)
                     dictTopics.update({linkCompare:topic})
+                else:
+                    print("This link exist in DB")
             except:
                 pass
     driver.close()
