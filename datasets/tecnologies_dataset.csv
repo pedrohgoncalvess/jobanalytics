@@ -21,7 +21,7 @@ wsdl;web services
 jaxb;web services
 jax-ws;web services
 apache kafka;messaging middleware
- activemq;messaging middleware
+activemq;messaging middleware
 ibm mq series;messaging middleware
 rational rose;uml tools and techniques
 ms visio;uml tools and techniques

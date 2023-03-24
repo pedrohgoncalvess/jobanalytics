@@ -10,7 +10,7 @@ def insertTecnologiesDB() -> dict:
 
     dictFrame:dict = {}
 
-    res = requests.get("https://raw.githubusercontent.com/pedrohgoncalvess/jobanalytics/master/datasets/tecnologies_jsa.csv").content
+    res = requests.get("https://raw.githubusercontent.com/pedrohgoncalvess/jobanalytics/master/datasets/tecnologies_dataset.csv").content
     dfTecnologies = pd.read_csv(io.StringIO(res.decode('utf-8')), on_bad_lines='skip',sep=';')
 
     for num,line in enumerate(dfTecnologies['Tecnology']):
