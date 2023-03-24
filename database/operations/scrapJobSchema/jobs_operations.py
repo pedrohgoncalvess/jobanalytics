@@ -6,23 +6,23 @@ import sqlalchemy
 
 def insertJobsScrap(dictInfos:dict,session:sqlalchemy.orm.session.Session):
     from database.entities.scrapJobSchema.job import Jobs
-    insertJob = insert(Jobs).values(
-    id_job = dictInfos['idurlJob'],
-    vacancy_title = formatSizeFields(70,dictInfos['vacancy_title']),
-    vacancy_org = dictInfos.get("vacancy_org",dictInfos['idurlJob'].split('at-')[1].split('-')[0].capitalize()),
-    experience = dictInfos.get('vacancy_experience','None'),
-    candidates = dictInfos.get('candidates',0),
-    date_publish = dictInfos['date_publish'],
-    researched_topic = dictInfos.get('researched_topic')
-    )
     try:
+        insertJob = insert(Jobs).values(
+        id_job = dictInfos['idurlJob'],
+        vacancy_title = formatSizeFields(70,dictInfos['vacancy_title']),
+        vacancy_org = dictInfos.get("vacancy_org",dictInfos['idurlJob'].split('at-')[1].split('-')[0].capitalize()),
+        experience = formatSizeFields(70,dictInfos['vacancy_experience']),
+        candidates = dictInfos.get('candidates',0),
+        date_publish = dictInfos['date_publish'],
+        researched_topic = dictInfos.get('researched_topic')
+        )
         session.execute(insertJob)
         session.commit()
         session.close()
     except Exception as err:
-        print(f"Cannot insert {formatSizeFields(70,dictInfos['vacancy_title'])} job. Error {err}")
+        print(f"Cannot insert {dictInfos['idurlJob']} job. Error {err}")
         session.close()
-    session.close()
+    session.expunge_all()
 
 
 def getIdJob(urlJob:str):

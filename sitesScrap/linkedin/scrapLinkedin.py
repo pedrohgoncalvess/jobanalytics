@@ -41,7 +41,7 @@ def scrapInfosJobs():
         time.sleep(10)
 
     for link in linksList:
-        print(driver.current_url)
+        current = driver.current_url
         driver.get(link)
         try:
             WebDriverWait(driver, 10).until(ec.element_to_be_clickable((By.XPATH,'//*[@id="ember32"]'))).click()

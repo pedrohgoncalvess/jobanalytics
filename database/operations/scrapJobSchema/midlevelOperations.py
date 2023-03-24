@@ -1,5 +1,3 @@
-from database.connection.connection import connection
-from sqlalchemy import insert
 from sqlalchemy.sql.schema import Table
 from database.entities.scrapJobSchema.job import Jobs
 
@@ -24,6 +22,8 @@ def validationUrlExist(table:Table = Jobs) -> list:
     return links
 
 def formatSizeFields(size:int,field:str):
-    if len(field) > size:
+    if len(field) >= size:
         field = field[0:size]
-    return field
+        return field
+    else:
+        return field
