@@ -9,6 +9,14 @@ def dataPaths() -> dict:
         'vacancy_experience':'//*[@id="main-content"]/section[1]/div/div/section[1]/div/ul/li[1]/span'
     }
 
+    infosXPathThird:dict = {
+        'content':'/html/body/div[5]/div[3]/div/div[1]/div[1]/div/div[4]/article/div/div[1]/span',
+        'date_publish':'/html/body/div[5]/div[3]/div/div[1]/div[1]/div/div[1]/div/div/div[1]/div[1]/span[2]/span[1]',
+        'candidates':'/html/body/div[5]/div[3]/div/div[1]/div[1]/div/div[1]/div/div/div[1]/div[1]/span[2]/span[2]/span',
+        'vacancy_title':'/html/body/div[5]/div[3]/div/div[1]/div[1]/div/div[1]/div/div/div[1]/h1',
+        'vacancy_experience':'/html/body/div[5]/div[3]/div/div[1]/div[1]/div/div[1]/div/div/div[1]/div[2]/ul/li[1]/span'
+    }
+
     infosXpathAlternative:dict = {
         'content':'//*[@id="job-details"]/span',
         'date_publish': '/html/body/div[5]/div[3]/div/div[1]/div[1]/div/div[1]/div/div/div[1]/div[1]/span[2]/span[1]',
@@ -22,7 +30,7 @@ def dataPaths() -> dict:
         'vacancy_org':'//*[@id="main-content"]/section[1]/div/section[2]/div/div[1]/div/h4/div[1]/span[1]/a'
     }
 
-    datas:list = [infosXpath,infosXpathAlternative,infosXPathAlternativeSecond]
+    datas:list = [infosXpath,infosXpathAlternative,infosXPathAlternativeSecond,infosXPathThird]
 
     return datas
 
@@ -52,8 +60,6 @@ def loginPaths() -> list:
     }
 
     loginPathAlternative: dict = {
-        'username': '//*[@id="session_key"]',
-        'password': '//*[@id="session_password"]',
         'button': '//*[@id="main-content"]/section[1]/div/div/form/button',
     }
 
@@ -91,7 +97,12 @@ def topic_search() -> list:
                       'rails':s,
                       'postgresql':s,
                       'aws':s,
-                      'azure':s
+                      'azure':s,
+                      'typescript':s,
+                      'c++':s,
+                      'c#':s,
+                      'rust':s,
+                      'haskell':s
     }
 
     listaTopics = [dictTopics,dictStack]

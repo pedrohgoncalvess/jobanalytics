@@ -8,7 +8,7 @@ if __name__ == "__main__":
         _mainInitConstructor()
         from sitesScrap.testLinkedin import _mainFunctionScheduler
         _mainFunctionScheduler()
-        from sitesScrap.linkedin import scrapInfosJobs
+        from sitesScrap.linkedin.scrapLinkedin import scrapInfosJobs
         scrapInfosJobs()
     elif resp.lower() == 'scheduler':
         from sitesScrap.testLinkedin import _mainFunctionScheduler
@@ -16,7 +16,7 @@ if __name__ == "__main__":
     elif resp.lower() == 'standby':
         from database.operations.schedulerSchema.__constructor__ import _mainInitConstructor
         _mainInitConstructor()
-        from sitesScrap.linkedin import getLinksTopics
+        from sitesScrap.linkedin.getLinkLinkedin import getLinksTopics
         getLinksTopics()
     elif resp.lower() == 'constructor':
         from database.operations.schedulerSchema.__constructor__ import _mainInitConstructor

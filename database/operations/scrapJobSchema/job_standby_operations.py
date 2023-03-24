@@ -2,19 +2,21 @@ from database.connection.connection import connection
 from sqlalchemy import insert
 import sqlalchemy
 
-def insertUrlForStandBy(dictInfos:dict, session:sqlalchemy.orm.session.Session):
+def insertUrlForStandBy(dictInfos:dict, siteScrap:str,session:sqlalchemy.orm.session.Session):
     from database.entities.scrapJobSchema.job_standby import JobsStandBy
+
     for idurl in list(dictInfos.keys()):
         query = insert(JobsStandBy).values(
             id_job = idurl,
-            used_term = dictInfos[idurl]
+            used_term = dictInfos[idurl],
+            site = siteScrap
         )
         try:
             session.execute(query)
             session.commit()
+        except Exception as err:
+            print(err)
             session.close()
-        except:
-            pass
     session.close()
 
 def listUrlStandBy() -> dict:

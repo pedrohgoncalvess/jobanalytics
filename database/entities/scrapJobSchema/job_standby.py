@@ -11,9 +11,10 @@ JobsStandBy = Table(
     metadata,
     Column("id",Integer,autoincrement=True,primary_key=True),
     Column("id_job",String(500),nullable=False,unique=True),
-    Column("used_term",String(20),nullable=False),
+    Column("used_term",String(30),nullable=False),
     Column("status",String(10),default='waiting'),
     Column("scraped_at",DateTime(timezone=True),server_default=func.now()),
+    Column("site",String(25),nullable=False,default='none'),
     schema = 'scrap_job'
 )
 

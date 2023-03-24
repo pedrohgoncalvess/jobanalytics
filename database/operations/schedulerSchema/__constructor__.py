@@ -30,7 +30,6 @@ def verifyPaths(dataPathsInsert:list,stage:str):
 
     dictSets:dict = {}
     query = session.query(setPath).filter(setPath.columns.stage_scrap==stage).values(setPath.columns.id)
-    session.close()
     for result in query:
         idSet = result.id
         dictSets.update({stage:idSet})
@@ -46,7 +45,7 @@ def verifyPaths(dataPathsInsert:list,stage:str):
                 session.execute(queryInsert)
                 session.commit()
             except:
-                pass
+                session.close()
     session.close()
 
 def inputVacancyTable():

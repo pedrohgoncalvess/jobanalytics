@@ -19,75 +19,6 @@ and paths.type_info = '{type_info}'""")
     for line in lines:
         results.update({line.id:line.path})
     return results
-
-
-def testLogin():
-    from configsDir.environmentConfiguration import driverWeb, environmentsVariables
-    from selenium.webdriver.common.by import By
-    from configsDir.colors import colors
-    from database.operations.schedulerSchema.scheduler_operations import createSchedulerExec
-
-    usernamePath = pathsForTestScrap('username')
-    passwordPath = pathsForTestScrap('password')
-    buttonLogin = pathsForTestScrap('button')
-
-    driver = driverWeb()
-    driver.get('https://www.linkedin.com/home')
-    driver.maximize_window()
-    for login in usernamePath.values():
-        try:
-            loginBox = driver.find_element(by=By.XPATH,value=login)
-            loginBox.send_keys(environmentsVariables('loginLinkedin'))
-            dicio = {'idPath':login}
-            createSchedulerExec(dicio)
-        except:
-            pass
-    for password in passwordPath.values():
-        try:
-            passwordBox = driver.find_element(by=By.XPATH,value=password)
-            passwordBox.send_keys(environmentsVariables('passwordLinkedin'))
-            dicio = {'idPath':password}
-            createSchedulerExec(dicio)
-        except:
-            pass
-    for button in buttonLogin.values():
-        try:
-            enter = driver.find_element(by=By.XPATH,value=button)
-            enter.click()
-            dicio = {'idPath': button}
-            createSchedulerExec(dicio)
-            driver.close()
-        except:
-            pass
-    print(f"{colors('green')}Login passed.")
-
-
-def testGetLink():
-
-    from configsDir.environmentConfiguration import driverWeb
-    from configsDir.colors import colors
-    from database.operations.schedulerSchema.url_test_operations import insertUrlTest
-
-    from selenium.webdriver.common.by import By
-    url = f'https://www.linkedin.com/jobs/search?keywords=desenvolvedor&location=Brazil&geoId=104746682&trk=public_jobs_jobs-search-bar_search-submit&position=1&pageNum=1'
-    driver = driverWeb()
-    driver.get(url)
-    driver.maximize_window()
-    listJobs = driver.find_element(by=By.XPATH, value='//*[@id="main-content"]/section[2]/ul')
-    jobs = listJobs.find_elements(by=By.TAG_NAME, value='li')
-    links: list = []
-    for num, job in enumerate(jobs):
-        if num + 1 < len(jobs):
-            try:
-                link = job.find_element(by=By.XPATH,value=f'//*[@id="main-content"]/section[2]/ul/li[{num + 1}]/div/a').get_attribute('href')
-                links.append(link)
-            except:
-                print(f'{colors("cyan")}Could not access the link {link}')
-    driver.close()
-    insertUrlTest(links[0].split("?")[0])
-    print(f"{colors('green')}Get links passed.")
-
-
 def testScrapJob():
     from configsDir.environmentConfiguration import driverWeb, environmentsVariables
     from selenium.webdriver.common.by import By
@@ -176,8 +107,6 @@ def _mainFunctionScheduler():
     from database.operations.schedulerSchema.scheduler_operations import validateScheduler
     from configsDir.colors import colors
     if validateScheduler(stage='login') == None:
-        testLogin()
-        testGetLink()
         testScrapJob()
     else:
         print(f"{colors('green')}Scheduler has already been run")

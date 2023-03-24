@@ -19,10 +19,10 @@ def insertJobsScrap(dictInfos:dict,session:sqlalchemy.orm.session.Session):
         session.execute(insertJob)
         session.commit()
         session.close()
-        print(f"Insert {insertJob} succesfully.")
     except Exception as err:
         print(f"Cannot insert {formatSizeFields(70,dictInfos['vacancy_title'])} job. Error {err}")
         session.close()
+    session.close()
 
 
 def getIdJob(urlJob:str):
