@@ -31,7 +31,6 @@ graduacao;requirement
 certificacao;requirement
 cursando;requirement
 anos de experiencia;requirement
-experiencia;requirement
 bonus anual;benefit
 horarios flexiveis;culture
 horario flexivel;culture
@@ -42,3 +41,9 @@ auxilio educacao;benefit
 assistencia medica;benefit
 beneficio alimentacao;benefit
 no dress code;culture
+senior;seniority
+junior;seniority
+pleno;seniority
+midlevel;seniority
+especialist;seniority
+especialista;seniority
