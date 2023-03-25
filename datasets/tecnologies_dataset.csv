@@ -1,52 +1,52 @@
 Tecnology;Area
-tableau;dataviz
-power bi;dataviz
-hadoop;data processing
-rabbiqmq;messaging middleware
-krafana;dataviz
-kibana;dataviz
-kubernetes;container
-docker;container
-.net;multi-language support
-jira;project planning and management
-confluence;project planning and management
-ms project;project planning and management
-scrumdesk;project planning and management
-agile;software development methodologies
-scrum;software development methodologies
-kanban;software development methodologies
-scrumban;software development methodologies
-rup;software development methodologies
-dsdm;software development methodologies
-mysql workbench;database modeling tools
-dbvisualizer;database modeling tools
-oracle sqldeveloper;database modeling tools
-toa;database modeling tools
-rest;web services
-apache cxf;web services
-axis;web services
-soap;web services
-wsdl;web services
-jaxb;web services
-jax-ws;web services
-kafka;messaging middleware
-activemq;messaging middleware
-ibm mq series;messaging middleware
-rational rose;uml tools and techniques
-ms visio;uml tools and techniques
-netbeans;uml tools and techniques
-open office draw;uml tools and techniques
-star uml;uml tools and techniques
-together;uml tools and techniques
-requirements matrix;uml tools and techniques
-brainstorming;software analysis, arhitecture and design
-mind-map;software analysis, arhitecture and design
-design patterns;software analysis, arhitecture and design
-git;versioning control
-svn;versioning control
-rational clearcase;versioning control
-rational synergy;versioning control
-ms visual source safe;versioning control
+tableau;data
+power bi;data
+hadoop;data
+rabbiqmq;other
+krafana;data
+kibana;data
+kubernetes;other
+docker;other
+.net;framework
+jira;planning and management
+confluence;planning and management
+ms project;planning and management
+scrumdesk;planning and management
+agile;planning and management
+scrum;planning and management
+kanban;planning and management
+scrumban;planning and management
+rup;planning and management
+dsdm;planning and management
+mysql workbench;database
+dbvisualizer;database
+oracle sqldeveloper;database
+toa;database
+rest;other
+apache cxf;other
+axis;other
+soap;other
+wsdl;other
+jaxb;other
+jax-ws;other
+kafka;other
+activemq;other
+ibm mq series;other
+rational rose;other
+ms visio;other
+netbeans;other
+open office draw;other
+star uml;other
+together;other
+requirements matrix;other
+brainstorming;other
+mind-map;other
+design patterns;other
+git;other
+svn;other
+rational clearcase;other
+rational synergy;other
+ms visual source safe;other
 oracle;database
 mysql;database
 sql server;database
@@ -62,12 +62,12 @@ snowflake;database
 mariadb;database
 splunk;database
 amazon dynamodb;database
-gcp;cloud
-aws;cloud
-azure;cloud
+gcp;other
+aws;other
+azure;other
 microsoft azure sql database;database
 hive;database
-power query; data manipulation
+power query;data
 teradata;database
 databricks;database
 neo4j;database
@@ -86,7 +86,7 @@ firebird;database
 redshift;database
 microsoft azure synapse analytics;database
 informix;database
-spark;data processing
+spark;data
 impala;database
 firebase realtime database;database
 vertica;database
@@ -407,7 +407,7 @@ hawkular metrics;database
 siaqodb;database
 ledisdb;database
 bigobject;database
-excel;software
+excel;data
 siridb;database
 tomp2p;database
 velocitydb;database
@@ -480,7 +480,7 @@ meteor;framework
 symfony;framework
 codeigniter;framework
 jsf;framework
-terraform;container
+terraform;other
 ember.js;framework
 .net core;framework
 google web toolkit;framework
@@ -608,7 +608,7 @@ prado;framework
 aura;framework
 picard;framework
 erlang web;framework
-airflow;orchestrator
+airflow;data
 javascriptmvc;framework
 solar;framework
 rum;framework
@@ -707,7 +707,7 @@ awk;programming language
 abap;programming language
 emacs lisp;programming language
 ml;programming language
-linux;os
-unix;os
-tdd;metodology
-solid;metodology
+linux;other
+unix;other
+tdd;other
+solid;other
