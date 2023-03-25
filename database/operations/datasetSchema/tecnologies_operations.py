@@ -15,7 +15,6 @@ def insertTecnologiesDB() -> dict:
     dfTecnologies = pd.read_csv(io.StringIO(res.decode('utf-8')), on_bad_lines='skip',sep=';')
 
     for num,line in enumerate(dfTecnologies['Tecnology']):
-        print(dfTecnologies['Area'][num])
         query = insert(Tecnologies).values(
             tecnologie = line.lower(),
             type = dfTecnologies['Area'][num].lower()

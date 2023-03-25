@@ -26,3 +26,19 @@ salario a combinar;benefit
 clt;contract
 pj;contract
 pessoa juridica;contract
+ensino superior;requirement
+graduacao;requirement
+certificacao;requirement
+cursando;requirement
+anos de experiencia;requirement
+experiencia;requirement
+bonus anual;benefit
+horarios flexiveis;culture
+horario flexivel;culture
+auxilio home office;benefit
+cartao flash;benefit
+caju;benefit
+auxilio educacao;benefit
+assistencia medica;benefit
+beneficio alimentacao;benefit
+no dress code;culture
