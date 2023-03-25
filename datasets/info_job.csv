@@ -1,0 +1,28 @@
+Info;Type
+hibrido;model
+remoto;model
+presencial;model
+homeoffice;model
+remota;model
+remote;model
+vale alimentacao;benefit
+vale refeicao;benefit
+vale transporte;benefit
+ppr;benefit
+plr;benefit
+dayoff;benefit
+great place to work;culture
+gympass;benefit
+auxilio creche;benefit
+seguro de vida;benefit
+plano de saude;benefit
+licenca maternidade;benefit
+licenca paternidade;benefit
+seguro odontologico;benefit
+plano odontologico;benefit
+vale combustivel;benefit
+gptw;culture
+salario a combinar;benefit
+clt;contract
+pj;contract
+pessoa juridica;contract

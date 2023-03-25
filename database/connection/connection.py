@@ -15,7 +15,7 @@ def connection(messages:str='on'):
         logging.basicConfig()
         logging.disable(logging.WARNING)
 
-    schemas = ['scrap_job','scrap_scheduler']
+    schemas = ['scrap_job','scrap_scheduler','dataset_schema']
     for schemaName in schemas:
         if not engine.dialect.has_schema(engine, schemaName):
             engine.execute(schema.CreateSchema(schemaName))
@@ -32,7 +32,7 @@ def checkTables():
     from database.entities.schedulerSchema.urls_test import urlTest
     from database.entities.schedulerSchema.topic_search import topicSearch
     from database.entities.scrapJobSchema.job_standby import JobsStandBy
-    from database.entities.tecnologies import Tecnologies
+    from database.entities.datasetSchema.tecnologies_info import Tecnologies
 
     if __name__ == '__main__':
         Jobs

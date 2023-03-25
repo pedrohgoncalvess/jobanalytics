@@ -1,11 +1,20 @@
 Tecnology;Area
-jira;project planning and managemen
-confluence;project planning and managemen
-ms project;project planning and managemen
-scrumdesk;project planning and managemen
+tableau;dataviz
+power bi;dataviz
+hadoop;data processing
+rabbiqmq;messaging middleware
+krafana;dataviz
+kibana;dataviz
+kubernetes;container
+docker;container
+.net;multi-language support
+jira;project planning and management
+confluence;project planning and management
+ms project;project planning and management
+scrumdesk;project planning and management
 agile;software development methodologies
 scrum;software development methodologies
-kamban;software development methodologies
+kanban;software development methodologies
 scrumban;software development methodologies
 rup;software development methodologies
 dsdm;software development methodologies
@@ -13,14 +22,14 @@ mysql workbench;database modeling tools
 dbvisualizer;database modeling tools
 oracle sqldeveloper;database modeling tools
 toa;database modeling tools
-rest api;web services
+rest;web services
 apache cxf;web services
 axis;web services
 soap;web services
 wsdl;web services
 jaxb;web services
 jax-ws;web services
-apache kafka;messaging middleware
+kafka;messaging middleware
 activemq;messaging middleware
 ibm mq series;messaging middleware
 rational rose;uml tools and techniques
@@ -40,7 +49,7 @@ rational synergy;versioning control
 ms visual source safe;versioning control
 oracle;database
 mysql;database
-microsoft sql server;database
+sql server;database
 postgresql;database
 mongodb;database
 redis;database
@@ -53,8 +62,12 @@ snowflake;database
 mariadb;database
 splunk;database
 amazon dynamodb;database
+gcp;cloud
+aws;cloud
+azure;cloud
 microsoft azure sql database;database
 hive;database
+power query; data manipulation
 teradata;database
 databricks;database
 neo4j;database
@@ -70,10 +83,10 @@ influxdb;database
 couchbase;database
 memcached;database
 firebird;database
-amazon redshift;database
+redshift;database
 microsoft azure synapse analytics;database
 informix;database
-spark sql;database
+spark;data processing
 impala;database
 firebase realtime database;database
 vertica;database
@@ -394,6 +407,7 @@ hawkular metrics;database
 siaqodb;database
 ledisdb;database
 bigobject;database
+excel;software
 siridb;database
 tomp2p;database
 velocitydb;database
@@ -449,9 +463,11 @@ transwarp stellardb;database
 yaacomo;database
 yanza;database
 react;framework
+reactnative;framework
 asp.net mvc;framework
 angular;framework
 ruby on rails;framework
+jquery;framework
 angularjs;framework
 vue.js;framework
 django;framework
@@ -464,12 +480,13 @@ meteor;framework
 symfony;framework
 codeigniter;framework
 jsf;framework
+terraform;container
 ember.js;framework
 .net core;framework
 google web toolkit;framework
 cakephp;framework
 polymer;framework
-play;framework
+playframework;framework
 flex;framework
 sails.js;framework
 zend;framework
@@ -591,6 +608,7 @@ prado;framework
 aura;framework
 picard;framework
 erlang web;framework
+airflow;orchestrator
 javascriptmvc;framework
 solar;framework
 rum;framework
@@ -612,7 +630,8 @@ kumbiaphp;framework
 mflow;framework
 echo;framework
 circumflex;framework
-node-router;framework
+node-router;
+node;framework
 sin;framework
 portofino;framework
 erlyweb;framework

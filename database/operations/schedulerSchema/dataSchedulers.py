@@ -77,7 +77,10 @@ def topic_search() -> list:
                   'desenvolvedor front-end':p,
                   'cientista de dados':p,
                   'analista de dados':p,
-                  'engenheiro de software':p
+                  'engenheiro de software':p,
+                  'analista de banco de dados':p,
+                  'administrador de banco de dados':p,
+                  'gestão de projetos':p
                   }
     s = 'stack'
     dictStack:dict = {'ruby':s,

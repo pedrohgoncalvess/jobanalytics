@@ -74,5 +74,7 @@ def _mainInitConstructor():
     verifyPaths(loginPaths(),stage = 'login')
     verifyPaths(viewMoreInfos(),stage='view_more_infos')
     inputVacancyTable()
-    from database.operations.tecnologies_operations import insertTecnologiesDB
+    from database.operations.datasetSchema.tecnologies_operations import insertTecnologiesDB
     insertTecnologiesDB()
+    from database.operations.datasetSchema.job_info_operations import insertInfoDB
+    insertInfoDB()

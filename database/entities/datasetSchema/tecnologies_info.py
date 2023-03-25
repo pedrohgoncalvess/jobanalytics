@@ -11,6 +11,7 @@ Tecnologies = Table(
     Column("id",Integer, primary_key=True, autoincrement=True),
     Column("tecnologie",String(50),nullable=False, unique=True),
     Column("type",String(50), nullable=False),
+    schema = 'dataset_schema'
 )
 
 metadata.create_all(engine)

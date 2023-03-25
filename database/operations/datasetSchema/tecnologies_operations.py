@@ -1,10 +1,11 @@
 def insertTecnologiesDB() -> dict:
-    from database.entities.tecnologies import Tecnologies
+    from database.entities.datasetSchema.tecnologies_info import Tecnologies
     from database.connection.connection import connection
     from sqlalchemy import insert
     import requests
     import io
     import pandas as pd
+
 
     engine, base, session = connection()
 
@@ -27,7 +28,7 @@ def insertTecnologiesDB() -> dict:
     return dictFrame
 
 def listTecnologies() -> dict:
-    from database.entities.tecnologies import Tecnologies
+    from database.entities.datasetSchema.tecnologies_info import Tecnologies
     from database.connection.connection import connection
 
     engine, base, session = connection()
