@@ -51,9 +51,8 @@ def generateTopics() -> list:
                 newTopic = topic + " " + stage
                 topicsForSearch.append(newTopic)
         else:
-            pass
-            #newTopicStack = 'desenvolvedor ' + topic
-            #topicsForSearch.append(newTopicStack)
+            newTopicStack = 'desenvolvedor ' + topic
+            topicsForSearch.append(newTopicStack)
 
     return topicsForSearch
 
