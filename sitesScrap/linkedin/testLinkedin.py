@@ -1,6 +1,4 @@
 import time
-
-
 def pathsForTestScrap(type_info:str, site:str='linkedin') -> dict:
     from database.connection.connection import connection
     from sqlalchemy.sql import text

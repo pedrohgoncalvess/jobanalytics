@@ -6,7 +6,7 @@ def getLinksTopics():
 
     import time
     from selenium.webdriver.common.by import By
-    from database.operations.schedulerSchema.topic_search_operations import listTopicsForSearch
+    from database.operations.scrapJobSchema.topic_search_operations import listTopicsForSearch
 
     _, _, session = connection()
 
