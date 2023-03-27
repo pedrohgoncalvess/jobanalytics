@@ -61,7 +61,7 @@ def scrapInfosJobs():
                     topics = content.find_elements(by=By.CSS_SELECTOR, value='strong')
             except:
                 print(f"{colors('red')}Error in {infoKey}.")
-        insertJobsScrap(dictInfosVacancy,session)
+        insertJobsScrap(dictInfosVacancy,'linkedin',session)
         insertTextScrap(vacancyText, dictInfosVacancy['idurlJob'],session)
         topicsList: list = []
         if len(topics) > 0:

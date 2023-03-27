@@ -4,7 +4,7 @@ from database.operations.scrapJobSchema.midlevelOperations import formatSizeFiel
 import sqlalchemy
 
 
-def insertJobsScrap(dictInfos:dict,session:sqlalchemy.orm.session.Session):
+def insertJobsScrap(dictInfos:dict,site:str,session:sqlalchemy.orm.session.Session):
     from database.entities.scrapJobSchema.job import Jobs
     try:
         insertJob = insert(Jobs).values(
@@ -14,7 +14,8 @@ def insertJobsScrap(dictInfos:dict,session:sqlalchemy.orm.session.Session):
         experience = formatSizeFields(70,dictInfos['vacancy_experience']),
         candidates = dictInfos.get('candidates',0),
         date_publish = dictInfos['date_publish'],
-        researched_topic = dictInfos.get('researched_topic')
+        researched_topic = dictInfos.get('researched_topic'),
+        site_job = site
         )
         session.execute(insertJob)
         session.commit()

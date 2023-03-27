@@ -18,6 +18,7 @@ Jobs = Table(
     Column("date_publish",String(75), default='none'),
     Column("scraped_at",DateTime(timezone=True),server_default=func.now()),
     Column("researched_topic",String(50), nullable=False),
+    Column("site_job",String(30), nullable=False),
     schema = 'scrap_job'
 )
 
