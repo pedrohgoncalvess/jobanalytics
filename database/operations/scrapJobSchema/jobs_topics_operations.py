@@ -2,7 +2,7 @@ from sqlalchemy import insert
 from database.operations.scrapJobSchema.midlevelOperations import formatSizeFields
 import sqlalchemy
 
-def insertTopicsScrap(topics:list, idUrl:str,session:sqlalchemy.orm.session.Session):
+def insertTopicsScrap(topics:list, idUrl:str):
     from database.entities.scrapJobSchema.job_topic import JobsTopics
     from database.operations.scrapJobSchema.jobs_operations import getIdJob
     from database.connection.connection import connection

@@ -1,10 +1,3 @@
-def treatmentInsertJobs(dictInfos:dict) -> dict:
-    try:
-        dictInfos['candidates']
-    except:
-        dictInfos.update({'candidates':'0'})
-    return dictInfos
-
 def validationUrlExist() -> list:
     from database.connection.connection import connection
     from database.entities.scrapJobSchema.job import Jobs

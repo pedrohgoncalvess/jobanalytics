@@ -1,5 +1,4 @@
-import sqlalchemy
-def insertTextScrap(textJob:str,idUrl:str,session:sqlalchemy.orm.session.Session):
+def insertTextScrap(textJob:str,idUrl:str):
     from database.entities.scrapJobSchema.job_description import JobsDescriptions
     from database.operations.scrapJobSchema.jobs_operations import getIdJob
     from sqlalchemy import insert

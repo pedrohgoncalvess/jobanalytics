@@ -10,7 +10,7 @@ Jobs = Table(
     'job',
     metadata,
     Column("id",Integer,autoincrement=True,primary_key=True,unique=True),
-    Column("id_job",String(300), unique=True),
+    Column("id_job",String(1500), unique=True),
     Column("vacancy_title",String(70),default='none'),
     Column("vacancy_org",String(70),default='none'),
     Column("experience",String(75),default='none'),

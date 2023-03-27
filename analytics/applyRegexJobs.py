@@ -52,9 +52,6 @@ def listPunctationFunc():
     return listPunctation
 
 
-listPunctationFunc()
-
-
 def columnTreatment1():
     import unidecode
     discDf, tecDf, dfInfo = prepareDataFrames()
@@ -133,6 +130,6 @@ def listaBenef():
     return dfJob
 
 
-# listaBenef().to_excel(r'C:\Users\Pedro\Desktop\Studies\Programming Language\jobs.xlsx')
+listaBenef().to_excel(r'C:\Users\Pedro\Desktop\Studies\Programming Language\jobs.xlsx')
 df = listaBenef()
 print(df)
