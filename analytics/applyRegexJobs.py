@@ -34,6 +34,7 @@ def prepareDataFrames():
                                2: "Type"
                                }, inplace=True)
 
+        conn.close()
         return discDf,tecDf,dfInfo
     except Exception as err:
         print(err)

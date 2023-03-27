@@ -17,6 +17,7 @@ and paths.type_info = '{type_info}'""")
     for line in lines:
         results.update({line.id:line.path})
     return results
+
 def testScrapJob():
     from configsDir.environmentConfiguration import driverWeb, environmentsVariables
     from selenium.webdriver.common.by import By
@@ -68,6 +69,7 @@ def testScrapJob():
     contentsList = ['content','date_publish','candidates','vacancy_title','vacancy_experience','vacancy_org']
 
     link = getLinkUrlTest()
+    print(link)
     driver.get(link)
 
     viewMoreKeys = pathsForTestScrap('view_more')

@@ -78,3 +78,4 @@ def _mainInitConstructor():
     insertTecnologiesDB()
     from database.operations.datasetSchema.job_info_operations import insertInfoDBWithDataset
     insertInfoDBWithDataset()
+    print("Constructor checked and finished")

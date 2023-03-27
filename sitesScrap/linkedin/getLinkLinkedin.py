@@ -49,7 +49,6 @@ def getLinksTopics():
                 link = job.find_element(by=By.XPATH,value=xpath).get_attribute('href')
                 linkCompare = link.split("?")[0]
                 if linkCompare not in listJobsDB:
-                    print(linkCompare)
                     dictTopics.update({linkCompare:topic})
                 else:
                     print("This link exist in DB")

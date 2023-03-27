@@ -5,6 +5,10 @@ import sqlalchemy
 def insertTopicsScrap(topics:list, idUrl:str,session:sqlalchemy.orm.session.Session):
     from database.entities.scrapJobSchema.job_topic import JobsTopics
     from database.operations.scrapJobSchema.jobs_operations import getIdJob
+    from database.connection.connection import connection
+
+    engine, base, session = connection()
+
     for topic in topics:
         topic = formatSizeFields(100,topic)
         insertTopic = insert(JobsTopics).values(
@@ -14,7 +18,8 @@ def insertTopicsScrap(topics:list, idUrl:str,session:sqlalchemy.orm.session.Sess
         try:
             session.execute(insertTopic)
             session.commit()
+            session.close()
         except Exception as err:
+            session.close()
             print(f"Cannot insert topic because: {err}")
-    session.close()
 

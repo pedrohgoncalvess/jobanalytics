@@ -6,6 +6,7 @@ import sqlalchemy
 
 def insertJobsScrap(dictInfos:dict,site:str,session:sqlalchemy.orm.session.Session):
     from database.entities.scrapJobSchema.job import Jobs
+    engine, base, session = connection()
     try:
         insertJob = insert(Jobs).values(
         id_job = dictInfos['idurlJob'],
@@ -21,9 +22,8 @@ def insertJobsScrap(dictInfos:dict,site:str,session:sqlalchemy.orm.session.Sessi
         session.commit()
         session.close()
     except Exception as err:
-        print(f"Cannot insert {dictInfos['idurlJob']} job. Error {err}")
         session.close()
-    session.expunge_all()
+        print(f"Cannot insert {dictInfos['idurlJob']} job. Error {err}")
 
 
 def getIdJob(urlJob:str):

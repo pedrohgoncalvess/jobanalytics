@@ -22,7 +22,8 @@ def getLinkUrlTest():
 
     today = datetime.now().strftime("%Y-%m-%d")
 
-    query = session.query(urlTest).filter(urlTest.columns.scraped_at==today)
+    #query = session.query(urlTest).filter(urlTest.columns.scraped_at==today)
+    query = session.query(urlTest).all()
     for row in query:
         return row.url_job
     session.close()

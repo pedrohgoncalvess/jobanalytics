@@ -1,10 +1,14 @@
-from sqlalchemy import insert
-from database.operations.scrapJobSchema.midlevelOperations import formatSizeFields
 import sqlalchemy
-
 def insertTextScrap(textJob:str,idUrl:str,session:sqlalchemy.orm.session.Session):
     from database.entities.scrapJobSchema.job_description import JobsDescriptions
     from database.operations.scrapJobSchema.jobs_operations import getIdJob
+    from sqlalchemy import insert
+
+    from database.connection.connection import connection
+    from database.operations.scrapJobSchema.midlevelOperations import formatSizeFields
+
+
+    engine, base, session = connection()
     try:
         textJob = formatSizeFields(15000,textJob)
         insertText = insert(JobsDescriptions).values(

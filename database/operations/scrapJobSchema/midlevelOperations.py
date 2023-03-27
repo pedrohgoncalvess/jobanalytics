@@ -1,6 +1,3 @@
-from sqlalchemy.sql.schema import Table
-from database.entities.scrapJobSchema.job import Jobs
-
 def treatmentInsertJobs(dictInfos:dict) -> dict:
     try:
         dictInfos['candidates']
@@ -8,12 +5,13 @@ def treatmentInsertJobs(dictInfos:dict) -> dict:
         dictInfos.update({'candidates':'0'})
     return dictInfos
 
-def validationUrlExist(table:Table = Jobs) -> list:
-
+def validationUrlExist() -> list:
     from database.connection.connection import connection
+    from database.entities.scrapJobSchema.job import Jobs
+
     engine, base, session = connection()
 
-    query = session.query(table).all()
+    query = session.query(Jobs).values(Jobs.columns.id_job)
     links:list = []
     for row in query:
         links.append(row.id_job)

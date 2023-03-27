@@ -33,6 +33,7 @@ def checkTables():
     from database.entities.schedulerSchema.topic_search import topicSearch
     from database.entities.scrapJobSchema.job_standby import JobsStandBy
     from database.entities.datasetSchema.tecnologies_info import Tecnologies
+    from database.entities.datasetSchema.job_info import InfoJobs
 
     if __name__ == '__main__':
         Jobs
@@ -45,3 +46,4 @@ def checkTables():
         topicSearch
         JobsStandBy
         Tecnologies
+        InfoJobs
