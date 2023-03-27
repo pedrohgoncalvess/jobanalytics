@@ -1,13 +1,13 @@
-def insertInfoDB() -> dict:
+from database.connection.connection import connection
+
+engine, base, session = connection()
+
+def insertInfoDBWithDataset() -> dict:
     from database.entities.datasetSchema.job_info import InfoJobs
-    from database.connection.connection import connection
     from sqlalchemy import insert
     import requests
     import io
     import pandas as pd
-
-
-    engine, base, session = connection()
 
     dictFrame:dict = {}
 
@@ -29,14 +29,29 @@ def insertInfoDB() -> dict:
 
 def listInfos() -> dict:
     from database.entities.datasetSchema.job_info import InfoJobs
-    from database.connection.connection import connection
 
-    engine, base, session = connection()
     query = session.query(InfoJobs).all()
 
     dictInfo:dict = {}
 
     for line in query:
-        dictInfo.update({line.tecnologie: line.type})
+        dictInfo.update({line.info: line.type})
 
     return dictInfo
+
+def insertNewInfoJob(infosDict:dict):
+    from database.entities.datasetSchema.job_info import InfoJobs
+    from sqlalchemy import insert
+
+
+    for info in list(infosDict.keys()):
+        query = insert(InfoJobs).values(
+            info = info,
+            type = infosDict[info]
+        )
+        try:
+            session.execute(query)
+            session.commit()
+            session.close()
+        except:
+            session.close()

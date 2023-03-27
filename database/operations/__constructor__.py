@@ -76,5 +76,5 @@ def _mainInitConstructor():
     inputVacancyTable()
     from database.operations.datasetSchema.tecnologies_operations import insertTecnologiesDB
     insertTecnologiesDB()
-    from database.operations.datasetSchema.job_info_operations import insertInfoDB
-    insertInfoDB()
+    from database.operations.datasetSchema.job_info_operations import insertInfoDBWithDataset
+    insertInfoDBWithDataset()

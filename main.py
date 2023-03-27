@@ -4,7 +4,7 @@ if __name__ == "__main__":
         from database.connection.connection import checkTables
         checkTables()
     elif resp.lower() == 'scrap':
-        from database.operations.schedulerSchema.__constructor__ import _mainInitConstructor
+        from database.operations.__constructor__ import _mainInitConstructor
         _mainInitConstructor()
         from sitesScrap.linkedin.testLinkedin import _mainFunctionScheduler
         _mainFunctionScheduler()
@@ -14,17 +14,17 @@ if __name__ == "__main__":
         from sitesScrap.linkedin.testLinkedin import _mainFunctionScheduler
         _mainFunctionScheduler()
     elif resp.lower() == 'standby':
-        from database.operations.schedulerSchema.__constructor__ import _mainInitConstructor
+        from database.operations.__constructor__ import _mainInitConstructor
         _mainInitConstructor()
         from sitesScrap.linkedin.getLinkLinkedin import getLinksTopics
         getLinksTopics()
     elif resp.lower() == 'constructor':
-        from database.operations.schedulerSchema.__constructor__ import _mainInitConstructor
+        from database.operations.__constructor__ import _mainInitConstructor
         _mainInitConstructor()
     else:
         from database.connection.connection import checkTables
         checkTables()
-        from database.operations.schedulerSchema.__constructor__ import _mainInitConstructor
+        from database.operations.__constructor__ import _mainInitConstructor
         _mainInitConstructor()
         from sitesScrap.linkedin.testLinkedin import _mainFunction
         _mainFunction()
