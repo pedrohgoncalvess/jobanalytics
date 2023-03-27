@@ -9,14 +9,14 @@ def connectionWithDb():
 def prepareDataFrames():
     conn = connectionWithDb()
     try:
-        discDf = conn.execute("""select jb.id,jb.vacancy_title,jb.researched_topic,jb.candidates, jb.vacancy_title || ' ' || jd.text from scrap_job.job jb
+        discDf = conn.execute("""select jb.id,jb.vacancy_title,jb.researched_topic,jb.site_job, jb.vacancy_title || ' ' || jd.text from scrap_job.job jb
                               inner join scrap_job.job_description jd on jd.id_job = jb.id
                               """)
         discDf = pd.DataFrame(conn.fetchall())
         discDf.rename(columns={0: "ID",
                                1: "Titulo da vaga",
                                2: "Topico pesquisado",
-                               3: "Numero de candidatos",
+                               3: "Site",
                                4: "Description"
                                }, inplace=True)
 
@@ -73,12 +73,12 @@ def columnTreatment2():
     discDf, tecDf, dfInfo = prepareDataFrames()
 
     listPunctation = listPunctationFunc()
+    discDf = columnTreatment1()
 
     for stack in stacksList:
         listTecnologies = list(tecDf.Tecnologie.loc[tecDf['Type'] == stack])
         tecCount = 0
         newColumn: list = []
-        discDf = columnTreatment1()
         for disc in discDf.Treatment1:
             vetorize = disc.split(" ")
             newVetor: list = []
@@ -130,6 +130,7 @@ def listaBenef():
     return dfJob
 
 
-listaBenef().to_excel(r'C:\Users\Pedro\Desktop\Studies\Programming Language\jobs.xlsx')
+
 df = listaBenef()
-print(df)
+print(df.columns)
+df.to_excel(r'C:\Users\Pedro\Desktop\Studies\Programming Language\jobs.xlsx',index=False)

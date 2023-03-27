@@ -468,8 +468,8 @@ asp.net mvc;framework
 angular;framework
 ruby on rails;framework
 jquery;framework
-angularjs;framework
-vue.js;framework
+tensorflow;data
+vue;framework
 django;framework
 laravel;framework
 asp.net;framework
@@ -486,6 +486,8 @@ ember.js;framework
 google web toolkit;framework
 cakephp;framework
 polymer;framework
+pytorch;data
+scikitlearn;data
 playframework;framework
 flex;framework
 sails.js;framework
