@@ -132,7 +132,22 @@ def listaBenef():
     return dfJob
 
 
-def insertInfosDb():
+def parseColumns():
     df = listaBenef()
-    print(df)
-insertInfosDb()
+    from database.operations.analyticsSchema.analytic_description import insertInfoDescription
+
+    columns = ['programming language', 'framework', 'database', 'planning and management', 'data', 'other', 'benefit',
+               'culture', 'model', 'requirement', 'seniority']
+
+    for column in columns:
+        for num, line in enumerate(list(df[column])):
+            if len(line) > 0:
+                lineDict = {}
+                infos = line.split(',')
+                for info in infos:
+                    idLine = df['ID'].iloc[num]
+                    info = info.replace(" ", "")
+                    lineDict.update({"id_job": idLine, "info": info, "type": column, "compost_key": f"{str(idLine)}-{info}"})
+                    insertInfoDescription(lineDict)
+
+parseColumns()
