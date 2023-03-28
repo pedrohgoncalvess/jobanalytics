@@ -175,6 +175,7 @@ amazon neptune;database
 exasol;database
 heavy.ai;database
 geode;database
+.asp;framework
 apache druid;database
 amazon cloudsearch;database
 graphdb;database
@@ -462,6 +463,7 @@ transwarp argodb;database
 transwarp stellardb;database
 yaacomo;database
 yanza;database
+github;other
 react;framework
 reactnative;framework
 asp.net mvc;framework
@@ -489,6 +491,7 @@ polymer;framework
 pytorch;data
 scikitlearn;data
 playframework;framework
+plsql;programming language
 flex;framework
 sails.js;framework
 zend;framework
@@ -587,6 +590,8 @@ stripes;framework
 masonite;framework
 camping;framework
 cuba;framework
+html;programming language
+css; programming language
 kotlinx.html;framework
 happstack;framework
 zotonic;framework

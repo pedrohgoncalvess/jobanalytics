@@ -21,7 +21,7 @@ if __name__ == "__main__":
     elif resp.lower() == 'standby':
         from database.operations.__constructor__ import _mainInitConstructor
         _mainInitConstructor()
-        respStandby = input("Choose site get links => [linkedin, scrap]: ")
+        respStandby = input("Choose site get links => [linkedin, indeed]: ")
         if respStandby.lower() == 'linkedin':
             from sitesScrap.linkedin.getLinkLinkedin import getLinksTopics
             getLinksTopics()

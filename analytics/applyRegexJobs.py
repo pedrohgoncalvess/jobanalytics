@@ -9,7 +9,7 @@ def connectionWithDb():
 def prepareDataFrames():
     conn = connectionWithDb()
     try:
-        discDf = conn.execute("""select jb.id,jb.vacancy_title,jb.researched_topic,jb.site_job, jb.vacancy_title || ' ' || jd.text from scrap_job.job jb
+        conn.execute("""select jb.id,jb.vacancy_title,jb.researched_topic,jb.site_job, jb.vacancy_title || ' ' || jd.text from scrap_job.job jb
                               inner join scrap_job.job_description jd on jd.id_job = jb.id
                               """)
         discDf = pd.DataFrame(conn.fetchall())
@@ -20,12 +20,13 @@ def prepareDataFrames():
                                4: "Description"
                                }, inplace=True)
 
-        tecDf = conn.execute("select * from dataset_schema.tecnologies_info")
+
+        conn.execute("select * from dataset_schema.tecnologies_info")
         tecDf = pd.DataFrame(conn.fetchall())
         tecDf.rename(columns={0: "ID",
                               1: "Tecnologie",
                               2: "Type"}, inplace=True)
-        dfInfo = conn.execute("""
+        conn.execute("""
                     select * from dataset_schema.job_info
         """)
         dfInfo = pd.DataFrame(conn.fetchall())
@@ -62,6 +63,7 @@ def columnTreatment1():
         disc = unidecode.unidecode(disc)
         disc = disc.replace("\n\n", " ")
         disc = disc.replace("\n", " ")
+        disc = disc.replace("/"," ")
         newColumn.append(disc)
     discDf['Treatment1'] = newColumn
 
@@ -130,7 +132,7 @@ def listaBenef():
     return dfJob
 
 
-
-df = listaBenef()
-print(df.columns)
-df.to_excel(r'C:\Users\Pedro\Desktop\Studies\Programming Language\jobs.xlsx',index=False)
+def insertInfosDb():
+    df = listaBenef()
+    print(df)
+insertInfosDb()
