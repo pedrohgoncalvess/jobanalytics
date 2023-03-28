@@ -46,7 +46,6 @@ def scrapLinks():
                                    "date_publish": announc,"researched_topic":dictLinksStandby[link]
                                    })
 
-            print(dictInsertInfo)
 
             insertJobsScrap(dictInsertInfo,"indeed")
             insertTextScrap(content,link)
@@ -78,6 +77,3 @@ def incrementBenefits(benefits:str,benefitsInDb:dict):
                 listBenefitInsert.update({benefit:"benefit"})
     if len(listBenefitInsert.keys()) > 0:
         insertNewInfoJob(listBenefitInsert)
-
-scrapLinks()
-

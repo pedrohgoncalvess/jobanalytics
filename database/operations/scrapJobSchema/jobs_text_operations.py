@@ -17,6 +17,7 @@ def insertTextScrap(textJob:str,idUrl:str):
         session.execute(insertText)
         session.commit()
         session.close()
+        print("Job description insert successfuly")
     except Exception as err:
         session.close()
         print(f"Cannot insert text job {idUrl}. Error {err}")

@@ -8,16 +8,26 @@ if __name__ == "__main__":
         _mainInitConstructor()
         from sitesScrap.linkedin.testLinkedin import _mainFunctionScheduler
         _mainFunctionScheduler()
-        from sitesScrap.linkedin.scrapLinkedin import scrapInfosJobs
-        scrapInfosJobs()
+        respScrap = input("Choose site for realize scrap => [linkedin, indeed]: ")
+        if respScrap.lower() == 'linkedin':
+            from sitesScrap.linkedin.scrapLinkedin import scrapInfosJobs
+            scrapInfosJobs()
+        elif respScrap.lower() == 'indeed':
+            from sitesScrap.indeed.scrapIndeed import scrapLinks
+            scrapLinks()
     elif resp.lower() == 'scheduler':
         from sitesScrap.linkedin.testLinkedin import _mainFunctionScheduler
         _mainFunctionScheduler()
     elif resp.lower() == 'standby':
         from database.operations.__constructor__ import _mainInitConstructor
         _mainInitConstructor()
-        from sitesScrap.linkedin.getLinkLinkedin import getLinksTopics
-        getLinksTopics()
+        respStandby = input("Choose site get links => [linkedin, scrap]: ")
+        if respStandby.lower() == 'linkedin':
+            from sitesScrap.linkedin.getLinkLinkedin import getLinksTopics
+            getLinksTopics()
+        elif respStandby.lower() == 'scrap':
+            from sitesScrap.indeed.getLinkIndeed import getLinksIndeed
+            getLinksIndeed()
     elif resp.lower() == 'constructor':
         from database.operations.__constructor__ import _mainInitConstructor
         _mainInitConstructor()

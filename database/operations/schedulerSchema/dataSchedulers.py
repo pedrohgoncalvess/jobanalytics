@@ -105,7 +105,8 @@ def topic_search() -> list:
                       'c++':s,
                       'c#':s,
                       'rust':s,
-                      'haskell':s
+                      'haskell':s,
+                      'php':s
     }
 
     listaTopics = [dictTopics,dictStack]

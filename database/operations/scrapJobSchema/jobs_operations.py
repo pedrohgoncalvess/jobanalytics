@@ -25,7 +25,6 @@ def insertJobsScrap(dictInfos:dict,site:str):
         researched_topic = dictInfos.get('researched_topic'),
         site_job = site
         )
-        print(insertJob)
         session.execute(insertJob)
         session.commit()
         session.close()

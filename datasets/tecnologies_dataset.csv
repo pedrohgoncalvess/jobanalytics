@@ -557,7 +557,6 @@ restlet;framework
 sailor;framework
 sproutcore;framework
 hanami;framework
-(fab);framework
 inferno;framework
 lift;framework
 lithium;framework
@@ -681,7 +680,6 @@ perl;programming language
 scratch;programming language
 classic visual basic;programming language
 rust;programming language
-(visual) foxpro;programming language
 ada;programming language
 fortran;programming language
 lisp;programming language
