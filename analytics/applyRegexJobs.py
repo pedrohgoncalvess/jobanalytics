@@ -11,6 +11,7 @@ def prepareDataFrames():
     try:
         conn.execute("""select jb.id,jb.vacancy_title,jb.researched_topic,jb.site_job, jb.vacancy_title || ' ' || jd.text from scrap_job.job jb
                               inner join scrap_job.job_description jd on jd.id_job = jb.id
+                              where jd.status = 'waiting'
                               """)
         discDf = pd.DataFrame(conn.fetchall())
         discDf.rename(columns={0: "ID",
@@ -146,8 +147,9 @@ def parseColumns():
                 infos = line.split(',')
                 for info in infos:
                     idLine = df['ID'].iloc[num]
+                    idLine = str(idLine)
                     info = info.replace(" ", "")
-                    lineDict.update({"id_job": idLine, "info": info, "type": column, "compost_key": f"{str(idLine)}-{info}"})
+                    lineDict.update({"id_job": idLine, "info": info, "type": column, "compost_key": f"{idLine}-{info}"})
                     insertInfoDescription(lineDict)
 
 parseColumns()
